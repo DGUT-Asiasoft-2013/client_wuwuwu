@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="top"
+        android:gravity="center"
+        android:text="物品上架" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="314dp"
+        android:layout_marginTop="50dp" >
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:orientation="vertical" >
+
+        <fragment
+            android:id="@+id/comm_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            tools:layout="@layout/fragment_inputcell_simpletext"
+            tools:lyout="@layout/fragment_inputcell_simpletext" />
+
+        <fragment
+            android:id="@+id/comm_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            tools:layout="@layout/fragment_inputcell_simpletext"
+            tools:lyout="@layout/fragment_inputcell_simpletext" />
+
+        <fragment
+            android:id="@+id/comm_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            tools:layout="@layout/fragment_inputcell_simpletext"
+            tools:lyout="@layout/fragment_inputcell_simpletext" />
+
+        <fragment
+            android:id="@+id/comm_describle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            tools:layout="@layout/fragment_inputcell_simpletext"
+            tools:lyout="@layout/fragment_inputcell_simpletext" />
+
+        <fragment
+            android:id="@+id/comm_image"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            class="com.example.palmcampusmarket_client.fragment.inputcells.PictureInputCellFragment"
+            tools:layout="@layout/fragment_inputcell_picture" />
+
+        <Button
+            android:id="@+id/btn_add"
+            android:layout_width="238dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:text="上架"
+            android:textColor="@android:color/black" />
+    </LinearLayout>
+
+</FrameLayout>
