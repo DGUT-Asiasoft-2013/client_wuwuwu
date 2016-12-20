@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class User implements Serializable{
 	Integer id;
 	
-	String account;
+	String account; 
 	String passwordHash;
 	String telephone;
 	String nickname;
