@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.TextView;
 
 import com.example.palmcampusmarket_client.R;
 
@@ -13,10 +14,13 @@ import com.example.palmcampusmarket_client.R;
  * Created by Administrator on 2016/12/20.
  */
 public class MyBillActivity extends Activity {
-    @Override
+    TextView textView;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_bill);
+
+        textView = (TextView) findViewById(R.id.title);
+        textView.setText("我的账单");
 
     }
 

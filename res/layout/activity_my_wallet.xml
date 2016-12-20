@@ -28,6 +28,28 @@
             android:textSize="20sp" />
 
     </RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/wallet_recharge"
+        style="@style/Wallet_RelativeLayout"
+        android:background="@drawable/textview_select"
+        android:clickable="true">
+
+        <ImageView
+            android:id="@+id/recharge_image_view"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/ic_launcher" />
+
+        <TextView
+            android:id="@+id/recharge_textView"
+            style="@style/My_TextView"
+            android:layout_toRightOf="@+id/recharge_image_view"
+            android:text="充值" />
+
+        <ImageView
+            style="@style/My_ImageView_Style"
+            android:layout_alignBottom="@+id/recharge_textView" />
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/wallet_bill"

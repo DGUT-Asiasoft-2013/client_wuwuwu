@@ -16,19 +16,25 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.example.palmcampusmarket_wallet.MyBillActivity;
+import com.example.palmcampusmarket_wallet.RechargeActivity;
 
 public class MainActivity extends Activity {
 
 	ImageView wallet_back;
-	RelativeLayout wallet_bill,wallet_asset,wallet_ye;
+	RelativeLayout wallet_recharge,wallet_bill,wallet_asset,wallet_ye;
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_my_wallet);
-
 		findViewById(R.id.wallet_back).setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View view) {
-
+			}
+		});
+		findViewById(R.id.wallet_recharge).setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+				Intent intent = new Intent(MainActivity.this, RechargeActivity.class);
+				startActivity(intent);
 			}
 		});
 		findViewById(R.id.wallet_bill).setOnClickListener(new View.OnClickListener() {
@@ -54,7 +60,7 @@ public class MainActivity extends Activity {
 
 	}
 
-	@Override
+	/*@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
@@ -70,7 +76,7 @@ public class MainActivity extends Activity {
 
 
 
-	}
+	}*/
 
 	void startLoginActivity(){
 		Intent itnt = new Intent(this, LoginActivity.class);

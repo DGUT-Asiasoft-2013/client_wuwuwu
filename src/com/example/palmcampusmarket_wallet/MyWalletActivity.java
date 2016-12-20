@@ -15,11 +15,18 @@ import com.example.palmcampusmarket_client.R;
  */
 public class MyWalletActivity extends Activity {
     ImageView wallet_back;
-    RelativeLayout wallet_bill,wallet_asset,wallet_ye;
+    RelativeLayout wallet_recharge,wallet_bill,wallet_asset,wallet_ye;
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_wallet);
 
+        findViewById(R.id.wallet_recharge).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MyWalletActivity.this, RechargeActivity.class);
+                startActivity(intent);
+            }
+        });
         findViewById(R.id.wallet_back).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
