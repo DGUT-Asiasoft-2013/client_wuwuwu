@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-//按钮没写
+///按钮没写
 public class PurchaseActivity extends Activity {  //购买页面
 
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
