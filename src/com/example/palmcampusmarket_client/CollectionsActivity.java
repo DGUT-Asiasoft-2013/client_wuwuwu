@@ -95,9 +95,9 @@ public class CollectionsActivity extends Activity {
 			Collections collections = data.get(position);
 
 //			image.load();
-//			name.setText(collections.getName());
-//			describe.setText(collections.getDescribe());
-//			price.setText(collections.getPrice());
+//			name.setText(collections.getCommodity().getName());
+//			describe.setText(collections.getCommodity().getDescribe());
+//			price.setText(collections.getCommodity().getPrice());
 
 
 			return view;
@@ -171,7 +171,7 @@ public class CollectionsActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, CollectionsContentActivity.class);
+		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
 		//
 		//		itnt.putExtra("collections", data.get(position));
 		//		startActivity(itnt);

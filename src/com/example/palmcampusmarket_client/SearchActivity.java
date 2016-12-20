@@ -183,7 +183,7 @@ public class SearchActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, GoodsContentActivity.class);
+		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
 		//
 		//		itnt.putExtra("goods", data.get(position));
 		//		startActivity(itnt);
