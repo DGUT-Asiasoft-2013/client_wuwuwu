@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.entity;
+package com.example.palmcampusmarket_client.api.entity;
 
 import java.io.Serializable;
 
