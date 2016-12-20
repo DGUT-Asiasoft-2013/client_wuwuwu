@@ -29,7 +29,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class CollectionsActivity extends Activity {
-
+ 
 	View image;
 	TextView name;
 	TextView describe;
