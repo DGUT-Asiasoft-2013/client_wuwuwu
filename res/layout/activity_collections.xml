@@ -12,7 +12,7 @@
         android:textSize="30sp" />
 
     <ListView
-        android:id="@+id/list_search"
+        android:id="@+id/list_collections"
         android:layout_width="match_parent"
         android:layout_height="match_parent" >
     </ListView>

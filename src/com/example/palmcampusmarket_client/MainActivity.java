@@ -1,17 +1,14 @@
 package com.example.palmcampusmarket_client;
 
-import java.io.IOException;
-
-
 
 import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
+import java.io.IOException;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -21,7 +18,9 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class BootActivity extends Activity {
+public class MainActivity extends Activity {
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +42,12 @@ public class BootActivity extends Activity {
 			@Override
 			public void onResponse(Call arg0, final Response arg1) throws IOException {
 				//				Log.d("response", arg1.toString());
-				BootActivity.this.runOnUiThread(new Runnable() {
+				MainActivity.this.runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 						try{
-							Toast.makeText(BootActivity.this, arg1.body().string(), Toast.LENGTH_SHORT).show();
+							Toast.makeText(MainActivity.this, arg1.body().string(), Toast.LENGTH_SHORT).show();
 						}catch (Exception e) {
 							e.printStackTrace();
 						}
@@ -59,12 +58,12 @@ public class BootActivity extends Activity {
 
 			@Override
 			public void onFailure(Call arg0, final IOException arg1) {
-				BootActivity.this.runOnUiThread(new Runnable() {
+				MainActivity.this.runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 
-						Toast.makeText(BootActivity.this, arg1.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+						Toast.makeText(MainActivity.this, arg1.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
 
 					}
 				});
