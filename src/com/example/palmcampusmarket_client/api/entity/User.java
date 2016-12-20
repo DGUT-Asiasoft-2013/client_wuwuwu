@@ -47,5 +47,4 @@ public class User implements Serializable{
 	public void setAvatar(){
 		this.avatar = avatar;
 	}
-
 }
