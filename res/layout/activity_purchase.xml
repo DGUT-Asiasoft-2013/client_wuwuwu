@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="80dp" >
+
+        <!-- 商品信息 -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10" >
+
+                <ImageView
+                    android:id="@+id/commodity_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:padding="5dp"
+                    android:src="@drawable/text_picture2" >
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/commodity_describe"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3"
+                    android:padding="5dp"
+                    android:text="describe" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- 购买数量 -->
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_marginTop="100dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:weightSum="10" >
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="25dp"
+                    android:text="购买数量:" />
+
+                <Button
+                    android:id="@+id/buy_sub"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="-" />
+
+                <EditText
+                    android:id="@+id/buy_number"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="6"
+                    android:inputType="number" 
+                    android:text="1"
+                    android:gravity="center"/>
+
+                <Button
+                    android:id="@+id/buy_add"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:text="+" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- 买家信息 -->
+
+        <FrameLayout
+            android:id="@+id/buyer_information"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:layout_marginTop="160dp" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:weightSum="2" >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:weightSum="2" >
+
+                    <TextView
+                        android:id="@+id/buyer_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="buyerName"
+                        android:textSize="18dp" />
+
+                    <TextView
+                        android:id="@+id/buyer_telephone"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:text="telephone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/buyer_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="80dp"
+                    android:layout_weight="1"
+                    android:gravity="center_vertical"
+                    android:paddingLeft="10dp"
+                    android:text="address" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <!-- 价格 -->
+
+        <TextView
+            android:id="@+id/buy_price"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom"
+            android:gravity="right"
+            android:paddingRight="25dp"
+            android:text="价格"
+            android:textSize="18dp" />
+    </FrameLayout>
+
+    <fragment
+        android:id="@+id/frag_tabber"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_gravity="bottom"
+        class="com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar"
+        tools:layout="@layout/fragment_purchase_functionbar" />
+
+</FrameLayout>
