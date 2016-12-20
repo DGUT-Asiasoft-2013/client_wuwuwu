@@ -57,24 +57,24 @@ public class PasswordRecoverActivity extends Activity {
 	void goStep2(){
 		getFragmentManager()
 		.beginTransaction()
-		//		.setCustomAnimations(
-		//				R.animator.slide_in_right, 
-		//				R.animator.slide_out_left, 
-		//				R.animator.slide_in_left, 
-		//				R.animator.slide_out_right)
+		.setCustomAnimations(
+				R.animator.slide_in_right, 
+				R.animator.slide_out_left, 
+				R.animator.slide__in_left, 
+				R.animator.slide_out_right)
 		.replace(R.id.container, step2)
 		.addToBackStack(null)
 		.commit();
 	}
 
 	void goSubmit(){
-				OkHttpClient client = Server.getSharedClient();
-				MultipartBody body = new MultipartBody.Builder()
-						.addFormDataPart("",step1.getText())
-						.addFormDataPart("passwordHash",MD5.getMD5(step2.getText()))
-						.build();
-		
-				Request request = Server.requestBuilderWithApi("passwordrecover").post(body).build();
+		OkHttpClient client = Server.getSharedClient();
+		MultipartBody body = new MultipartBody.Builder()
+				.addFormDataPart("telephone",step1.getText())
+				.addFormDataPart("passwordHash",MD5.getMD5(step2.getText()))
+				.build();
+
+		Request request = Server.requestBuilderWithApi("passwordrecover").post(body).build();
 
 		final ProgressDialog progressDialog = new ProgressDialog(PasswordRecoverActivity.this);
 		progressDialog.setMessage("«Î…‘∫Ú");

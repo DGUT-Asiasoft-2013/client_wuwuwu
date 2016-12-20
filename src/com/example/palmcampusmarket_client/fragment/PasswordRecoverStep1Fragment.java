@@ -1,7 +1,5 @@
 package com.example.palmcampusmarket_client.fragment;
 
-
-
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
 

@@ -1,7 +1,5 @@
 package com.example.palmcampusmarket_client;
 
-
-
 import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
 
 import android.app.Activity;
@@ -27,14 +25,14 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		//		findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
-		//
-		//			@Override
-		//			public void onClick(View v) {
-		//				goLogin();
-		//			}
-		//		});
-		//
+		findViewById(R.id.btn_login).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				goLogin();
+			}
+		});
+
 		findViewById(R.id.btn_forgot_password).setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -52,6 +50,11 @@ public class LoginActivity extends Activity {
 
 	void goRecoverPassword(){
 		Intent itnt = new Intent(this, PasswordRecoverActivity.class);
+		startActivity(itnt);
+	}
+
+	void goLogin(){
+		Intent itnt = new Intent(this, HelloActivity.class);
 		startActivity(itnt);
 	}
 
