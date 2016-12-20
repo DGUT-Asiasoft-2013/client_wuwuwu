@@ -26,6 +26,22 @@
         </activity>
         <activity android:name="com.example.palmcampusmarket_client.NewCommodityActivity" >
         </activity>
+        <activity
+            android:name="com.example.palmcampusmarket_client.LoginActivity"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.example.palmcampusmarket_client.RegisterActivity"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity"
+            android:theme="@style/AppTheme" >
+        </activity>
+        <activity
+            android:name="com.example.palmcampusmarket_client.HelloActivity"
+            android:theme="@style/AppTheme" >
+        </activity>
     </application>
 
 </manifest>

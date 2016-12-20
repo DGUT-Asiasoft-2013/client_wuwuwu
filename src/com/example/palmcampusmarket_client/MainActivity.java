@@ -1,7 +1,7 @@
 package com.example.palmcampusmarket_client;
 
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
-
+import java.io.IOException;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -40,6 +40,13 @@ public class MainActivity extends Activity {
 	
 	void goHomePage(){
 		Intent itnt = new Intent(this,HomePageActivity.class);
+		startActivity(itnt);
+		finish();
+	}
+
+
+	void startLoginActivity(){
+		Intent itnt = new Intent(this, LoginActivity.class);
 		startActivity(itnt);
 		finish();
 	}

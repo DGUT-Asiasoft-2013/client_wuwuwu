@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
-    android:background="@android:color/white"
     android:orientation="vertical"
     android:padding="8dp" >
 
@@ -12,22 +11,21 @@
         android:id="@+id/label"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:text="选择商品图片"
+        android:text="选取图片"
         android:textColor="@android:color/black"
         android:textSize="12sp" />
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="120dp"
-        android:background="#CCCCCC">"
+        android:background="#cccccc" >
 
         <TextView
             android:id="@+id/hint"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:text="请插入商品图片"
+            android:text="请选择图片"
             android:textColor="@android:color/white" />
 
         <ImageView
