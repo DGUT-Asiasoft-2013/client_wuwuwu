@@ -16,11 +16,9 @@
     <style name="AppTheme" parent="AppBaseTheme">
 
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
-<<<<<<< HEAD
-         <item name="android:windowActionBar">false</item>
-=======
+
         <item name="android:windowActionBar">false</item>
->>>>>>> branch 'master' of https://github.com/DGUT-Asiasoft-2013/client_wuwuwu.git
+
         <item name="android:windowNoTitle">true</item>
     </style>
 
