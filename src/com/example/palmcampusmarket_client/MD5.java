@@ -9,7 +9,8 @@ public class MD5 {
 		try {
 			MessageDigest md5 = MessageDigest.getInstance("MD5");
 			md5.update(val.getBytes());  
-			byte[] m = md5.digest(); 
+
+			byte[] m = md5.digest();//º”√‹  
 			return getString(m);  
 		} catch (NoSuchAlgorithmException e) {
 			e.printStackTrace();
@@ -26,3 +27,4 @@ public class MD5 {
 		return sb.toString();
 	}
 }
+

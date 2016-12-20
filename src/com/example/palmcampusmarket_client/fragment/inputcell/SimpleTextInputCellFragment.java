@@ -1,7 +1,8 @@
-package com.example.palmcampusmarket_client.fragments.inputcells;
+package com.example.palmcampusmarket_client.fragment.inputcell;
 
 import com.example.palmcampusmarket_client.R;
-import com.example.palmcampusmarket_client.fragments.inputcells.BaseInputCellFragment;
+import com.example.palmcampusmarket_client.R.id;
+import com.example.palmcampusmarket_client.R.layout;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -15,8 +16,6 @@ public class SimpleTextInputCellFragment extends BaseInputCellFragment {
 
 	TextView label;
 	EditText edit;
-
-
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -47,6 +46,6 @@ public class SimpleTextInputCellFragment extends BaseInputCellFragment {
 	public String getText() {
 		return edit.getText().toString();
 	}
-
-	
 }
+
+
