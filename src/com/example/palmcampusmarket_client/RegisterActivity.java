@@ -1,5 +1,6 @@
 package com.example.palmcampusmarket_client;
 
+
 import com.example.palmcampusmarket_client.fragment.inputcell.PictureInputCellFragment;
 
 import android.app.Activity;
@@ -23,5 +24,6 @@ public class RegisterActivity extends Activity {
 		
 		
 	}
+
 
 }
