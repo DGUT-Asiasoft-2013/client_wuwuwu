@@ -24,30 +24,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.HelloActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.LoginActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.CollectionsActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.PasswordRecoverActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.RegisterActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.SearchActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.EvaluationActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.NewCommodityActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_clint.HomePageActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" >
-        </activity>
-        <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" >
-        </activity>
+        <activity android:name="com.example.palmcampusmarket_client.HelloActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.LoginActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.CollectionsActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.RegisterActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.SearchActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.EvaluationActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.NewCommodityActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.HomePageActivity" />
+        <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" />
+        <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" />
+        <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" />
     </application>
 
 </manifest>

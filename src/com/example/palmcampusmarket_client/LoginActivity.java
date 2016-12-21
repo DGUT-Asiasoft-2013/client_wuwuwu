@@ -94,8 +94,12 @@ public class LoginActivity extends Activity {
 
 	void goLogin(){
 
+		
+
+
 		String account = fragAccount.getText();       //获取用户输入的账号
 		String password = fragPassword.getText();
+
 
 		password = MD5.getMD5(password);                   //密码变成哈希数
 

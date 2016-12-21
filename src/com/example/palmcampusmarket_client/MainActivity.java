@@ -1,6 +1,8 @@
 package com.example.palmcampusmarket_client;
 
 
+import com.example.palmcampusmarket_client.MainActivity;
+
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import java.io.IOException;
@@ -25,12 +27,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
 		setContentView(R.layout.activity_boot);
 	}
 
-
 	@Override
 	protected void onResume() {
+
 		super.onResume();
 
 		OkHttpClient client=Server.getSharedClient();
@@ -38,9 +41,9 @@ public class MainActivity extends Activity {
 				.method("GET", null)
 				.build();
 
+
 		client.newCall(request).enqueue(new Callback() {
 
-			@Override
 			public void onResponse(Call arg0, final Response arg1) throws IOException {
 				//				Log.d("response", arg1.toString());
 				MainActivity.this.runOnUiThread(new Runnable() {
@@ -55,6 +58,7 @@ public class MainActivity extends Activity {
 						startLoginActivity();
 					}
 				});
+
 			}
 
 			@Override
@@ -73,6 +77,9 @@ public class MainActivity extends Activity {
 		});
 
 	}
+
+
+
 
 	void startLoginActivity(){
 		Intent itnt = new Intent(this, LoginActivity.class);
