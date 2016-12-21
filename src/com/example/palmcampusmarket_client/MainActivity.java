@@ -1,6 +1,8 @@
 package com.example.palmcampusmarket_client;
 
 
+import com.example.palmcampusmarket_client.MainActivity;
+
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import java.io.IOException;
@@ -26,17 +28,20 @@ public class MainActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_boot);
+
+		
+
+
 	}
-
-
+	
 	@Override
 	protected void onResume() {
 		super.onResume();
-
 		OkHttpClient client=Server.getSharedClient();
 		Request request=Server.requestBuilderWithApi("hello")
 				.method("GET", null)
 				.build();
+
 
 		client.newCall(request).enqueue(new Callback() {
 
@@ -73,6 +78,9 @@ public class MainActivity extends Activity {
 		});
 
 	}
+
+
+
 
 	void startLoginActivity(){
 		Intent itnt = new Intent(this, LoginActivity.class);
