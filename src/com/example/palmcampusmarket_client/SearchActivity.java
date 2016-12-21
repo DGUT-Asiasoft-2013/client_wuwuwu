@@ -102,10 +102,10 @@ public class SearchActivity extends Activity {
 				view = convertView;
 			}
 
-			image = findViewById(R.id.image_search);
-			name = (TextView) findViewById(R.id.name_search);
-			describe = (TextView) findViewById(R.id.describe_search);
-			price = (TextView) findViewById(R.id.price_search);
+			image = view.findViewById(R.id.image_search);
+			name = (TextView) view.findViewById(R.id.name_search);
+			describe = (TextView) view.findViewById(R.id.describe_search);
+			price = (TextView) view.findViewById(R.id.price_search);
 
 
 						Commodity commodity = data.get(position);
@@ -133,8 +133,7 @@ public class SearchActivity extends Activity {
 
 		@Override
 		public int getCount() {
-			return 1;
-			//			return data==null ? 0 : data.size();
+						return data==null ? 0 : data.size();
 		}
 	};
 
