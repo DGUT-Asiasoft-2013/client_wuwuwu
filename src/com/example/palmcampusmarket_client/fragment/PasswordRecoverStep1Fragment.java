@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class PasswordRecoverStep1Fragment extends Fragment {
-	SimpleTextInputCellFragment fragTelephone;
+	SimpleTextInputCellFragment fragTelephone; 
 	View view;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
