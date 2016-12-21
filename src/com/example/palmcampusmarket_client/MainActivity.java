@@ -10,39 +10,35 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends Activity {
-	
-	
+
+
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
-		
-		
+
+
+
 	}
-	
+
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
-		
+
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
-			
+
 			@Override
 			public void run() {
-				goHomePage();
-				
+				startLoginActivity();
+
 			}
 		},1000);
 	}
-	
-	void goHomePage(){
-		Intent itnt = new Intent(this,HomePageActivity.class);
-		startActivity(itnt);
-		finish();
-	}
+
+
 
 
 	void startLoginActivity(){
