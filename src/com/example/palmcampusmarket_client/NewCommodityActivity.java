@@ -1,7 +1,7 @@
 package com.example.palmcampusmarket_client;
 
-import com.example.palmcampusmarket_client.fragment.inputcells.PictureInputCellFragment;
-import com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -10,11 +10,11 @@ import android.view.View;
 
 public class NewCommodityActivity extends Activity {
 	
-	SimpleTextInputCellFragment fragInputCellName;   
-	SimpleTextInputCellFragment fragInputCellPrice;  
-	SimpleTextInputCellFragment fragInPutCellNumber;
-	SimpleTextInputCellFragment fragInputCellDescrible;
-	PictureInputCellFragment fragInputImage;
+	CommoditySimpleTextInputCellFragment fragInputCellName;   
+	CommoditySimpleTextInputCellFragment fragInputCellPrice;  
+	CommoditySimpleTextInputCellFragment fragInPutCellNumber;
+	CommoditySimpleTextInputCellFragment fragInputCellDescrible;
+	CommodityPictureInputCellFragment fragInputImage;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -22,11 +22,11 @@ public class NewCommodityActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.fragment_page_addcommodity);
-		fragInputCellName = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_name);
-		fragInputCellPrice = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_price);
-		fragInPutCellNumber = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
-		fragInputCellDescrible = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
-		fragInputImage = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
+		fragInputCellName = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_name);
+		fragInputCellPrice = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_price);
+		fragInPutCellNumber = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
+		fragInputCellDescrible = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
+		fragInputImage = (CommodityPictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
 		
 		findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
 			
