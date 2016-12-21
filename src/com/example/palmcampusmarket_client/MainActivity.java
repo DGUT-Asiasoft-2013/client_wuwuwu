@@ -1,8 +1,8 @@
 package com.example.palmcampusmarket_client;
 
+
+import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import java.io.IOException;
-
-
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,32 +13,45 @@ import android.view.MenuItem;
 
 public class MainActivity extends Activity {
 
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
+		setContentView(R.layout.activity_boot);
+
+		
+
 	}
+
+	
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
+
 		super.onResume();
 
 		Handler handler = new Handler();
 		handler.postDelayed(new Runnable() {
-			private int abcd = 0;
 
+			@Override
 			public void run() {
-				startLoginActivity();
+				goHomePage();
+
 			}
-		}, 1000);
-
-
-
+		},1000);
 	}
+
+	void goHomePage(){
+		Intent itnt = new Intent(this,HomePageActivity.class);
+		startActivity(itnt);
+		finish();
+	}
+
 
 	void startLoginActivity(){
 		Intent itnt = new Intent(this, LoginActivity.class);
+
 		startActivity(itnt);
 		finish();
 	}

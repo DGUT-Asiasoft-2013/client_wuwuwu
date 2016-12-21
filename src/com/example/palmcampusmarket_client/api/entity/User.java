@@ -5,46 +5,47 @@ import java.io.Serializable;
 public class User implements Serializable{
 	Integer id;
 	
-	String account;
+
+	String account; 
 	String passwordHash;
-	String nickname;
 	String telephone;
+	String nickname;
 	String avatar;
-	public Integer getId() {
+	
+	public Integer getId(){
 		return id;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(){
+		this.id=id;
 	}
-	public String getAccount() {
+	public String getAccount(){
 		return account;
 	}
-	public void setAccount(String account) {
-		this.account = account;
+	public void setAccount(){
+		this.account=account;
 	}
-	public String getPasswordHash() {
+	public String getPasswordHash(){
 		return passwordHash;
 	}
-	public void setPasswordHash(String passwordHash) {
+	public void setPasswordHash(){
 		this.passwordHash = passwordHash;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-	public String getTelephone() {
+	public String getTelephone(){
 		return telephone;
 	}
-	public void setTelephone(String telephone) {
+	public void setTelephone(){
 		this.telephone = telephone;
 	}
-	public String getAvatar() {
+	public String getNickname(){
+		return nickname;
+	}
+	public void setNickname(){
+		this.nickname = nickname;
+	}
+	public String getAvatar(){
 		return avatar;
 	}
-	public void setAvatar(String avatar) {
+	public void setAvatar(){
 		this.avatar = avatar;
 	}
-
 }
