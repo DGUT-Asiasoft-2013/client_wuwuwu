@@ -28,6 +28,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_boot);
 	}
 
+
 	@Override
 	protected void onResume() {
 		super.onResume();

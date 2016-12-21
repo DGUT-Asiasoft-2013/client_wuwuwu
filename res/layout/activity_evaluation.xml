@@ -35,29 +35,41 @@
     <RatingBar
         android:id="@+id/ratingBar"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-        android:numStars="5" 
-        android:layout_gravity="center"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        />
-    
-    <FrameLayout 
-        android:layout_width="match_parent"
-        android:layout_height="160dp">
-        
-    <TextView 
-        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="evaluation"
-        />
+        android:layout_gravity="center"
+        android:numStars="5"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="160dp" >
+
+        
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="请输入评价" />
+
+            <EditText
+                android:id="@+id/evaluation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:ems="10"
+                android:inputType="textMultiLine">
+
+                <requestFocus />
+            </EditText>
+        
     </FrameLayout>
-    
-    <Button 
+
+    <Button
         android:id="@+id/evaluation_submit"
         android:layout_width="100dp"
         android:layout_height="50dp"
         android:layout_gravity="center_horizontal"
-        android:text="提交评价"/>
+        android:text="提交评价" />
 
 </LinearLayout>
