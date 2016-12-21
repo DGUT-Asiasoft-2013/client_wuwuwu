@@ -3,7 +3,7 @@ package com.example.palmcampusmarket_client;
 
 import java.io.IOException;
 
-
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
 
@@ -80,8 +80,7 @@ public class NewCommodityActivity extends Activity {
 							fragInputImage.getPngData()));
 		}
 		
-		Request request = new Request.Builder()
-				.url("http://172.27.0.33:8080/membercenter/api/NewCommodity")
+		Request request = Server.requestBuilderWithApi("commodity")
 					.method("post", null)
 					.post(requestBulderBody.build())
 					.build();
