@@ -11,7 +11,7 @@ import okhttp3.Request;
 public class Server {
 	static OkHttpClient client;
 	
-	static {
+	static { 
 		CookieManager cookieManager = new CookieManager();
 		cookieManager.setCookiePolicy(CookiePolicy.ACCEPT_ALL);
 		
