@@ -5,6 +5,7 @@ import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -43,7 +44,7 @@ public class SearchActivity extends Activity {
 	ListView listView;
 
 	int page;	
-	//	List<Goods> data;
+		List<Commodity> data;
 
 
 	@Override
@@ -107,12 +108,12 @@ public class SearchActivity extends Activity {
 			price = (TextView) findViewById(R.id.price_search);
 
 
-			//			Goods goods = data.get(position);
-			//			
-			//			image.load();
-			//			name.setText(goods.getName());
-			//			describe.setText(goods.getDescribe());
-			//			price.setText(goods.getPrice());
+						Commodity commodity = data.get(position);
+						
+//						image.load();
+						name.setText(commodity.getCommName());
+						describe.setText(commodity.getCommDescribe());
+						price.setText(commodity.getCommPrice());
 
 
 			return view;
@@ -139,7 +140,7 @@ public class SearchActivity extends Activity {
 
 	void reload(){
 		OkHttpClient client = Server.getSharedClient();
-		Request request = Server.requestBuilderWithApi("goods/s/"+edit.getText())
+		Request request = Server.requestBuilderWithApi("commodity/s/"+edit.getText())
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -147,11 +148,11 @@ public class SearchActivity extends Activity {
 			@Override
 			public void onResponse(final Call arg0, Response arg1) throws IOException {
 				try {
-					//					Page<Goods> article = new ObjectMapper().readValue(arg1.body().string(), 
-					//							new TypeReference<Page<Goods>>() {});
+										Page<Commodity> commodity = new ObjectMapper().readValue(arg1.body().string(), 
+												new TypeReference<Page<Commodity>>() {});
 
-					//					SearchActivity.this.page = goods.getNumber();
-					//					SearchActivity.this.data = goods.getContent();
+										SearchActivity.this.page = commodity.getNumber();
+										SearchActivity.this.data = commodity.getContent();
 					SearchActivity.this.runOnUiThread(new Runnable() {
 						public void run() {
 							listAdapter.notifyDataSetInvalidated();
@@ -185,7 +186,7 @@ public class SearchActivity extends Activity {
 	void onItemClicked(int position){
 		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
 		//
-		//		itnt.putExtra("goods", data.get(position));
+		//		itnt.putExtra("commodity", data.get(position));
 		//		startActivity(itnt);
 	}
 
