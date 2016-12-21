@@ -148,7 +148,7 @@ public class LoginActivity extends Activity {
 
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
-								Intent itnt = new Intent(LoginActivity.this,HelloActivity.class);
+								Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
 								startActivity(itnt);
 
 							}

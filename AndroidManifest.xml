@@ -32,6 +32,7 @@
         <activity android:name=".RegisterActivity"/>
         <activity android:name=".SearchActivity"/>
         <activity android:name=".EvaluationActivity"/>
+        <activity android:name=".HomePageActivity"/>
         <activity android:name=".NewCommodityActivity"/>
     </application>
 
