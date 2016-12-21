@@ -54,7 +54,7 @@ public class LoginActivity extends Activity {
 	}
 
 	void goLogin(){
-		Intent itnt = new Intent(this, HelloActivity.class);
+		Intent itnt = new Intent(this,HelloActivity.class);
 		startActivity(itnt);
 	}
 
