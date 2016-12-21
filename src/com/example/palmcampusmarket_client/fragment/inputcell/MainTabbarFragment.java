@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.fragment.inputcells;
+package com.example.palmcampusmarket_client.fragment.inputcell;
 
 
 import com.example.palmcampusmarket_client.NewCommodityActivity;

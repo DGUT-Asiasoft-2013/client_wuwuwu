@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.fragment.inputcells;
+package com.example.palmcampusmarket_client.fragment.inputcell;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -23,7 +23,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class PictureInputCellFragment extends BaseInputCellFragment {
+public class CommodityPictureInputCellFragment extends CommodityBaseInputCellFragment {
 
 	final int REQUESTCODE_CAMERA = 1;
 	final int REQUESTCODE_ALBUM = 2;
