@@ -4,14 +4,21 @@ import java.io.Serializable;
 
 public class User implements Serializable{
 	Integer id;
-	
-
 	String account; 
 	String passwordHash;
 	String telephone;
 	String nickname;
 	String avatar;
-	
+	int money;
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	public Integer getId(){
 		return id;
 	}
