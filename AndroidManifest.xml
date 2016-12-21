@@ -25,6 +25,14 @@
         <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity"/>
         <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity"/>
         <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity"/>
+        <activity android:name=".HelloActivity"/>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".CollectionsActivity"/>
+        <activity android:name=".PasswordRecoverActivity"/>
+        <activity android:name=".RegisterActivity"/>
+        <activity android:name=".SearchActivity"/>
+        <activity android:name=".EvaluationActivity"/>
+        <activity android:name=".NewCommodityActivity"/>
     </application>
 
 </manifest>
