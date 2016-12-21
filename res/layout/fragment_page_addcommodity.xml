@@ -27,7 +27,7 @@
             android:id="@+id/comm_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext"
             tools:lyout="@layout/fragment_inputcell_simpletext" />
 
@@ -35,7 +35,7 @@
             android:id="@+id/comm_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext"
             tools:lyout="@layout/fragment_inputcell_simpletext" />
 
@@ -43,7 +43,7 @@
             android:id="@+id/comm_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext"
             tools:lyout="@layout/fragment_inputcell_simpletext" />
 
@@ -51,7 +51,7 @@
             android:id="@+id/comm_describle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.example.palmcampusmarket_client.fragment.inputcells.SimpleTextInputCellFragment"
+            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext"
             tools:lyout="@layout/fragment_inputcell_simpletext" />
 
@@ -59,7 +59,7 @@
             android:id="@+id/comm_image"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            class="com.example.palmcampusmarket_client.fragment.inputcells.PictureInputCellFragment"
+            class="com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment"
             tools:layout="@layout/fragment_inputcell_picture" />
 
         <Button

@@ -1,10 +1,10 @@
 package com.example.palmcampusmarket_client;
 
 import java.io.IOException;
-import java.util.Collections;
 import java.util.List;
 
 import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.entity.Collections;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,6 +13,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +23,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -29,7 +31,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class CollectionsActivity extends Activity {
- 
+
 	View image;
 	TextView name;
 	TextView describe;
@@ -45,7 +47,6 @@ public class CollectionsActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_collections);
-
 
 
 
@@ -86,18 +87,18 @@ public class CollectionsActivity extends Activity {
 				view = convertView;
 			}
 
-			image = findViewById(R.id.image_collections);
-			name = (TextView) findViewById(R.id.name_collections);
-			describe = (TextView) findViewById(R.id.describe_collections);
-			price = (TextView) findViewById(R.id.price_collections);
+			image = view.findViewById(R.id.image_collections);
+			name = (TextView) view.findViewById(R.id.name_collections);
+			describe = (TextView) view.findViewById(R.id.describe_collections);
+			price = (TextView) view.findViewById(R.id.price_collections);
 
 
 			Collections collections = data.get(position);
 
-//			image.load();
-//			name.setText(collections.getCommodity().getName());
-//			describe.setText(collections.getCommodity().getDescribe());
-//			price.setText(collections.getCommodity().getPrice());
+			//			image.load();
+			name.setText(collections.getId().getCommodity().getCommName());
+			describe.setText(collections.getId().getCommodity().getCommDescribe());
+			price.setText(collections.getId().getCommodity().getCommPrice());
 
 
 			return view;
@@ -119,29 +120,33 @@ public class CollectionsActivity extends Activity {
 
 		@Override
 		public int getCount() {
-			return 1;
-			//			return data==null ? 0 : data.size();
+			return data==null ? 0 : data.size();
 		}
 	};
 
 	void reload(){
+		
+		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
+		
 		OkHttpClient client = Server.getSharedClient();
 		Request request = Server.requestBuilderWithApi("collections")
+				.get()
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
 
 			@Override
 			public void onResponse(final Call arg0, Response arg1) throws IOException {
+				
 				try {
-					Page<Collections> collections = new ObjectMapper().readValue(arg1.body().string(), 
+					final Page<Collections> collections = new ObjectMapper().readValue(arg1.body().string(), 
 							new TypeReference<Page<Collections>>() {});
-					//							.readValue(arg1.body().bytes(), Article.class);
 
-					CollectionsActivity.this.page = collections.getNumber();
-					CollectionsActivity.this.data = collections.getContent();
+
 					CollectionsActivity.this.runOnUiThread(new Runnable() {
 						public void run() {
+							CollectionsActivity.this.page = collections.getNumber();
+							CollectionsActivity.this.data = collections.getContent();
 							listAdapter.notifyDataSetInvalidated();
 						}
 					});					

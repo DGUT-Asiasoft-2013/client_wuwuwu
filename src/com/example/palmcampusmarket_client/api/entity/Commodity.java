@@ -1,5 +1,6 @@
 package com.example.palmcampusmarket_client.api.entity;
 
+
 import java.io.Serializable;
 
 
@@ -11,11 +12,11 @@ public class Commodity implements Serializable{
 	int CommNumber;          //商品数量
 	String CommDescribe;     //商品描述
 	String CommImage;        //商品图片
-	
+
 	String avatar;
 	String nickname;
-	
-	
+
+
 	public Integer getId() {
 		return id;
 	}
@@ -65,4 +66,5 @@ public class Commodity implements Serializable{
 		this.nickname = nickname;
 	}
 
-}
+	
+	}

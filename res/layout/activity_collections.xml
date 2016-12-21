@@ -10,6 +10,11 @@
         android:gravity="center"
         android:text="我的收藏"
         android:textSize="30sp" />
+    <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_gravity="bottom"
+            android:background="@android:color/darker_gray" />
 
     <ListView
         android:id="@+id/list_collections"
