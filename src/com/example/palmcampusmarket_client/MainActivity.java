@@ -20,16 +20,11 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_boot);
 
-		startPurchaseActivity();
+		
 
 	}
 
-	void startPurchaseActivity(){
-		Intent itnt = new Intent(this, PurchaseActivity.class);
-
-
-
-	}
+	
 
 	@Override
 	protected void onResume() {
