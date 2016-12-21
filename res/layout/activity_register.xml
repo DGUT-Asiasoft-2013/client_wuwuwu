@@ -5,12 +5,66 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <fragment
-        android:id="@+id/input_avatar"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        class="com.example.palmcampusmarket_client.fragment.inputcell.PictureInputCellFragment"
-        tools:layout="@layout/fragment_inputcell_picture" />
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
+
+            <fragment
+                android:id="@+id/input_account"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
+            
+            <fragment
+                android:id="@+id/input_telephone"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"/>
+            
+            <fragment
+                android:id="@+id/input_nickname"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext"/>
+
+            <fragment
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
+
+            <fragment
+                android:id="@+id/input_password_repeat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
+            
+          <fragment
+                android:id="@+id/input_avatar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.PictureInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_picture" />
+            
+
+            <Button
+                android:id="@+id/btn_submit"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="提交" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
 

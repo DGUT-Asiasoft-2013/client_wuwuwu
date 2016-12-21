@@ -94,15 +94,14 @@ public class LoginActivity extends Activity {
 
 	void goLogin(){
 
+		
+
+
 		String account = fragAccount.getText();       //获取用户输入的账号
 		String password = fragPassword.getText();
 
 
-
-
 		password = MD5.getMD5(password);                   //密码变成哈希数
-
-
 
 		OkHttpClient client=Server.getSharedClient();
 
@@ -110,9 +109,6 @@ public class LoginActivity extends Activity {
 				.addFormDataPart("account", fragAccount.getText())
 				.addFormDataPart("passwordHash", MD5.getMD5(fragPassword.getText()))
 				.build();
-
-
-
 
 		Request request=Server.requestBuilderWithApi("login")
 				.method("post", null)
@@ -126,7 +122,6 @@ public class LoginActivity extends Activity {
 		progressDialog.show();
 
 		client.newCall(request).enqueue(new Callback() {
-
 
 			@Override
 			public void onResponse(final Call arg0,final Response arg1) throws IOException {
@@ -148,14 +143,11 @@ public class LoginActivity extends Activity {
 
 							@Override
 							public void onClick(DialogInterface dialog, int which) {
-								Intent itnt = new Intent(LoginActivity.this,HelloActivity.class);
+								Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
 								startActivity(itnt);
-
 							}
 						})
 						.show();
-
-
 					}
 				});
 
@@ -168,7 +160,6 @@ public class LoginActivity extends Activity {
 					@Override
 					public void run() {
 						progressDialog.dismiss();
-
 						LoginActivity.this.onFailure(arg0, arg1);
 
 					}

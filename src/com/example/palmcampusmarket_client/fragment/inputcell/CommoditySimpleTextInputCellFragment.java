@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.fragment.inputcells;
+package com.example.palmcampusmarket_client.fragment.inputcell;
 
 
 import com.example.palmcampusmarket_client.R;
@@ -12,7 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
 
-public class SimpleTextInputCellFragment extends Fragment {
+public class CommoditySimpleTextInputCellFragment extends Fragment {
 	
 	TextView label;
 	EditText edit;

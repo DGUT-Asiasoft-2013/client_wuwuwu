@@ -1,11 +1,15 @@
-package com.example.palmcampusmarket_client;
+package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
 import java.util.List;
 
+import com.example.palmcampusmarket_client.R;
+import com.example.palmcampusmarket_client.R.id;
+import com.example.palmcampusmarket_client.R.layout;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Collections;
 import com.example.palmcampusmarket_client.api.entity.Page;
+import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -32,23 +36,15 @@ import okhttp3.Response;
 
 public class CollectionsActivity extends Activity {
 
-	View image;
-	TextView name;
-	TextView describe;
-	TextView price;
-
 	ListView listView;
 
 	int page;	
 	List<Collections> data;
 
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_collections);
-
-
 
 		listView = (ListView) findViewById(R.id.list_collections);
 		listView.setAdapter(listAdapter);
@@ -60,8 +56,6 @@ public class CollectionsActivity extends Activity {
 				onItemClicked(position);
 			}
 		});
-
-
 	}
 
 
@@ -87,19 +81,38 @@ public class CollectionsActivity extends Activity {
 				view = convertView;
 			}
 
+			View image;
+			TextView name;
+			TextView describe;
+			TextView price;
+
+			final TextView countCollected;
+
 			image = view.findViewById(R.id.image_collections);
 			name = (TextView) view.findViewById(R.id.name_collections);
 			describe = (TextView) view.findViewById(R.id.describe_collections);
 			price = (TextView) view.findViewById(R.id.price_collections);
+			countCollected = (TextView) view.findViewById(R.id.collected_collections);
 
-
-			Collections collections = data.get(position);
+			final Collections collections = data.get(position);
 
 			//			image.load();
 			name.setText(collections.getId().getCommodity().getCommName());
 			describe.setText(collections.getId().getCommodity().getCommDescribe());
 			price.setText(collections.getId().getCommodity().getCommPrice());
 
+			countCollected.setTag(collections);
+
+			CountOfCollected.getCount(collections.getId().getCommodity(), new OnCountResultListener() {
+				@Override
+				public void onResult(String result) {
+					Object countingTag = countCollected.getTag();
+
+					if(countingTag == collections){
+						countCollected.setText("已有" + result +"人收藏");	
+					}		
+				}
+			});
 
 			return view;
 		}
@@ -125,9 +138,9 @@ public class CollectionsActivity extends Activity {
 	};
 
 	void reload(){
-		
+
 		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
-		
+
 		OkHttpClient client = Server.getSharedClient();
 		Request request = Server.requestBuilderWithApi("collections")
 				.get()
@@ -137,7 +150,7 @@ public class CollectionsActivity extends Activity {
 
 			@Override
 			public void onResponse(final Call arg0, Response arg1) throws IOException {
-				
+
 				try {
 					final Page<Collections> collections = new ObjectMapper().readValue(arg1.body().string(), 
 							new TypeReference<Page<Collections>>() {});
