@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
-import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.CSServer;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
@@ -80,7 +80,7 @@ public class SearchActivity extends Activity {
 		findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {				
 			@Override
 			public void onClick(View v) {
-				search();					
+				search();
 			}
 		});
 	}
@@ -133,7 +133,7 @@ public class SearchActivity extends Activity {
 					Object countingTag = countCollected.getTag();
 
 					if(countingTag == commodity){
-						countCollected.setText("已有" + result +"人收藏");	
+						countCollected.setText(result +"收藏");	
 					}		
 				}
 			});
@@ -161,8 +161,8 @@ public class SearchActivity extends Activity {
 	};
 
 	void reload(){
-		OkHttpClient client = Server.getSharedClient();
-		Request request = Server.requestBuilderWithApi("commodity/s/"+edit.getText())
+		OkHttpClient client = CSServer.getSharedClient();
+		Request request = CSServer.requestBuilderWithApi("commodity/s/"+edit.getText())
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {

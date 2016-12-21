@@ -2,6 +2,8 @@ package com.example.palmcampusmarket_client.api.entity;
 
 import java.io.Serializable;
 
+import android.R.integer;
+
 public class User implements Serializable{
 	Integer id;
 	
@@ -11,6 +13,11 @@ public class User implements Serializable{
 	String telephone;
 	String nickname;
 	String avatar;
+	
+	String a = "123asdg";
+	int b = Integer.parseInt(a);
+			
+	
 	
 	public Integer getId(){
 		return id;
