@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <RelativeLayout
+        android:id="@+id/image_view"
+        android:layout_width="match_parent"
+        android:layout_height="160dp" >
+
+        <Button
+            android:id="@+id/btn_back_commodity_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_toLeftOf="@+id/image_commodity_content"
+            android:background="@android:color/white"
+            android:text="＜"
+            android:textSize="30sp" />
+
+        <ImageView
+            android:id="@+id/image_commodity_content"
+            android:layout_width="240dp"
+            android:layout_height="160dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true" />
+
+        <Button
+            android:id="@+id/btn_collect_commodity_content"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_toRightOf="@+id/image_commodity_content"
+            android:background="@android:color/white"
+            android:text="☆"
+            android:textColor="#ff9933"
+            android:textSize="30sp" />
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/name_commodity_content"
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/image_view"
+        android:ellipsize="end"
+        android:gravity="center_vertical"
+        android:lines="1"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:text="商品名称"
+        android:textSize="22sp" />
+
+    <TextView
+        android:id="@+id/collected_commodity_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/name_commodity_content"
+        android:paddingLeft="20dp"
+        android:text="xx收藏"
+        android:textColor="#808080" />
+
+    <TextView
+        android:id="@+id/rmb_commodity_content"
+        android:layout_width="30dp"
+        android:layout_height="55dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/collected_commodity_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="¥"
+        android:textColor="#66cc99"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/price_commodity_content"
+        android:layout_width="wrap_content"
+        android:layout_height="55dp"
+        android:layout_below="@+id/collected_commodity_content"
+        android:layout_toRightOf="@+id/rmb_commodity_content"
+        android:gravity="center_vertical"
+        android:paddingLeft="5dp"
+        android:text="9999"
+        android:textColor="#66cc99"
+        android:textSize="20sp" />
+
+    <FrameLayout
+        android:id="@+id/frag_btn_buy"
+        android:layout_width="120dp"
+        android:layout_height="55dp"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/collected_commodity_content" >
+
+        <Button
+            android:id="@+id/btn_buy"
+            android:layout_width="110dp"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center_vertical"
+            android:background="#ffcc99"
+            android:text="购买"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+    <View
+        android:id="@+id/line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rmb_commodity_content"
+        android:background="@android:color/darker_gray" />
+
+    <View
+        android:id="@+id/line_view2"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/image_view"
+        android:background="@android:color/darker_gray" />
+    
+        <View
+        android:id="@+id/line_view3"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/describe_commodity_content"
+        android:background="@android:color/darker_gray" />
+
+    <TextView
+        android:id="@+id/text_view"
+        android:layout_width="match_parent"
+        android:layout_height="22dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/line_view"
+        android:gravity="center_vertical"
+        android:paddingLeft="20dp"
+        android:text="商品介绍："
+        android:textColor="#0066cc" />
+
+    <TextView
+        android:id="@+id/describe_commodity_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/text_view"
+        android:ellipsize="end"
+        android:lines="10"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="5dp"
+        android:text="商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍
+            商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍" />
+
+</RelativeLayout>
