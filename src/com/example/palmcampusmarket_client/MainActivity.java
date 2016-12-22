@@ -29,11 +29,6 @@ public class MainActivity extends Activity {
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_boot);
-
-		
-
-
-
 	}
 
 	@Override
@@ -41,8 +36,6 @@ public class MainActivity extends Activity {
 
 		super.onResume();
 
-
-	
 		OkHttpClient client=Server.getSharedClient();
 		Request request=Server.requestBuilderWithApi("hello")
 				.method("GET", null)
@@ -50,9 +43,6 @@ public class MainActivity extends Activity {
 
 
 		client.newCall(request).enqueue(new Callback() {
-
-
-	
 
 			public void onResponse(Call arg0, final Response arg1) throws IOException {
 				//				Log.d("response", arg1.toString());

@@ -1,11 +1,13 @@
 package com.example.palmcampusmarket_client;
 
 
+
 import java.io.IOException;
 
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
+
 
 
 import android.app.Activity;
@@ -26,18 +28,19 @@ import okhttp3.Response;
 
 public class NewCommodityActivity extends Activity {
 
+
 	CommoditySimpleTextInputCellFragment fragInputCellName;   
 	CommoditySimpleTextInputCellFragment fragInputCellPrice;  
 	CommoditySimpleTextInputCellFragment fragInPutCellNumber;
 	CommoditySimpleTextInputCellFragment fragInputCellDescrible;
 	CommodityPictureInputCellFragment fragInputImage;
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.fragment_page_addcommodity);
+
 		fragInputCellName = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_name);
 		fragInputCellPrice = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_price);
 		fragInPutCellNumber = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
@@ -65,6 +68,7 @@ public class NewCommodityActivity extends Activity {
 		OkHttpClient client = new OkHttpClient();
 		MultipartBody.Builder requestBulderBody = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
+
 				.addFormDataPart("CommName", name)
 				.addFormDataPart("Commprice", price)
 				.addFormDataPart("CommNumber", number)
@@ -156,6 +160,7 @@ public class NewCommodityActivity extends Activity {
 		.setMessage(arg1.getMessage())
 		.setNegativeButton("บร", null)
 		.show();
+
 	}
 
 	@Override

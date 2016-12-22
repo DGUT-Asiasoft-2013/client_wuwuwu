@@ -7,6 +7,7 @@ import java.io.IOException;
 
 import com.example.palmcampusmarket_client.MD5;
 import com.example.palmcampusmarket_client.RegisterActivity;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.fragment.inputcell.PictureInputCellFragment;
 
@@ -31,6 +32,7 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment fragInputNickname;
 	SimpleTextInputCellFragment fragInputCellPassword;
 	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
+	SimpleTextInputCellFragment fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
 	
 	
@@ -45,15 +47,10 @@ public class RegisterActivity extends Activity {
 		fragInputNickname = (SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_nickname);
 		fragInputCellPassword = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password);
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password_repeat);
+		fragInputCellAddress=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
 		
-		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View arg0) {
-				submit();
-			}
-		});
+		
 		
 	}
 	@Override
@@ -82,6 +79,18 @@ public class RegisterActivity extends Activity {
 			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
+		
+		fragInputCellAddress.setLabelText("收货地址");{
+			fragInputCellAddress.setHintText("请输入收货地址");
+		}
+		
+		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View arg0) {
+				submit();
+			}
+		});
 
 
 
@@ -107,15 +116,17 @@ public class RegisterActivity extends Activity {
 		String account =fragInputCellAccount.getText();
 		String nickname = fragInputNickname.getText();
 		String telephone = fragInputTelephone.getText();
+		String address =fragInputCellAddress.getText();
 
-		OkHttpClient client=new OkHttpClient();
+		OkHttpClient client=Server.getSharedClient();
 
 		MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
 				.addFormDataPart("account", account)
 				.addFormDataPart("nickname", nickname)
 				.addFormDataPart("telephone", telephone)
-				.addFormDataPart("passwordHash", password);
+				.addFormDataPart("passwordHash", password)
+				.addFormDataPart("address", address);
 
 		if(fragInputAvatar.getPngData()!=null){
 			requestBodyBuilder
@@ -128,8 +139,8 @@ public class RegisterActivity extends Activity {
 		}
 
 
-		Request request=new Request.Builder()
-				.url("http://172.27.0.33:8080/membercenter/api/register")
+
+		Request request=Server.requestBuilderWithApi("register")   //修改了链接
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();
