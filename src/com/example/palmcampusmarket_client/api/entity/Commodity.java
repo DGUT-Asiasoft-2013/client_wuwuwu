@@ -66,5 +66,5 @@ public class Commodity implements Serializable{
 		this.nickname = nickname;
 	}
 
-	
-	}
+
+}

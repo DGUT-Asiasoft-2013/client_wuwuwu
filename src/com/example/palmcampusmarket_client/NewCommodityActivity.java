@@ -25,153 +25,155 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class NewCommodityActivity extends Activity {
-	
+
 	CommoditySimpleTextInputCellFragment fragInputCellName;   
 	CommoditySimpleTextInputCellFragment fragInputCellPrice;  
 	CommoditySimpleTextInputCellFragment fragInPutCellNumber;
 	CommoditySimpleTextInputCellFragment fragInputCellDescrible;
 	CommodityPictureInputCellFragment fragInputImage;
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		
+
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.fragment_page_addcommodity);
 		fragInputCellName = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_name);
 		fragInputCellPrice = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_price);
 		fragInPutCellNumber = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
 		fragInputCellDescrible = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
 		fragInputImage = (CommodityPictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
-		
+
 		findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				submit();
-				
+
 			}
 		});
-		
+
 	}
-	
+
 	void submit(){
 		String name = fragInputCellName.getText();
 		String price = fragInputCellPrice.getText();
 		String number = fragInPutCellNumber.getText();
 		String describle = fragInputCellDescrible.getText();
 		byte[] image = fragInputImage.getPngData();
-		
+
 		OkHttpClient client = new OkHttpClient();
 		MultipartBody.Builder requestBulderBody = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
-				.addFormDataPart("name", name)
-				.addFormDataPart("price", price)
-				.addFormDataPart("number", number)
-				.addFormDataPart("describle", describle);
-		
+				.addFormDataPart("CommName", name)
+				.addFormDataPart("Commprice", price)
+				.addFormDataPart("CommNumber", number)
+				.addFormDataPart("CommDescrible", describle);
+
 		if(fragInputImage.getPngData()!=null){
 			requestBulderBody
 			.addFormDataPart(
-					"image", 
+					"CommImage", 
 					"image",
 					RequestBody
 					.create(MediaType.parse("image/png"),
 							fragInputImage.getPngData()));
 		}
-		
+
 		Request request = Server.requestBuilderWithApi("commodity")
-					.method("post", null)
-					.post(requestBulderBody.build())
-					.build();
-		
-		
+				.method("post", null)
+				.post(requestBulderBody.build())
+				.build();
+
+
 		final ProgressDialog progressDialog = new ProgressDialog(NewCommodityActivity.this);
 		progressDialog.setMessage("请稍后");
 		progressDialog.setCancelable(false);
 		progressDialog.setCanceledOnTouchOutside(false);
-		
+
 		client.newCall(request).enqueue(new Callback() {
-			
+
 			@Override
 			public void onResponse(final Call arg0, final Response arg1) throws IOException {
+				
+				final String responseString = arg1.body().string();
 				runOnUiThread(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						progressDialog.dismiss();
-						
+
 						try{
-							NewCommodityActivity.this.onResponse(arg0,arg1.body().string());
+							NewCommodityActivity.this.onResponse(arg0,responseString);
 						}catch(Exception e){
 							e.printStackTrace();
 							NewCommodityActivity.this.onFailure(arg0,e);
 						}
 					}
 				});
-				
+
 			}
-			
+
 			@Override
 			public void onFailure(final Call arg0, final IOException arg1) {
 				runOnUiThread(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						progressDialog.dismiss();
 						onFailure(arg0, arg1);
-						
+
 					}
 				});
-				
+
 			}
 		});
-		
-		
-		
-		
+
+
+
+
 	}
-	
-	
-	
+
+
+
 	void onResponse(Call arg0,String responseBody){
 		new AlertDialog.Builder(this)
 		.setTitle("上架成功")
 		.setMessage(responseBody)
 		.setPositiveButton("好",new DialogInterface.OnClickListener() {
-			
+
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
 				finish();
-				
+
 			}
 		}).show();
 	}
-	
+
 	void onFailure(Call arg0,Exception arg1){
 		new AlertDialog.Builder(this)
 		.setTitle("上架失败")
-		.setMessage(arg1.getLocalizedMessage())
+		.setMessage(arg1.getMessage())
 		.setNegativeButton("好", null)
 		.show();
 	}
-	
+
 	@Override
 	protected void onResume() {
-		
+
 		super.onResume();
-		
+
 		fragInputCellName.setLabelText("商品名");{
 			fragInputCellName.setHintText("请输入商品名");
 		}
 		fragInputCellPrice.setLabelText("商品价格");{
 			fragInputCellPrice.setHintText("请输入商品价格");
 		}
-		
+
 		fragInPutCellNumber.setLabelText("商品数量");{
 			fragInPutCellNumber.setHintText("请输入商品数量");
 		}
-		
+
 		fragInputCellDescrible.setLabelText("商品描述");{
 			fragInputCellDescrible.setHintText("请输入商品描述");
 		}
