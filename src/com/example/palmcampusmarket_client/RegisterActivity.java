@@ -32,6 +32,7 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment fragInputNickname;
 	SimpleTextInputCellFragment fragInputCellPassword;
 	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
+	SimpleTextInputCellFragment fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
 	
 	
@@ -46,6 +47,7 @@ public class RegisterActivity extends Activity {
 		fragInputNickname = (SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_nickname);
 		fragInputCellPassword = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password);
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password_repeat);
+		fragInputCellAddress=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
 		
 		
@@ -76,6 +78,10 @@ public class RegisterActivity extends Activity {
 		fragInputCellPasswordRepeat.setLabelText("重复密码");{
 			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
 			fragInputCellPasswordRepeat.setIsPassword(true);
+		}
+		
+		fragInputCellAddress.setLabelText("收货地址");{
+			fragInputCellAddress.setHintText("请输入收货地址");
 		}
 		
 		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
@@ -110,6 +116,7 @@ public class RegisterActivity extends Activity {
 		String account =fragInputCellAccount.getText();
 		String nickname = fragInputNickname.getText();
 		String telephone = fragInputTelephone.getText();
+		String address =fragInputCellAddress.getText();
 
 		OkHttpClient client=Server.getSharedClient();
 
@@ -118,7 +125,8 @@ public class RegisterActivity extends Activity {
 				.addFormDataPart("account", account)
 				.addFormDataPart("nickname", nickname)
 				.addFormDataPart("telephone", telephone)
-				.addFormDataPart("passwordHash", password);
+				.addFormDataPart("passwordHash", password)
+				.addFormDataPart("address", address);
 
 		if(fragInputAvatar.getPngData()!=null){
 			requestBodyBuilder

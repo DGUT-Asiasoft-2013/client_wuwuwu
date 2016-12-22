@@ -11,8 +11,18 @@ public class User implements Serializable{
 	String telephone;
 	String nickname;
 	String avatar;
+	
+	String address;
 
 	int money;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
 
 	public int getMoney() {
 		return money;
