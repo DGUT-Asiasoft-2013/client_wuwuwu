@@ -23,7 +23,7 @@ import com.example.palmcampusmarket_client.MD5;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.User;
-import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment2;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
@@ -32,7 +32,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class LoginActivity extends Activity {
-	SimpleTextInputCellFragment fragPassword,fragAccount;
+	SimpleTextInputCellFragment2 fragPassword,fragAccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,17 +65,17 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		fragAccount=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_account);
-		fragPassword=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_password); 
+		fragAccount=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_account);
+		fragPassword=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_password); 
 	}
 	@Override
 	protected void onResume() {
 
 		super.onResume();
 
-		fragAccount.setLabelText("账户名");
+		
 		fragAccount.setHintText("请输入账户名");                    
-		fragPassword.setLabelText("密码");
+	
 		fragPassword.setHintText("请输入密码");
 		fragPassword.setIsPassword(true);
 	}
@@ -117,8 +117,8 @@ public class LoginActivity extends Activity {
 
 		final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
 		progressDialog.setMessage("请稍候");
-		progressDialog.setCancelable(false);
-		progressDialog.setCanceledOnTouchOutside(false);
+		progressDialog.setCancelable(true);
+		progressDialog.setCanceledOnTouchOutside(true);
 		progressDialog.show();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -135,19 +135,9 @@ public class LoginActivity extends Activity {
 					@Override
 					public void run() {
 						progressDialog.dismiss();
+						startHomePageActivity();
 
-						new AlertDialog.Builder(LoginActivity.this)
-						.setTitle("登录成功")
-						.setMessage("Hello,"+user.getNickname())
-						.setPositiveButton("好", new DialogInterface.OnClickListener() {
-
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
-								startActivity(itnt);
-							}
-						})
-						.show();
+					
 					}
 				});
 
@@ -179,6 +169,10 @@ public class LoginActivity extends Activity {
 		.setNegativeButton("好", null)
 		.show();
 
+	}	
+	void startHomePageActivity(){
+		Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
+		startActivity(itnt);
 	}
 
 }
