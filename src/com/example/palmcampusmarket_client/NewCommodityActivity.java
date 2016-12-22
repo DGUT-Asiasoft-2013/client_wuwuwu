@@ -87,7 +87,7 @@ public class NewCommodityActivity extends Activity {
 		}
 
 		Request request = new Request.Builder()
-				.url("http://172.27.0.33:8080/membercenter/api/NewCommodity")
+				.url("http://172.27.0.35:8080/membercenter/api/NewCommodity")
 				.method("post", null)
 				.post(requestBulderBody.build())
 				.build();
@@ -133,12 +133,7 @@ public class NewCommodityActivity extends Activity {
 
 			}
 		});
-
-
-
-
 	}
-
 
 
 	void onResponse(Call arg0,String responseBody){

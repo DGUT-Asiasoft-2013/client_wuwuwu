@@ -129,7 +129,7 @@ public class RegisterActivity extends Activity {
 
 
 		Request request=new Request.Builder()
-				.url("http://172.27.0.42:8080/membercenter/api/register")
+				.url("http://172.27.0.35:8080/membercenter/api/register")
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();
