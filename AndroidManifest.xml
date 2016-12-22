@@ -36,6 +36,7 @@
         <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.PurchaseActivity" />
     </application>
 
 </manifest>
