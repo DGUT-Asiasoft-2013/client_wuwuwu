@@ -34,13 +34,13 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
 	SimpleTextInputCellFragment fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
-	
-	
+
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		
+
 		setContentView(R.layout.activity_register);
 		fragInputCellAccount = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_account);
 		fragInputTelephone = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_telephone);
@@ -49,9 +49,9 @@ public class RegisterActivity extends Activity {
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password_repeat);
 		fragInputCellAddress=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
-		
-		
-		
+
+
+
 	}
 	@Override
 	protected void onResume() {
@@ -79,11 +79,11 @@ public class RegisterActivity extends Activity {
 			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
-		
+
 		fragInputCellAddress.setLabelText("收货地址");{
 			fragInputCellAddress.setHintText("请输入收货地址");
 		}
-		
+
 		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -139,7 +139,9 @@ public class RegisterActivity extends Activity {
 		}
 
 
+
 		Request request=Server.requestBuilderWithApi("register")   //修改了链接
+
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();

@@ -11,8 +11,7 @@ public class Commodity {
 	String CommImage;        //…Ã∆∑Õº∆¨
 
 	Integer id;
-	Date createDate;
-	Date editDate;
+
 	public User getUser() {
 		return user;
 	}
@@ -55,19 +54,4 @@ public class Commodity {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public Date getCreateDate() {
-		return createDate;
-	}
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
-	}
-	public Date getEditDate() {
-		return editDate;
-	}
-	public void setEditDate(Date editDate) {
-		this.editDate = editDate;
-	}
-	            
-	
-	
 }

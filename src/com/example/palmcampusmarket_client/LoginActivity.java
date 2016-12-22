@@ -126,31 +126,46 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onResponse(final Call arg0,final Response arg1) throws IOException {
 
-				final String responseString = arg1.body().string();
-				ObjectMapper mapper = new ObjectMapper();
-				final User user = mapper.readValue(responseString, User.class);
+				try{
+					final String responseString = arg1.body().string();
+					ObjectMapper mapper = new ObjectMapper();
+					final User user = mapper.readValue(responseString, User.class);
 
-				runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 
-					@Override
-					public void run() {
-						progressDialog.dismiss();
+						@Override
+						public void run() {
+							progressDialog.dismiss();
 
-						new AlertDialog.Builder(LoginActivity.this)
-						.setTitle("登录成功")
-						.setMessage("Hello,"+user.getNickname())
-						.setPositiveButton("好", new DialogInterface.OnClickListener() {
+							new AlertDialog.Builder(LoginActivity.this)
+							.setTitle("登录成功")
+							.setMessage("Hello,"+user.getNickname())
+							.setPositiveButton("好", new DialogInterface.OnClickListener() {
 
-							@Override
-							public void onClick(DialogInterface dialog, int which) {
-								Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
-								startActivity(itnt);
-							}
-						})
-						.show();
-					}
-				});
+								@Override
+								public void onClick(DialogInterface dialog, int which) {
+									Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
+									startActivity(itnt);
+								}
+							})
+							.show();
+						}
+					});	
+				}catch(final Exception e){
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							progressDialog.dismiss();
 
+							new AlertDialog.Builder(LoginActivity.this)
+							.setTitle("登录失败")
+							.setMessage(e.getMessage())
+							.show();
+						}
+					});
+					
+				}
 			}
 
 			@Override
