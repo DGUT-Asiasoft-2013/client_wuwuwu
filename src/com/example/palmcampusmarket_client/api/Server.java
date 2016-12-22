@@ -24,7 +24,7 @@ public class Server {
 		return client;
 	}
 	
-	public static String serverAddress = "http://192.168.253.6:8080/membercenter/";
+	public static String serverAddress = "http://172.27.0.35:8080/membercenter/"; //组长IP，别改
 
     public  static Request.Builder requestBuilderWithWallet(String wallet){
 		return new Request.Builder()
