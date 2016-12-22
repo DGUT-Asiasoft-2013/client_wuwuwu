@@ -84,7 +84,9 @@ public class NewCommodityActivity extends Activity {
 							fragInputImage.getPngData()));
 		}
 
+
 		Request request = Server.requestBuilderWithApi("commodity")
+
 				.method("post", null)
 				.post(requestBulderBody.build())
 				.build();
@@ -99,7 +101,7 @@ public class NewCommodityActivity extends Activity {
 
 			@Override
 			public void onResponse(final Call arg0, final Response arg1) throws IOException {
-				
+
 				final String responseString = arg1.body().string();
 				runOnUiThread(new Runnable() {
 
@@ -132,12 +134,7 @@ public class NewCommodityActivity extends Activity {
 
 			}
 		});
-
-
-
-
 	}
-
 
 
 	void onResponse(Call arg0,String responseBody){
