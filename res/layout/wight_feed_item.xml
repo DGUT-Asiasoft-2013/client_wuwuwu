@@ -8,6 +8,13 @@
     <RelativeLayout
         android:layout_width="60dp"
         android:layout_height="match_parent" >
+        
+        
+        <com.example.palmcampusmarket_client.fragment.AvatarView
+            android:id="@+id/commavatar"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_centerInParent="true" />
 
         <TextView
             android:id="@+id/username"
@@ -32,11 +39,11 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/date"
+            android:id="@+id/price"
             android:layout_width="wrap_content"
             android:layout_height="14dp"
             android:textSize="12sp"
-            android:text="Create Date"
+            android:text="Commodity Price"
             android:layout_gravity="right"
             android:textColor="#aaa" />
         

@@ -1,8 +1,8 @@
 package com.example.palmcampusmarket_client.api.entity;
 
-import java.util.Date;
+import java.io.Serializable;
 
-public class Commodity {
+public class Commodity implements Serializable{
 	User user;
 	String CommName;         //商品名称
 	String CommPrice;        //商品价格
