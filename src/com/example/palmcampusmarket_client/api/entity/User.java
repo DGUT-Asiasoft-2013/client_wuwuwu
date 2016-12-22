@@ -6,19 +6,22 @@ import android.R.integer;
 
 public class User implements Serializable{
 	Integer id;
-	
-
 	String account; 
 	String passwordHash;
 	String telephone;
 	String nickname;
 	String avatar;
-	
-	String a = "123asdg";
-	int b = Integer.parseInt(a);
-			
-	
-	
+
+	int money;
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	public Integer getId(){
 		return id;
 	}
