@@ -36,7 +36,7 @@ public class MyWalletActivity extends Activity {
         findViewById(R.id.wallet_bill).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MyWalletActivity.this, "dianjil", Toast.LENGTH_SHORT).show();
+            //    Toast.makeText(MyWalletActivity.this, "dianjil", Toast.LENGTH_SHORT).show();
                 Intent intent = new Intent(MyWalletActivity.this, MyBillActivity.class);
                 startActivity(intent);
             }

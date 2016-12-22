@@ -1,27 +1,22 @@
 package com.example.palmcampusmarket_client.api.entity;
 
+import java.util.Date;
 
-import java.io.Serializable;
-
-
-
-public class Commodity implements Serializable{
-	Integer id;
+public class Commodity {
+	User user;
 	String CommName;         //商品名称
 	String CommPrice;        //商品价格
 	int CommNumber;          //商品数量
 	String CommDescribe;     //商品描述
 	String CommImage;        //商品图片
 
-	String avatar;
-	String nickname;
+	Integer id;
 
-
-	public Integer getId() {
-		return id;
+	public User getUser() {
+		return user;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+	public void setUser(User user) {
+		this.user = user;
 	}
 	public String getCommName() {
 		return CommName;
@@ -53,18 +48,10 @@ public class Commodity implements Serializable{
 	public void setCommImage(String commImage) {
 		CommImage = commImage;
 	}
-	public String getAvatar() {
-		return avatar;
+	public Integer getId() {
+		return id;
 	}
-	public void setAvatar(String avatar) {
-		this.avatar = avatar;
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public String getNickname() {
-		return nickname;
-	}
-	public void setNickname(String nickname) {
-		this.nickname = nickname;
-	}
-
-	
-	}
+}

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
@@ -51,20 +52,24 @@ public class RechargeActivity extends Activity {
         findViewById(R.id.recharge_button).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //recharge();
+                recharge();
 
             }
         });
     }
 
     public void recharge(){
+        String money = recharge_edit.getText().toString();
+        int i = Integer.parseInt(money);
         OkHttpClient client = Server.getSharedClient();
        MultipartBody body = new MultipartBody.Builder()
                .setType(MultipartBody.FORM)
-               .addFormDataPart("money",recharge_edit.getText().toString())
+               .addFormDataPart("money",String.valueOf(i))
                .build();
-        Request request = Server.requestBuilderWithApi("")
-                .post(body).build();
+        Request request = Server.requestBuilderWithWallet("recharet")
+                .method("post", null)
+                .post(body)
+                .build();
 
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -74,7 +79,16 @@ public class RechargeActivity extends Activity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
+                final String money = response.body().string();
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (money.equals("true")){
+                            Toast.makeText(RechargeActivity.this,"充值成功",Toast.LENGTH_SHORT).show();
+                        }else
+                            Toast.makeText(RechargeActivity.this,"充值失败",Toast.LENGTH_SHORT).show();
+                    }
+                });
             }
         });
 

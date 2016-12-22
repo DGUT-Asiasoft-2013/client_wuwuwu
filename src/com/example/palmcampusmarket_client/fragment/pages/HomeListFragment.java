@@ -99,7 +99,7 @@ public class HomeListFragment extends Fragment {
 
 			CommContent.setText(commodity.getCommDescribe());
 			CommName.setText(commodity.getCommName());
-			CommtsellerName.setText(commodity.getNickname());
+			CommtsellerName.setText(commodity.getUser().getNickname());
 
 			return view;
 
@@ -187,10 +187,10 @@ public class HomeListFragment extends Fragment {
 	}
 
 	void onItemClicked(int position){
-		Commodity comm = data.get(position);
-		Intent itnt = new Intent(getActivity(),NewCommodityActivity.class);
-		itnt.putExtra("Commodity", comm);
-		startActivity(itnt);
+//		Commodity comm = data.get(position);
+//		Intent itnt = new Intent(getActivity(),NewCommodityActivity.class);
+//		itnt.putExtra("Commodity", comm);
+//		startActivity(itnt);
 	}
 
 	void loadmore(){

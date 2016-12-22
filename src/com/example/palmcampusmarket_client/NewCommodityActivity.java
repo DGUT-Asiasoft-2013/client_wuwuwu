@@ -4,7 +4,7 @@ package com.example.palmcampusmarket_client;
 
 import java.io.IOException;
 
-
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
 
@@ -34,8 +34,6 @@ public class NewCommodityActivity extends Activity {
 	CommoditySimpleTextInputCellFragment fragInPutCellNumber;
 	CommoditySimpleTextInputCellFragment fragInputCellDescrible;
 	CommodityPictureInputCellFragment fragInputImage;
-
-
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 
@@ -48,7 +46,6 @@ public class NewCommodityActivity extends Activity {
 		fragInPutCellNumber = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
 		fragInputCellDescrible = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
 		fragInputImage = (CommodityPictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
-
 
 		findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
 
@@ -71,23 +68,25 @@ public class NewCommodityActivity extends Activity {
 		OkHttpClient client = new OkHttpClient();
 		MultipartBody.Builder requestBulderBody = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
-				.addFormDataPart("name", name)
-				.addFormDataPart("price", price)
-				.addFormDataPart("number", number)
-				.addFormDataPart("describle", describle);
+
+				.addFormDataPart("CommName", name)
+				.addFormDataPart("Commprice", price)
+				.addFormDataPart("CommNumber", number)
+				.addFormDataPart("CommDescrible", describle);
 
 		if(fragInputImage.getPngData()!=null){
 			requestBulderBody
 			.addFormDataPart(
-					"image", 
+					"CommImage", 
 					"image",
 					RequestBody
 					.create(MediaType.parse("image/png"),
 							fragInputImage.getPngData()));
 		}
 
-		Request request = new Request.Builder()
-				.url("http://172.27.0.35:8080/membercenter/api/NewCommodity")
+
+		Request request = Server.requestBuilderWithApi("commodity")
+
 				.method("post", null)
 				.post(requestBulderBody.build())
 				.build();
@@ -102,6 +101,8 @@ public class NewCommodityActivity extends Activity {
 
 			@Override
 			public void onResponse(final Call arg0, final Response arg1) throws IOException {
+
+				final String responseString = arg1.body().string();
 				runOnUiThread(new Runnable() {
 
 					@Override
@@ -109,7 +110,7 @@ public class NewCommodityActivity extends Activity {
 						progressDialog.dismiss();
 
 						try{
-							NewCommodityActivity.this.onResponse(arg0,arg1.body().string());
+							NewCommodityActivity.this.onResponse(arg0,responseString);
 						}catch(Exception e){
 							e.printStackTrace();
 							NewCommodityActivity.this.onFailure(arg0,e);
@@ -153,7 +154,7 @@ public class NewCommodityActivity extends Activity {
 	void onFailure(Call arg0,Exception arg1){
 		new AlertDialog.Builder(this)
 		.setTitle("…œº‹ ß∞‹")
-		.setMessage(arg1.getLocalizedMessage())
+		.setMessage(arg1.getMessage())
 		.setNegativeButton("∫√", null)
 		.show();
 

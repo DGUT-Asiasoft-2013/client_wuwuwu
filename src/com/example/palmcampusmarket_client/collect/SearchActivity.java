@@ -1,12 +1,16 @@
-package com.example.palmcampusmarket_client;
+package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.R;
+import com.example.palmcampusmarket_client.R.id;
+import com.example.palmcampusmarket_client.R.layout;
+import com.example.palmcampusmarket_client.api.CSServer;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
+import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -36,15 +40,12 @@ public class SearchActivity extends Activity {
 	EditText edit;
 	Button search;
 
-	View image;
-	TextView name;
-	TextView describe;
-	TextView price;
+
 
 	ListView listView;
 
 	int page;	
-		List<Commodity> data;
+	List<Commodity> data;
 
 
 	@Override
@@ -79,7 +80,7 @@ public class SearchActivity extends Activity {
 		findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {				
 			@Override
 			public void onClick(View v) {
-				search();					
+				search();
 			}
 		});
 	}
@@ -102,18 +103,40 @@ public class SearchActivity extends Activity {
 				view = convertView;
 			}
 
-			image = findViewById(R.id.image_search);
-			name = (TextView) findViewById(R.id.name_search);
-			describe = (TextView) findViewById(R.id.describe_search);
-			price = (TextView) findViewById(R.id.price_search);
+			View image;
+			TextView name;
+			TextView describe;
+			TextView price;
+
+			final TextView countCollected;
+
+			image = view.findViewById(R.id.image_search);
+			name = (TextView) view.findViewById(R.id.name_search);
+			describe = (TextView) view.findViewById(R.id.describe_search);
+			price = (TextView) view.findViewById(R.id.price_search);
 
 
-						Commodity commodity = data.get(position);
-						
-//						image.load();
-						name.setText(commodity.getCommName());
-						describe.setText(commodity.getCommDescribe());
-						price.setText(commodity.getCommPrice());
+			CountOfCollected count = new CountOfCollected();
+			countCollected = (TextView) view.findViewById(R.id.collected_search);
+
+			final Commodity commodity = data.get(position);
+
+			//						image.load();
+			name.setText(commodity.getCommName());
+			describe.setText(commodity.getCommDescribe());
+			price.setText(commodity.getCommPrice());
+			countCollected.setTag(commodity);
+
+			CountOfCollected.getCount(commodity, new OnCountResultListener() {
+				@Override
+				public void onResult(String result) {
+					Object countingTag = countCollected.getTag();
+
+					if(countingTag == commodity){
+						countCollected.setText(result +" ’≤ÿ");	
+					}		
+				}
+			});
 
 
 			return view;
@@ -133,14 +156,13 @@ public class SearchActivity extends Activity {
 
 		@Override
 		public int getCount() {
-			return 1;
-			//			return data==null ? 0 : data.size();
+			return data==null ? 0 : data.size();
 		}
 	};
 
 	void reload(){
-		OkHttpClient client = Server.getSharedClient();
-		Request request = Server.requestBuilderWithApi("commodity/s/"+edit.getText())
+		OkHttpClient client = CSServer.getSharedClient();
+		Request request = CSServer.requestBuilderWithApi("commodity/s/"+edit.getText())
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -148,11 +170,11 @@ public class SearchActivity extends Activity {
 			@Override
 			public void onResponse(final Call arg0, Response arg1) throws IOException {
 				try {
-										Page<Commodity> commodity = new ObjectMapper().readValue(arg1.body().string(), 
-												new TypeReference<Page<Commodity>>() {});
+					Page<Commodity> commodity = new ObjectMapper().readValue(arg1.body().string(), 
+							new TypeReference<Page<Commodity>>() {});
 
-										SearchActivity.this.page = commodity.getNumber();
-										SearchActivity.this.data = commodity.getContent();
+					SearchActivity.this.page = commodity.getNumber();
+					SearchActivity.this.data = commodity.getContent();
 					SearchActivity.this.runOnUiThread(new Runnable() {
 						public void run() {
 							listAdapter.notifyDataSetInvalidated();
