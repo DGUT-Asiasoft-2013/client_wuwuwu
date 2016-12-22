@@ -8,7 +8,7 @@ import java.util.Map;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
-import com.example.palmcampusmarket_client.api.CSServer;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Collections;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
@@ -166,8 +166,8 @@ public class CollectionsActivity extends Activity {
 
 		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
 
-		OkHttpClient client = CSServer.getSharedClient();
-		Request request = CSServer.requestBuilderWithApi("collections")
+		OkHttpClient client = Server.getSharedClient();
+		Request request = Server.requestBuilderWithApi("collections")
 				.get()
 				.build();
 
@@ -263,11 +263,11 @@ public class CollectionsActivity extends Activity {
 					.build();
 
 
-			Request request = CSServer.requestBuilderWithApi("commodity/"+collections.getId().getCommodity().getId()+"/collect")
+			Request request = Server.requestBuilderWithApi("commodity/"+collections.getId().getCommodity().getId()+"/collect")
 					.post(body)
 					.build();
 
-			CSServer.getSharedClient().newCall(request).enqueue(new Callback() {
+			Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
 				@Override
 				public void onResponse(Call arg0, Response arg1) throws IOException {
@@ -275,8 +275,7 @@ public class CollectionsActivity extends Activity {
 
 						@Override
 						public void run() {
-							// TODO Auto-generated method stub
-
+							reload();
 						}
 					});
 

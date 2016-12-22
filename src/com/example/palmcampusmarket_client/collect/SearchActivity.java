@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
-import com.example.palmcampusmarket_client.api.CSServer;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
@@ -193,8 +193,8 @@ public class SearchActivity extends Activity {
 	};
 
 	void reload(String sort){
-		OkHttpClient client = CSServer.getSharedClient();
-		Request request = CSServer.requestBuilderWithApi("commodity/s/"+edit.getText()+"/"+sort)
+		OkHttpClient client = Server.getSharedClient();
+		Request request = Server.requestBuilderWithApi("commodity/s/"+edit.getText()+"/"+sort)
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
