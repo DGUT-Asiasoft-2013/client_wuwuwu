@@ -74,9 +74,9 @@ public class LoginActivity extends Activity {
 		super.onResume();
 
 		
-		fragAccount.setHintText("ÇëÊäÈëÕË»§Ãû");                    
+		fragAccount.setHintText("è¯·è¾“å…¥è´¦æˆ·å");                    
 	
-		fragPassword.setHintText("ÇëÊäÈëÃÜÂë");
+		fragPassword.setHintText("è¯·è¾“å…¥å¯†ç ");
 		fragPassword.setIsPassword(true);
 	}
 
@@ -97,11 +97,11 @@ public class LoginActivity extends Activity {
 		
 
 
-		String account = fragAccount.getText();       //»ñÈ¡ÓÃ»§ÊäÈëµÄÕËºÅ
+		String account = fragAccount.getText();       //è·å–ç”¨æˆ·è¾“å…¥çš„è´¦å·
 		String password = fragPassword.getText();
 
 
-		password = MD5.getMD5(password);                   //ÃÜÂë±ä³É¹şÏ£Êı
+		password = MD5.getMD5(password);                   //å¯†ç å˜æˆå“ˆå¸Œæ•°
 
 		OkHttpClient client=Server.getSharedClient();
 
@@ -116,7 +116,7 @@ public class LoginActivity extends Activity {
 				.build();
 
 		final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-		progressDialog.setMessage("ÇëÉÔºò");
+		progressDialog.setMessage("è¯·ç¨å€™");
 		progressDialog.setCancelable(true);
 		progressDialog.setCanceledOnTouchOutside(true);
 		progressDialog.show();
@@ -146,7 +146,7 @@ public class LoginActivity extends Activity {
 						public void run() {
 							progressDialog.dismiss();
 							new AlertDialog.Builder(LoginActivity.this)
-							.setTitle("µÇÂ¼Ê§°Ü")
+							.setTitle("ç™»å½•å¤±è´¥")
 							.setMessage(e.getMessage())
 							.show();
 						}
@@ -176,9 +176,9 @@ public class LoginActivity extends Activity {
 	}
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("µÇÂ¼Ê§°Ü")
+		.setTitle("ç™»å½•å¤±è´¥")
 		.setMessage(arg1.getLocalizedMessage())
-		.setNegativeButton("ºÃ", null)
+		.setNegativeButton("å¥½", null)
 		.show();
 
 	}	
