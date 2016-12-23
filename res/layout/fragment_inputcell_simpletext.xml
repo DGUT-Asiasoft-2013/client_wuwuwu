@@ -4,12 +4,14 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
-    android:background="@android:color/white" >
+    android:background="@android:color/white"
+    android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
+        android:layout_weight="1"
         android:background="@android:color/white"
         android:gravity="center"
         android:text="请输入项目"
@@ -18,8 +20,9 @@
 
     <EditText
         android:id="@+id/edit"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="50dp"
+        android:layout_weight="4"
         android:hint="请输入内容" />
 
 </LinearLayout>

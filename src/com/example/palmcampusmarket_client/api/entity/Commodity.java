@@ -1,16 +1,32 @@
 package com.example.palmcampusmarket_client.api.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Commodity implements Serializable{
 	User user;
-	String CommName;         //ÉÌÆ·Ãû³Æ
-	String CommPrice;        //ÉÌÆ·¼Û¸ñ
-	int CommNumber;          //ÉÌÆ·ÊýÁ¿
-	String CommDescribe;     //ÉÌÆ·ÃèÊö
-	String CommImage;        //ÉÌÆ·Í¼Æ¬
+	String CommName;         //ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+	String CommPrice;        //ï¿½ï¿½Æ·ï¿½Û¸ï¿½
+	int CommNumber;          //ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+	String CommDescribe;     //ï¿½ï¿½Æ·ï¿½ï¿½ï¿½ï¿½
+	String CommImage;        //ï¿½ï¿½Æ·Í¼Æ¬
 
 	Integer id;
+	Date createDate;
+	Date editDate;
+	
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getEditDate() {
+		return editDate;
+	}
+	public void setEditDate(Date editDate) {
+		this.editDate = editDate;
+	}
 
 	public User getUser() {
 		return user;
