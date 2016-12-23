@@ -65,12 +65,12 @@ public class NewCommodityActivity extends Activity {
 		String describle = fragInputCellDescrible.getText();
 		byte[] image = fragInputImage.getPngData();
 
-		OkHttpClient client = new OkHttpClient();
+		OkHttpClient client = Server.getSharedClient();
 		MultipartBody.Builder requestBulderBody = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
 
 				.addFormDataPart("CommName", name)
-				.addFormDataPart("Commprice", price)
+				.addFormDataPart("CommPrice", price)
 				.addFormDataPart("CommNumber", number)
 				.addFormDataPart("CommDescrible", describle);
 
@@ -86,8 +86,6 @@ public class NewCommodityActivity extends Activity {
 
 
 		Request request = Server.requestBuilderWithApi("commodity")
-
-				.method("post", null)
 				.post(requestBulderBody.build())
 				.build();
 
