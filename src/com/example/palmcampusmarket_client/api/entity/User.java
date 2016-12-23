@@ -2,16 +2,36 @@ package com.example.palmcampusmarket_client.api.entity;
 
 import java.io.Serializable;
 
+import android.R.integer;
+
 public class User implements Serializable{
 	Integer id;
-	
-
 	String account; 
 	String passwordHash;
 	String telephone;
 	String nickname;
 	String avatar;
 	
+	String address;
+
+	int money;
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public int getMoney() {
+		return money;
+	}
+
+	public void setMoney(int money) {
+		this.money = money;
+	}
+
 	public Integer getId(){
 		return id;
 	}

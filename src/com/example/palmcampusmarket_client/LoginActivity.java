@@ -126,21 +126,33 @@ public class LoginActivity extends Activity {
 			@Override
 			public void onResponse(final Call arg0,final Response arg1) throws IOException {
 
-				final String responseString = arg1.body().string();
-				ObjectMapper mapper = new ObjectMapper();
-				final User user = mapper.readValue(responseString, User.class);
+				try{
+					final String responseString = arg1.body().string();
+					ObjectMapper mapper = new ObjectMapper();
+					final User user = mapper.readValue(responseString, User.class);
 
-				runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
 						progressDialog.dismiss();
 						startHomePageActivity();
-
+						}
+					});	
+				}catch(final Exception e){
+					runOnUiThread(new Runnable() {
+						
+						@Override
+						public void run() {
+							progressDialog.dismiss();
+							new AlertDialog.Builder(LoginActivity.this)
+							.setTitle("µÇÂ¼Ê§°Ü")
+							.setMessage(e.getMessage())
+							.show();
+						}
+					});
 					
-					}
-				});
-
+				}
 			}
 
 			@Override

@@ -1,6 +1,11 @@
 package com.example.palmcampusmarket_client;
 
+import java.io.IOException;
+
+import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -11,6 +16,11 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 ///按钮没写
 public class PurchaseActivity extends Activity {  //购买页面
@@ -75,17 +85,60 @@ public class PurchaseActivity extends Activity {  //购买页面
 	@Override
 		protected void onResume() {
 			super.onResume();
-			commodityDescribe.setText("你特么在逗我？");
-			buyerName.setText("收货人："+"尤桃");
-			buyerTelephone.setText("13888888888");
-			buyerAddress.setText("广东省东莞市松山湖大学路一号东莞理工学院");
-			
+			commodityDescribe.setText("你特么在逗我？");	
 			singlePrice.setText("单价："+"9999");
 			
+			OkHttpClient client =Server.getSharedClient();
+			Request request = Server.requestBuilderWithApi("me")
+					.method("get", null)
+					.build();
+			client.newCall(request).enqueue(new Callback() {
+				
+				@Override
+				public void onResponse(final Call arg0, Response arg1) throws IOException {
+					try{
+						final User user =new ObjectMapper().readValue(arg1.body().bytes(), User.class);
+						runOnUiThread(new Runnable() {
+							
+							@Override
+							public void run() {
+								PurchaseActivity.this.onResponse(arg0,user);//获取用户信息
+								
+							}
+						});
+					}catch(final Exception e){
+						runOnUiThread(new Runnable() {
+							
+							@Override
+							public void run() {
+								PurchaseActivity.this.onFailuer(arg0,e);//获取
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void onFailure(Call arg0, IOException arg1) {
+					PurchaseActivity.this.onFailuer(arg0,arg1);
+					
+				}
+			});
 			
 		}
 	
 	void goBuySuccess(){  //按了购买按钮后跳转页面
 		
+	}
+	
+	protected void onResponse(Call arg0,User user){
+		buyerName.setText("收货人："+user.getAccount());
+		buyerTelephone.setText("联系电话："+user.getTelephone());
+		buyerAddress.setText("收货地址："+user.getAddress());
+	}
+	
+	protected void onFailuer(Call arg0,Exception ex){
+		buyerName.setText("收货人：");
+		buyerTelephone.setText("联系电话：");
+		buyerAddress.setText("收货地址：");
 	}
 }
