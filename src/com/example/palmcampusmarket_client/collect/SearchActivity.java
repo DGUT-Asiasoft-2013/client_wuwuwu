@@ -194,7 +194,7 @@ public class SearchActivity extends Activity {
 
 	void reload(String sort){
 		OkHttpClient client = Server.getSharedClient();
-		Request request = Server.requestBuilderWithApi("commodity/s/"+edit.getText()+"/"+sort)
+		Request request = Server.requestBuilderWithCs("commodity/s/"+edit.getText()+"/"+sort)
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -238,10 +238,10 @@ public class SearchActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
-		//
-		//		itnt.putExtra("commodity", data.get(position));
-		//		startActivity(itnt);
+				Intent itnt = new Intent(this, CommodityContentActivity.class);
+		
+				itnt.putExtra("commodity", data.get(position));
+				startActivity(itnt);
 	}
 
 }
