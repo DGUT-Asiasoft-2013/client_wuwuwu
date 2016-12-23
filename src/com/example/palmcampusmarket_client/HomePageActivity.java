@@ -4,6 +4,7 @@ package com.example.palmcampusmarket_client;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnNewClickedListener;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnTabSelectedListener;
+
 import com.example.palmcampusmarket_client.fragment.pages.CollectionListFragment;
 import com.example.palmcampusmarket_client.fragment.pages.HomeListFragment;
 import com.example.palmcampusmarket_client.fragment.pages.MeFragment;
@@ -17,10 +18,12 @@ import android.view.View;
 
 public class HomePageActivity extends Activity {
 
+
 	HomeListFragment contentHomeList = new HomeListFragment();
 	CollectionListFragment contentCollectionList = new CollectionListFragment();
 	ShoppingPageFragment contentShoppingPage = new ShoppingPageFragment();
 	MeFragment contentMe = new MeFragment();
+
 
 	MainTabbarFragment tabbar;
 
@@ -31,29 +34,40 @@ public class HomePageActivity extends Activity {
 		setContentView(R.layout.activity_palmcampus);
 
 		tabbar = (MainTabbarFragment) getFragmentManager().findFragmentById(R.id.frag_tabbar);
-		tabbar.setOnTabSelectedListener(new OnTabSelectedListener() {
 
+	    tabbar.setOnTabSelectedListener(new OnTabSelectedListener() {
+			
 			@Override
 			public void onTabSelected(int index) {
-				// TODO Auto-generated method stub
 				changeContentFragment(index);
+				
 			}
 		});
+
+
 
 		tabbar.setOnNewClickedListener(new OnNewClickedListener() {
 
 			@Override
 			public void onNewClicked() {
-				ToAddCommodity();
 
+				bringUpEditor();
 			}
 		});
-
 	}
+
+	
+
+	
+	void bringUpEditor(){
+		Intent itnt = new Intent(this, NewCommodityActivity.class);
+		startActivity(itnt);
+		overridePendingTransition(R.anim.slide_in_bottom, R.anim.none);
+	}
+
 
 	@Override
 	protected void onResume() {
-		// TODO Auto-generated method stub
 		super.onResume();
 
 		if(tabbar.getSelectedIndex()<0){
@@ -79,12 +93,6 @@ public class HomePageActivity extends Activity {
 		.beginTransaction()
 		.replace(R.id.content, newFrag)
 		.commit();
-	}
-
-	void ToAddCommodity(){
-		Intent intent = new Intent(this,NewCommodityActivity.class);
-		startActivity(intent);
-
 	}
 
 }
