@@ -39,6 +39,14 @@ public class Server {
 
 
 	}
+	
+	public static Request.Builder requestBuilderWithCs(String cs){
+		return new Request.Builder()
+
+				.url(serverAddress+"cs/"+cs);
+
+
+	}
 
 
 }

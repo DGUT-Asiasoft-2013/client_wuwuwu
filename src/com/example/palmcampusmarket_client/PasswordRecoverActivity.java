@@ -77,7 +77,7 @@ public class PasswordRecoverActivity extends Activity {
 		Request request = Server.requestBuilderWithApi("passwordrecover").post(body).build();
 
 		final ProgressDialog progressDialog = new ProgressDialog(PasswordRecoverActivity.this);
-		progressDialog.setMessage("«Î…‘∫Ú");
+		progressDialog.setMessage("ËØ∑Á®çÂÄô");
 		progressDialog.setCancelable(false);
 		progressDialog.setCanceledOnTouchOutside(false);
 
@@ -123,9 +123,9 @@ public class PasswordRecoverActivity extends Activity {
 
 	void onResponse(Call arg0, String responseBody) {
 		new AlertDialog.Builder(this)
-		.setTitle("–ﬁ∏ƒ≥…π¶")
+		.setTitle("‰øÆÊîπÊàêÂäü")
 		.setMessage(responseBody)
-		.setPositiveButton("∫√", new DialogInterface.OnClickListener() {
+		.setPositiveButton("Â•Ω", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -139,9 +139,9 @@ public class PasswordRecoverActivity extends Activity {
 
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("–ﬁ∏ƒ ß∞‹")
+		.setTitle("‰øÆÊîπÂ§±Ë¥•")
 		.setMessage(arg1.getLocalizedMessage())
-		.setNegativeButton("∫√", null)
+		.setNegativeButton("Â•Ω", null)
 		.show();
 
 	}

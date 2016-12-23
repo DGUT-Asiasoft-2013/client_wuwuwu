@@ -6,13 +6,13 @@
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:shape="rectangle">
             <solid
-                android:color="#EFEFEF"/>
+                android:color="@color/fense"/>
             <corners
-                android:radius="3dip"
+                android:radius="30dip"
                 />
             <stroke
                 android:width="0.5px"
-                android:color="#505050"/>
+                android:color="@color/fense"/>
         </shape>
     </item>
 </layer-list>

@@ -17,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -139,8 +140,8 @@ public class RegisterActivity extends Activity {
 		}
 
 
-
 		Request request=Server.requestBuilderWithApi("register")   //修改了链接
+
 
 				.method("post", null)
 				.post(requestBodyBuilder.build())
@@ -161,7 +162,9 @@ public class RegisterActivity extends Activity {
 					public void run() {
 						progressDialog.dismiss();
 
+						
 						try{
+							Toast.makeText(RegisterActivity.this, arg1.body().string(),Toast.LENGTH_LONG).show();
 							RegisterActivity.this.onResponse(arg0, arg1.body().string());
 						}catch (Exception e) {
 							e.printStackTrace();
