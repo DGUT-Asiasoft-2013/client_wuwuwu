@@ -23,6 +23,7 @@ import com.example.palmcampusmarket_client.MD5;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.User;
+import com.example.palmcampusmarket_client.collect.SearchActivity;
 import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -144,7 +145,7 @@ public class LoginActivity extends Activity {
 
 								@Override
 								public void onClick(DialogInterface dialog, int which) {
-									Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
+									Intent itnt = new Intent(LoginActivity.this,SearchActivity.class);
 									startActivity(itnt);
 								}
 							})

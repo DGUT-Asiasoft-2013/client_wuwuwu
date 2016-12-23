@@ -21,6 +21,7 @@ import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.ContextMenu;
@@ -167,7 +168,7 @@ public class CollectionsActivity extends Activity {
 		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
 
 		OkHttpClient client = Server.getSharedClient();
-		Request request = Server.requestBuilderWithApi("collections")
+		Request request = Server.requestBuilderWithCs("collections")
 				.get()
 				.build();
 
@@ -214,10 +215,10 @@ public class CollectionsActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
-		//
-		//		itnt.putExtra("collections", data.get(position));
-		//		startActivity(itnt);
+				Intent itnt = new Intent(this, CommodityContentActivity.class);
+		
+				itnt.putExtra("collections", data.get(position));
+				startActivity(itnt);
 	}
 
 
@@ -263,7 +264,7 @@ public class CollectionsActivity extends Activity {
 					.build();
 
 
-			Request request = Server.requestBuilderWithApi("commodity/"+collections.getId().getCommodity().getId()+"/collect")
+			Request request = Server.requestBuilderWithCs("commodity/"+collections.getId().getCommodity().getId()+"/collect")
 					.post(body)
 					.build();
 
