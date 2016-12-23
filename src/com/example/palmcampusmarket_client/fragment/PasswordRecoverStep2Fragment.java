@@ -47,13 +47,13 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 
 	
 
-		fragPassword.setLabelText("ÃÜÂë");{
-			fragPassword.setHintText("ÇëÊäÈëÃÜÂë");
+		fragPassword.setLabelText("å¯†ç ");{
+			fragPassword.setHintText("è¯·è¾“å…¥å¯†ç ");
 			fragPassword.setIsPassword(true);
 		}
 
-		fragPasswordRepeat.setLabelText("È·ÈÏÃÜÂë");{
-			fragPasswordRepeat.setHintText("ÇëÖØĞÂÊäÈëÃÜÂë");
+		fragPasswordRepeat.setLabelText("é‡å¤å¯†ç ");{
+			fragPasswordRepeat.setHintText("è¯·å†æ¬¡è¾“å…¥å¯†ç ");
 			fragPasswordRepeat.setIsPassword(true);
 		}
 
@@ -80,7 +80,7 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 			}
 		}else{
 			new AlertDialog.Builder(getActivity())
-			.setMessage("ÃÜÂë²»Ò»ÖÂ")
+			.setMessage("ä¿®æ”¹å¤±è´¥")
 			.show();
 		}
 	}
