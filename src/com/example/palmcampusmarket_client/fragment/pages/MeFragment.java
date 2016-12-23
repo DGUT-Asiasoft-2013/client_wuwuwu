@@ -86,13 +86,13 @@ public class MeFragment extends Fragment implements View.OnClickListener{
         setting_tongyong_iv = (ImageView) my_page_setting.findViewById(R.id.tongyong_image_view);
         setting_tongyong_text = (TextView) my_page_setting.findViewById(R.id.tongyong_textView);
 
-        photo_tongyong_iv.setImageResource(R.drawable.Picture);
+        photo_tongyong_iv.setImageResource(R.drawable.picture);
         photo_tongyong_text.setText("相片");
-        collect_tongyong_iv.setImageResource(R.drawable.Collect);
+        collect_tongyong_iv.setImageResource(R.drawable.collect);
         collect_tongyong_text.setText("收藏");
         wallet_tongyong_iv.setImageResource(R.drawable.money);
         wallet_tongyong_text.setText("钱包");
-        setting_tongyong_iv.setImageResource(R.drawable.Setting);
+        setting_tongyong_iv.setImageResource(R.drawable.setting);
         setting_tongyong_text.setText("设置");
 
     }

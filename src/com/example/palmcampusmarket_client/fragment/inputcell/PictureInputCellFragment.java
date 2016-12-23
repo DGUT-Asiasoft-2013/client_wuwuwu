@@ -41,9 +41,7 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 		imageView  = (ImageView) view.findViewById(R.id.image);
 		labelText = (TextView) view.findViewById(R.id.label);
 		hintText = (TextView) view.findViewById(R.id.hint);
-
 		imageView.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub

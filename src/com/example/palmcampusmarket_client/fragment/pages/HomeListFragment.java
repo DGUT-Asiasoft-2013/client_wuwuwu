@@ -105,7 +105,7 @@ public class HomeListFragment extends Fragment {
 			commtsellerName.setText(commodity.getUser().getNickname());
 			
 			commAvatar.load(Server.serverAddress+commodity.getCommImage());
-			String dateStr = DateFormat.format("yyyy-MM-dd hh:mm",commodity.getCreateDate()).toString();
+			String dateStr = DateFormat.format("yyyy-mm-dd hh:mm",commodity.getCreateDate()).toString();
 			commcreatedate.setText(dateStr);
 			
 			
