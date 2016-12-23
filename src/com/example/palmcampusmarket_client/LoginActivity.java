@@ -23,7 +23,7 @@ import com.example.palmcampusmarket_client.MD5;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.User;
-import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment2;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
@@ -32,7 +32,7 @@ import android.os.Bundle;
 import android.view.View;
 
 public class LoginActivity extends Activity {
-	SimpleTextInputCellFragment fragPassword,fragAccount;
+	SimpleTextInputCellFragment2 fragPassword,fragAccount;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +65,18 @@ public class LoginActivity extends Activity {
 			}
 		});
 
-		fragAccount=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_account);
-		fragPassword=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_password); 
+		fragAccount=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_account);
+		fragPassword=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_password); 
 	}
 	@Override
 	protected void onResume() {
 
 		super.onResume();
 
-		fragAccount.setLabelText("ÕË»§Ãû");
-		fragAccount.setHintText("ÇëÊäÈëÕË»§Ãû");                    
-		fragPassword.setLabelText("ÃÜÂë");
-		fragPassword.setHintText("ÇëÊäÈëÃÜÂë");
+		
+		fragAccount.setHintText("è¯·è¾“å…¥è´¦æˆ·å");                    
+	
+		fragPassword.setHintText("è¯·è¾“å…¥å¯†ç ");
 		fragPassword.setIsPassword(true);
 	}
 
@@ -97,11 +97,11 @@ public class LoginActivity extends Activity {
 		
 
 
-		String account = fragAccount.getText();       //»ñÈ¡ÓÃ»§ÊäÈëµÄÕËºÅ
+		String account = fragAccount.getText();       //è·å–ç”¨æˆ·è¾“å…¥çš„è´¦å·
 		String password = fragPassword.getText();
 
 
-		password = MD5.getMD5(password);                   //ÃÜÂë±ä³É¹şÏ£Êı
+		password = MD5.getMD5(password);                   //å¯†ç å˜æˆå“ˆå¸Œæ•°
 
 		OkHttpClient client=Server.getSharedClient();
 
@@ -116,9 +116,9 @@ public class LoginActivity extends Activity {
 				.build();
 
 		final ProgressDialog progressDialog = new ProgressDialog(LoginActivity.this);
-		progressDialog.setMessage("ÇëÉÔºò");
-		progressDialog.setCancelable(false);
-		progressDialog.setCanceledOnTouchOutside(false);
+		progressDialog.setMessage("è¯·ç¨å€™");
+		progressDialog.setCancelable(true);
+		progressDialog.setCanceledOnTouchOutside(true);
 		progressDialog.show();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -133,22 +133,10 @@ public class LoginActivity extends Activity {
 
 					runOnUiThread(new Runnable() {
 
-						@Override
-						public void run() {
-							progressDialog.dismiss();
-
-							new AlertDialog.Builder(LoginActivity.this)
-							.setTitle("µÇÂ¼³É¹¦")
-							.setMessage("Hello,"+user.getNickname())
-							.setPositiveButton("ºÃ", new DialogInterface.OnClickListener() {
-
-								@Override
-								public void onClick(DialogInterface dialog, int which) {
-									Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
-									startActivity(itnt);
-								}
-							})
-							.show();
+					@Override
+					public void run() {
+						progressDialog.dismiss();
+						startHomePageActivity();
 						}
 					});	
 				}catch(final Exception e){
@@ -157,9 +145,8 @@ public class LoginActivity extends Activity {
 						@Override
 						public void run() {
 							progressDialog.dismiss();
-
 							new AlertDialog.Builder(LoginActivity.this)
-							.setTitle("µÇÂ¼Ê§°Ü")
+							.setTitle("ç™»å½•å¤±è´¥")
 							.setMessage(e.getMessage())
 							.show();
 						}
@@ -189,11 +176,15 @@ public class LoginActivity extends Activity {
 	}
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("µÇÂ¼Ê§°Ü")
+		.setTitle("ç™»å½•å¤±è´¥")
 		.setMessage(arg1.getLocalizedMessage())
-		.setNegativeButton("ºÃ", null)
+		.setNegativeButton("å¥½", null)
 		.show();
 
+	}	
+	void startHomePageActivity(){
+		Intent itnt = new Intent(LoginActivity.this,HomePageActivity.class);
+		startActivity(itnt);
 	}
 
 }

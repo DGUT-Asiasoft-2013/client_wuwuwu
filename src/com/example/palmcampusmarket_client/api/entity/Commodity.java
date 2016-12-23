@@ -5,15 +5,15 @@ import java.util.Date;
 
 public class Commodity implements Serializable{
 	User user;
-	String CommName;         //��Ʒ����
-	String CommPrice;        //��Ʒ�۸�
-	int CommNumber;          //��Ʒ����
-	String CommDescribe;     //��Ʒ����
-	String CommImage;        //��ƷͼƬ
-
-	Integer id;
+	String CommName;         //商品名称
+	String CommPrice;        //商品价格
+	int CommNumber;          //商品数量
+	String CommDescribe;     //商品描述
+	String CommImage;        //商品图片
 	Date createDate;
-	Date editDate;
+    Date editDate;
+	Integer id;
+
 	
 	public Date getCreateDate() {
 		return createDate;
