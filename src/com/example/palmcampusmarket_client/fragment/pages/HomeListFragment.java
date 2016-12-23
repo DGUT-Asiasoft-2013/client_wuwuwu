@@ -8,6 +8,7 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -90,16 +91,21 @@ public class HomeListFragment extends Fragment {
 				view = convertView;
 			}
 
-			TextView CommContent = (TextView) view.findViewById(R.id.text);
-			TextView CommName = (TextView) view.findViewById(R.id.title);
-			TextView CommtsellerName = (TextView) view.findViewById(R.id.username);
+			TextView commContent = (TextView) view.findViewById(R.id.text);
+			TextView commName = (TextView) view.findViewById(R.id.title);
+			TextView commtsellerName = (TextView) view.findViewById(R.id.username);
+			TextView commPrice  = (TextView) view.findViewById(R.id.price);
 
+			AvatarView commAvatar = (AvatarView) view.findViewById(R.id.commavatar);
 
 			Commodity commodity = data.get(position);
 
-			CommContent.setText(commodity.getCommDescribe());
-			CommName.setText(commodity.getCommName());
-			CommtsellerName.setText(commodity.getUser().getNickname());
+			commContent.setText(commodity.getCommDescribe());
+			commName.setText(commodity.getCommName());
+			commtsellerName.setText(commodity.getUser().getNickname());
+			commPrice.setText(commodity.getCommPrice());
+			
+			commAvatar.load(Server.serverAddress+commodity.getCommImage());
 
 			return view;
 
@@ -131,7 +137,7 @@ public class HomeListFragment extends Fragment {
 	}
 
 	void reload(){
-		Request request= Server.requestBuilderWithApi("feeds")
+		Request request= Server.requestBuilderWithApi("home")
 				.get()
 				.build();
 
@@ -187,16 +193,16 @@ public class HomeListFragment extends Fragment {
 	}
 
 	void onItemClicked(int position){
-//		Commodity comm = data.get(position);
-//		Intent itnt = new Intent(getActivity(),NewCommodityActivity.class);
-//		itnt.putExtra("Commodity", comm);
-//		startActivity(itnt);
+		Commodity comm = data.get(position);
+		Intent itnt = new Intent(getActivity(),NewCommodityActivity.class);
+        itnt.putExtra("Commodity", comm);
+		startActivity(itnt);
 	}
 
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
 		textLoadMore.setText("‘ÿ»Î÷–°≠");
-		Request request = Server.requestBuilderWithApi("feeds/"+(page+1)).get().build();
+		Request request = Server.requestBuilderWithApi("home/"+(page+1)).get().build();
 		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
 			@Override

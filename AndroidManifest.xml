@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.example.TestActivity"
+            android:name="com.example.palmcampusmarket_client.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -26,17 +26,17 @@
         </activity>
         <activity android:name="com.example.palmcampusmarket_client.HelloActivity" />
         <activity android:name="com.example.palmcampusmarket_client.LoginActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.collect.CollectionsActivity" />
         <activity android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity" />
         <activity android:name="com.example.palmcampusmarket_client.RegisterActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.collect.SearchActivity" />
         <activity android:name="com.example.palmcampusmarket_client.EvaluationActivity" />
         <activity android:name="com.example.palmcampusmarket_client.NewCommodityActivity" />
         <activity android:name="com.example.palmcampusmarket_client.HomePageActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" />
-        <activity android:name="com.example.palmcampusmarket_wallet.ImageShower"
-            android:theme="@style/ImageScale"/>
-        <activity android:name="com.example.palmcampusmarket_wallet.SettingActivity"/>
+        <activity android:name="com.example.palmcampusmarket_client.PurchaseActivity" />
     </application>
 
 </manifest>

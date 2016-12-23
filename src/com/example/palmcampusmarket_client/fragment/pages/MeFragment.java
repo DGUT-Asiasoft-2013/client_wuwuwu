@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.fragment;
+package com.example.palmcampusmarket_client.fragment.pages;
 
 import android.app.Fragment;
 import android.content.Intent;
