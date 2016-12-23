@@ -52,8 +52,10 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 			fragPassword.setIsPassword(true);
 		}
 
+
 		fragPasswordRepeat.setLabelText("确认密码");{
 			fragPasswordRepeat.setHintText("请重新输入密码");
+
 			fragPasswordRepeat.setIsPassword(true);
 		}
 
@@ -80,7 +82,9 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 			}
 		}else{
 			new AlertDialog.Builder(getActivity())
+
 			.setMessage("密码不一致")
+
 			.show();
 		}
 	}
