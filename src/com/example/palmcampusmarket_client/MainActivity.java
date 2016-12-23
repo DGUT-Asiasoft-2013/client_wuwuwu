@@ -27,7 +27,6 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
 		setContentView(R.layout.activity_boot);
 	}
 
@@ -35,6 +34,8 @@ public class MainActivity extends Activity {
 	protected void onResume() {
 
 		super.onResume();
+		
+	
 
 		OkHttpClient client=Server.getSharedClient();
 		Request request=Server.requestBuilderWithApi("hello")
@@ -55,7 +56,14 @@ public class MainActivity extends Activity {
 						}catch (Exception e) {
 							e.printStackTrace();
 						}
-						startLoginActivity();
+						Handler handler = new Handler();
+						handler.postDelayed(new Runnable() {
+								private int abcd = 0;
+							
+								public void run() {
+									startLoginActivity();
+								}
+							}, 1000);//startLoginActivity();
 					}
 				});
 

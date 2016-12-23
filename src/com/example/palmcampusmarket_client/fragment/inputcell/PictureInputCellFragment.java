@@ -54,7 +54,9 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 	void onImageViewClicked(){
 		String[] items = {
 				"拍照",
+
 				"图库"
+
 		};
 		new AlertDialog.Builder(getActivity())
 		.setTitle(labelText.getText())
@@ -76,7 +78,8 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 
 			}
 		})
-		.setNegativeButton("好",null)
+
+		.setNegativeButton("取消",null)
 		.show();
 	}
 
