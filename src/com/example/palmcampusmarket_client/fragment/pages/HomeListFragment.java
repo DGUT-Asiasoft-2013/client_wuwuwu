@@ -75,9 +75,6 @@ public class HomeListFragment extends Fragment {
 			});
 		}
 		return view;
-
-
-
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {
@@ -204,7 +201,7 @@ public class HomeListFragment extends Fragment {
 
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
-		textLoadMore.setText("�����С�");
+		textLoadMore.setText("载入中");
 		Request request = Server.requestBuilderWithApi("home/"+(page+1)).get().build();
 		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
@@ -215,7 +212,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("���ظ���");
+						textLoadMore.setText("加载更多");
 
 					}
 				});
@@ -250,7 +247,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("���ظ���");
+						textLoadMore.setText("加载更多");
 
 					}
 				});
