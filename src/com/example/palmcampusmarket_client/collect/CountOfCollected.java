@@ -2,7 +2,7 @@ package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
 
-import com.example.palmcampusmarket_client.api.CSServer;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 
@@ -23,7 +23,7 @@ public class CountOfCollected {
 	public static void getCount(Commodity commodity, final OnCountResultListener listener){
 		if(handler==null) handler = new Handler();
 
-		Request requestLike = CSServer.requestBuilderWithApi("commodity/"+commodity.getId()+"/collected")
+		Request requestLike = Server.requestBuilderWithCs("commodity/"+commodity.getId()+"/collected")
 				.build();
 
 		Server.getSharedClient().newCall(requestLike).enqueue(new Callback() {

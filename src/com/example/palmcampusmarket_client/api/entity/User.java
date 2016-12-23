@@ -20,7 +20,7 @@ public class User implements Serializable{
 		return address;
 	}
 
-	public void setAddress(String address) {
+	public void setAddress() {
 		this.address = address;
 	}
 
