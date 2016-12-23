@@ -2,12 +2,12 @@
 <project version="4">
   <component name="Encoding">
     <file url="file://$PROJECT_DIR$/libs" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/Collect.png" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/Picture.png" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/Setting.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-hdpi/bill.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/collect.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-hdpi/money.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/picture.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-hdpi/qr_code.png" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/res/drawable-hdpi/setting.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-hdpi/xiaohei.png" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/drawable-hdpi/xiaohei_big.jpg" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/res/layout/dialog_imageloading.xml" charset="UTF-8" />
