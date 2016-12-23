@@ -18,6 +18,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -35,6 +36,7 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
 	SimpleTextInputCellFragment fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
+	int money = 0;
 
 
 	@Override
@@ -42,46 +44,54 @@ public class RegisterActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
+
 		setContentView(R.layout.activity_register);
 		fragInputCellAccount = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_account);
 		fragInputTelephone = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_telephone);
-		fragInputNickname = (SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_nickname);
+		fragInputNickname = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_nickname);
 		fragInputCellPassword = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password);
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password_repeat);
-		fragInputCellAddress=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_address);
+		fragInputCellAddress = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
 
 
 
 	}
+
 	@Override
 	protected void onResume() {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		fragInputCellAccount.setLabelText("账户名");{
+		fragInputCellAccount.setLabelText("账户名");
+		{
 			fragInputCellAccount.setHintText("请输入账户名");
 		}
 
-		fragInputTelephone.setLabelText("手机号码");{
+		fragInputTelephone.setLabelText("手机号码");
+		{
 			fragInputTelephone.setHintText("请输入手机号码");
 		}
 
-		fragInputNickname.setLabelText("昵称");{
+		fragInputNickname.setLabelText("昵称");
+		{
 			fragInputNickname.setHintText("请输入昵称");
 		}
 
-		fragInputCellPassword.setLabelText("密码");{
+		fragInputCellPassword.setLabelText("密码");
+		{
 			fragInputCellPassword.setHintText("请输入密码");
 			fragInputCellPassword.setIsPassword(true);
 		}
 
-		fragInputCellPasswordRepeat.setLabelText("重复密码");{
+		fragInputCellPasswordRepeat.setLabelText("重复密码");
+		{
 			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
 
-		fragInputCellAddress.setLabelText("收货地址");{
+		fragInputCellAddress.setLabelText("收货地址");
+		{
 			fragInputCellAddress.setHintText("请输入收货地址");
 		}
 
@@ -94,16 +104,16 @@ public class RegisterActivity extends Activity {
 		});
 
 
-
 	}
-	void submit(){
+
+	void submit() {
 		String password = fragInputCellPassword.getText();
 		String passwordRepeat = fragInputCellPasswordRepeat.getText();
 
-		if(!password.equals(passwordRepeat)){
+		if (!password.equals(passwordRepeat)) {
 
 			new AlertDialog.Builder(RegisterActivity.this)
-			.setMessage("重复密码不一致")
+			.setMessage("两次密码不一致")
 			.setIcon(android.R.drawable.ic_dialog_alert)
 			.setNegativeButton("好", null)
 			.show();
@@ -114,12 +124,12 @@ public class RegisterActivity extends Activity {
 		password = MD5.getMD5(password);
 
 
-		String account =fragInputCellAccount.getText();
+		String account = fragInputCellAccount.getText();
 		String nickname = fragInputNickname.getText();
 		String telephone = fragInputTelephone.getText();
-		String address =fragInputCellAddress.getText();
+		String address = fragInputCellAddress.getText();
 
-		OkHttpClient client=Server.getSharedClient();
+		OkHttpClient client = Server.getSharedClient();
 
 		MultipartBody.Builder requestBodyBuilder = new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
@@ -127,20 +137,23 @@ public class RegisterActivity extends Activity {
 				.addFormDataPart("nickname", nickname)
 				.addFormDataPart("telephone", telephone)
 				.addFormDataPart("passwordHash", password)
-				.addFormDataPart("address", address);
+				.addFormDataPart("address", address)
+				.addFormDataPart("money", String.valueOf(money));
 
-		if(fragInputAvatar.getPngData()!=null){
+		if (fragInputAvatar.getPngData() != null) {
 			requestBodyBuilder
 			.addFormDataPart(
-					"avatar", 
+					"avatar",
 					"avatar",
 					RequestBody
-					.create(MediaType.parse("image/png"), 
+					.create(MediaType.parse("image/png"),
 							fragInputAvatar.getPngData()));
 		}
 
 
+
 		Request request=Server.requestBuilderWithApi("register")   //修改了链接
+
 
 
 				.method("post", null)
@@ -155,20 +168,19 @@ public class RegisterActivity extends Activity {
 		client.newCall(request).enqueue(new Callback() {
 
 			@Override
-			public void onResponse(final Call arg0,final Response arg1) throws IOException {
+			public void onResponse(final Call arg0, final Response arg1) throws IOException {
+				final String s = arg1.body().string();
 				runOnUiThread(new Runnable() {
-
 					@Override
 					public void run() {
 						progressDialog.dismiss();
 
-						
-						try{
-							Toast.makeText(RegisterActivity.this, arg1.body().string(),Toast.LENGTH_LONG).show();
-							RegisterActivity.this.onResponse(arg0, arg1.body().string());
-						}catch (Exception e) {
+						try {
+							RegisterActivity.this.onResponse(arg0, s);
+						} catch (Exception e) {
 							e.printStackTrace();
 							RegisterActivity.this.onFailure(arg0, e);
+							Toast.makeText(getBaseContext(), s, Toast.LENGTH_LONG).show();
 						}
 
 					}
@@ -191,12 +203,7 @@ public class RegisterActivity extends Activity {
 
 			}
 		});
-
-
-
 	}
-
-
 
 	void onResponse(Call arg0, String responseBody) {
 		new AlertDialog.Builder(this)
@@ -216,15 +223,11 @@ public class RegisterActivity extends Activity {
 
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("请求失败")
+		.setTitle("注册失败")
 		.setMessage(arg1.getLocalizedMessage())
 		.setNegativeButton("好", null)
 		.show();
 
 	}
-
-
-
-
 
 }

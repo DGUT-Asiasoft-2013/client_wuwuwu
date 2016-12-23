@@ -86,8 +86,6 @@ public class NewCommodityActivity extends Activity {
 
 
 		Request request = Server.requestBuilderWithApi("commodity")
-
-				.method("post", null)
 				.post(requestBulderBody.build())
 				.build();
 
