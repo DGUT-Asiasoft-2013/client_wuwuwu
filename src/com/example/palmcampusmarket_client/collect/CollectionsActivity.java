@@ -135,7 +135,7 @@ public class CollectionsActivity extends Activity {
 					Object countingTag = countCollected.getTag();
 
 					if(countingTag == collections){
-						countCollected.setText(result +"收藏");	
+						countCollected.setText(result +"锟秸诧拷");	
 					}		
 				}
 			});
@@ -215,47 +215,47 @@ public class CollectionsActivity extends Activity {
 
 
 	void onItemClicked(int position){
-				Intent itnt = new Intent(this, CommodityContentActivity.class);
-		
-				itnt.putExtra("collections", data.get(position));
-				startActivity(itnt);
+		Intent itnt = new Intent(this, CommodityContentActivity.class);
+
+		itnt.putExtra("collections", data.get(position));
+		startActivity(itnt);
 	}
 
 
 	void onItemLongClicked() {
-		//注：setOnCreateContextMenuListener是与下面onContextItemSelected配套使用的
+
 		listView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-				menu.add(0,0,0,"进入详情");
-				menu.add(0,1,0,"取消收藏");		
+				menu.add(0,0,0,"锟斤拷锟斤拷锟斤拷锟斤拷");
+				menu.add(0,1,0,"取锟斤拷锟秸诧拷");		
 			}
 		});
 
 	}
 
-	// 长按菜单响应函数
+
 	public boolean onContextItemSelected(MenuItem item) {
 
 		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
 				.getMenuInfo();
-		MID = (int) info.id;// 这里的info.id对应的就是数据库中_id的值
+		MID = (int) info.id;
 
 		Collections collections = data.get(MID);
 
 		switch(item.getItemId()) {
 		case 0:
-			// 进入详情
+
 			Toast.makeText(this,
-					"进入详情",
+					"锟斤拷锟斤拷锟斤拷锟斤拷",
 					Toast.LENGTH_SHORT).show();
 			break;
 
 		case 1:
-			// 取消收藏
+
 			Toast.makeText(this,
-					"取消收藏",
+					"取锟斤拷锟秸诧拷",
 					Toast.LENGTH_SHORT).show();
 
 			MultipartBody body = new MultipartBody
@@ -291,7 +291,7 @@ public class CollectionsActivity extends Activity {
 						@Override
 						public void run() {
 							Toast.makeText(CollectionsActivity.this,
-									"删除失败",
+									"删锟斤拷失锟斤拷",
 									Toast.LENGTH_SHORT).show();								
 
 						}

@@ -38,8 +38,8 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		fragTelephone.setLabelText("ÊÖ»úºÅÂë");
-		fragTelephone.setHintText("ÊäÈëÊÖ»úºÅÂë");
+		fragTelephone.setLabelText("æ‰‹æœºå·ç ");
+		fragTelephone.setHintText("è¯·è¾“å…¥æ‰‹æœºå·ç ");
 	}
 
 	public static interface OnGoNextListener{
