@@ -4,5 +4,76 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <TextView 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="me"
+        android:textSize="30sp"
+        />
+    
 
+    <RelativeLayout
+        android:id="@+id/me"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/textview_select"
+        android:clickable="true">
+        
+        <!--<com.example.palmcampusmarket_client.fragment.AvatarView
+            android:id="@+id/my_page_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true" />-->
+        <ImageView
+            android:id="@+id/my_page_avatar"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:src="@drawable/xiaohei"/>
+        <TextView
+            android:id="@+id/my_page_ninckname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="风度翩翩"
+            android:layout_marginLeft="10dp"
+            android:layout_above="@+id/my_page_imageView"
+            android:layout_toRightOf="@+id/my_page_avatar"
+            android:layout_toEndOf="@+id/my_page_avatar" />
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/qr_code"
+            android:layout_centerVertical="true"
+            android:layout_toLeftOf="@+id/my_page_imageView"
+            android:layout_toStartOf="@+id/my_page_imageView" />
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@drawable/arrow"
+            android:id="@+id/my_page_imageView"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/my_tab_background_d"/>
+
+    <include
+        android:id="@+id/my_page_photo"
+        layout="@layout/include_tongyong"/>
+    <include
+        android:id="@+id/my_page_collect"
+        layout="@layout/include_tongyong"/>
+    <include
+        android:id="@+id/my_page_wallet"
+        layout="@layout/include_tongyong"/>
+    <include
+    android:id="@+id/my_page_setting"
+    layout="@layout/include_tongyong"/>
 </LinearLayout>

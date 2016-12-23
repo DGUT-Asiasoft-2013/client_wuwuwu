@@ -7,7 +7,7 @@ import java.util.List;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
-import com.example.palmcampusmarket_client.api.CSServer;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
@@ -28,7 +28,11 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.TextView;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.OkHttpClient;
@@ -41,11 +45,12 @@ public class SearchActivity extends Activity {
 	Button search;
 
 
-
+	RadioGroup radioGroup;
+	String sort = "time";
 	ListView listView;
-
 	int page;	
 	List<Commodity> data;
+
 
 
 	@Override
@@ -55,7 +60,6 @@ public class SearchActivity extends Activity {
 
 		edit = (EditText) findViewById(R.id.edit_search);
 		search = (Button) findViewById(R.id.btn_search);
-
 
 
 		listView = (ListView) findViewById(R.id.list_search);
@@ -80,13 +84,41 @@ public class SearchActivity extends Activity {
 		findViewById(R.id.btn_search).setOnClickListener(new View.OnClickListener() {				
 			@Override
 			public void onClick(View v) {
-				search();
+				search(sort);
+			}
+		});
+		radioGroup = (RadioGroup) findViewById(R.id.sort);
+		radioGroup.setOnCheckedChangeListener(new OnCheckedChangeListener() {
+
+			@Override
+			public void onCheckedChanged(RadioGroup group, int checkedId) {
+				// TODO Auto-generated method stub
+
+				int radioButtonId = group.getCheckedRadioButtonId();
+
+				RadioButton rb = (RadioButton) findViewById(radioButtonId);
+				if(rb.getText().equals("最新")){
+					sort = "time";
+					search(sort);
+				}else if(rb.getText().equals("最贵")){
+					sort = "highprice";
+					search(sort);
+				}else if(rb.getText().equals("最便宜")){
+					sort = "lowprice";
+					search(sort);
+				}
 			}
 		});
 	}
 
-	void search() {
-		reload();		
+
+
+	void search(String sort) {
+		if(!edit.getText().toString().equals("")){
+			reload(sort);
+		}else{
+			Toast.makeText(SearchActivity.this, "请输入商品名称", Toast.LENGTH_SHORT).show();
+			return;}
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {
@@ -160,9 +192,9 @@ public class SearchActivity extends Activity {
 		}
 	};
 
-	void reload(){
-		OkHttpClient client = CSServer.getSharedClient();
-		Request request = CSServer.requestBuilderWithApi("commodity/s/"+edit.getText())
+	void reload(String sort){
+		OkHttpClient client = Server.getSharedClient();
+		Request request = Server.requestBuilderWithCs("commodity/s/"+edit.getText()+"/"+sort)
 				.build();
 
 		client.newCall(request).enqueue(new Callback() {
@@ -206,10 +238,10 @@ public class SearchActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
-		//
-		//		itnt.putExtra("commodity", data.get(position));
-		//		startActivity(itnt);
+				Intent itnt = new Intent(this, CommodityContentActivity.class);
+		
+				itnt.putExtra("commodity", data.get(position));
+				startActivity(itnt);
 	}
 
 }

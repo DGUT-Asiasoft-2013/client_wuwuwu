@@ -33,6 +33,30 @@
                 android:background="@drawable/image_search" />
         </RelativeLayout>
 
+        <RadioGroup
+            android:id="@+id/sort"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <RadioButton
+                android:id="@+id/sort_time"
+                android:checked="true"
+                android:text="最新" />
+
+            <RadioButton
+                android:id="@+id/sort_price_high"
+                android:text="最便宜" />
+
+            <RadioButton
+                android:id="@+id/sort_price_low"
+                android:text="最贵" />
+
+            <RadioButton
+                android:id="@+id/sort_collected"
+                android:text="最多收藏" />
+        </RadioGroup>
+
         <ListView
             android:id="@+id/list_search"
             android:layout_width="match_parent"

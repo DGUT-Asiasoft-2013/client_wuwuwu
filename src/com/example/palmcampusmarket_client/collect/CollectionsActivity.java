@@ -1,12 +1,14 @@
 package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
-import com.example.palmcampusmarket_client.api.CSServer;
+import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Collections;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
@@ -16,12 +18,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
+import android.app.Dialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -30,6 +41,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -41,10 +53,15 @@ public class CollectionsActivity extends Activity {
 	int page;	
 	List<Collections> data;
 
+	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
+
+	int MID;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_collections);
+		reload();
 
 		listView = (ListView) findViewById(R.id.list_collections);
 		listView.setAdapter(listAdapter);
@@ -56,14 +73,23 @@ public class CollectionsActivity extends Activity {
 				onItemClicked(position);
 			}
 		});
+
+
+		onItemLongClicked();
+
+
+
 	}
+
+
+
 
 
 	@Override
 	protected void onResume() {
 		super.onResume();
 
-		reload();
+
 	}
 
 
@@ -141,8 +167,8 @@ public class CollectionsActivity extends Activity {
 
 		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
 
-		OkHttpClient client = CSServer.getSharedClient();
-		Request request = CSServer.requestBuilderWithApi("collections")
+		OkHttpClient client = Server.getSharedClient();
+		Request request = Server.requestBuilderWithCs("collections")
 				.get()
 				.build();
 
@@ -189,10 +215,100 @@ public class CollectionsActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		//		Intent itnt = new Intent(this, CommodityContentActivity.class);
-		//
-		//		itnt.putExtra("collections", data.get(position));
-		//		startActivity(itnt);
+				Intent itnt = new Intent(this, CommodityContentActivity.class);
+		
+				itnt.putExtra("collections", data.get(position));
+				startActivity(itnt);
+	}
+
+
+	void onItemLongClicked() {
+		//注：setOnCreateContextMenuListener是与下面onContextItemSelected配套使用的
+		listView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+				menu.add(0,0,0,"进入详情");
+				menu.add(0,1,0,"取消收藏");		
+			}
+		});
+
+	}
+
+	// 长按菜单响应函数
+	public boolean onContextItemSelected(MenuItem item) {
+
+		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item
+				.getMenuInfo();
+		MID = (int) info.id;// 这里的info.id对应的就是数据库中_id的值
+
+		Collections collections = data.get(MID);
+
+		switch(item.getItemId()) {
+		case 0:
+			// 进入详情
+			Toast.makeText(this,
+					"进入详情",
+					Toast.LENGTH_SHORT).show();
+			break;
+
+		case 1:
+			// 取消收藏
+			Toast.makeText(this,
+					"取消收藏",
+					Toast.LENGTH_SHORT).show();
+
+			MultipartBody body = new MultipartBody
+					.Builder()
+					.addFormDataPart("collect", "false")
+					.build();
+
+
+			Request request = Server.requestBuilderWithCs("commodity/"+collections.getId().getCommodity().getId()+"/collect")
+					.post(body)
+					.build();
+
+			Server.getSharedClient().newCall(request).enqueue(new Callback() {
+
+				@Override
+				public void onResponse(Call arg0, Response arg1) throws IOException {
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							reload();
+						}
+					});
+
+				}
+
+				@Override
+				public void onFailure(Call arg0, IOException arg1) {
+					// TODO Auto-generated method stub
+
+					runOnUiThread(new Runnable() {
+
+						@Override
+						public void run() {
+							Toast.makeText(CollectionsActivity.this,
+									"删除失败",
+									Toast.LENGTH_SHORT).show();								
+
+						}
+					});
+
+				}
+			});
+
+
+			break;
+
+		default:
+			break;
+		}
+
+		return super.onContextItemSelected(item);
+
 	}
 
 }

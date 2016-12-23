@@ -1,8 +1,15 @@
 package com.example.palmcampusmarket_client;
 
+import java.io.IOException;
+
+import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.entity.Commodity;
+import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -11,16 +18,21 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
-///°´Å¥Ã»Ğ´
-public class PurchaseActivity extends Activity {  //¹ºÂòÒ³Ãæ
+///ï¿½ï¿½Å¥Ã»Ğ´
+public class PurchaseActivity extends Activity {  //ï¿½ï¿½ï¿½ï¿½Ò³ï¿½ï¿½
 
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
 	Button btnAdd,btnSub;
 	EditText buyNumber;
 	ImageView commodityPicture;
-	TextView totalPriceBig;
-	int num,totalPrice;
+	int num,totalPrice,priceOne;
+	Commodity commodity;
 	PurchaseFragmentFunctionbar buyFunctionbar;
 	
 	@Override
@@ -28,16 +40,18 @@ public class PurchaseActivity extends Activity {  //¹ºÂòÒ³Ãæ
 		
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_purchase);
-		commodityDescribe=(TextView)findViewById(R.id.commodity_describe);//ÉÌÆ·ÃèÊö
-		buyerName=(TextView)findViewById(R.id.buyer_name);//Âò¼ÒĞÕÃû
-		buyerTelephone=(TextView)findViewById(R.id.buyer_telephone);//Âò¼Òµç»°
-		buyerAddress=(TextView)findViewById(R.id.buyer_address);//Âò¼ÒµØÖ·
-		singlePrice=(TextView)findViewById(R.id.buy_price);//µ¥¼Û
-		buyNumber=(EditText)findViewById(R.id.buy_number);//¹ºÂòÊıÁ¿
-		commodityPicture=(ImageView)findViewById(R.id.commodity_picture);//ÎïÆ·Í¼Æ¬
+		commodityDescribe=(TextView)findViewById(R.id.commodity_describe);//å•†å“æè¿°
+		buyerName=(TextView)findViewById(R.id.buyer_name);//ä¹°å®¶å§“å
+		buyerTelephone=(TextView)findViewById(R.id.buyer_telephone);//ä¹°å®¶ç”µè¯
+		buyerAddress=(TextView)findViewById(R.id.buyer_address);//ä¹°å®¶åœ°å€Ö·
+		singlePrice=(TextView)findViewById(R.id.buy_price);//å•ä»·
+		buyNumber=(EditText)findViewById(R.id.buy_number);//è´­ä¹°æ•°é‡
+		commodityPicture=(ImageView)findViewById(R.id.commodity_picture);//ç‰©å“å›¾ç‰‡
 		buyFunctionbar=(PurchaseFragmentFunctionbar)getFragmentManager().findFragmentById(R.id.frag_tabber);
 		
-		findViewById(R.id.btn_buy).setOnClickListener(new View.OnClickListener() { //°´ÏÂ¹ºÂò°´Å¥
+		commodity=(Commodity)getIntent().getSerializableExtra("infomation");//ä»å•†å“è¯¦æƒ…é¡µé¢è·å–å•†å“ä¿¡æ¯
+ 		
+		findViewById(R.id.btn_buy).setOnClickListener(new View.OnClickListener() { //æŒ‰ä¸‹è´­ä¹°æŒ‰é’®
 			
 			@Override
 			public void onClick(View v) {
@@ -46,21 +60,23 @@ public class PurchaseActivity extends Activity {  //¹ºÂòÒ³Ãæ
 			}
 		});
 		
-		buyNumber.addTextChangedListener(new TextWatcher() {   //EditTextĞŞ¸ÄµÄ¼àÌıÊÂ¼ş
+		buyNumber.addTextChangedListener(new TextWatcher() {   //EditTextä¿®æ”¹çš„ç›‘å¬äº‹ä»¶
 			
 			@Override
 			public void onTextChanged(CharSequence s, int start, int before, int count) {
 				
-				num=Integer.parseInt(buyNumber.getText().toString()); //È¡³öEditTextÖĞµÄÊıÖµ
-				totalPrice=num*9999;
-				buyFunctionbar.setPrice("×Ü¼Û£º"+totalPrice);
+				num=Integer.parseInt(buyNumber.getText().toString()); //EditTextä¸­çš„æ•°å€¼Öµ
+				priceOne=Integer.parseInt(commodity.getCommPrice());
+				totalPrice=num*priceOne;
+				buyFunctionbar.setPrice("æ€»ä»·ï¼š"+totalPrice);
 			}
 			
 			@Override
 			public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-				num=Integer.parseInt(buyNumber.getText().toString()); //È¡³öEditTextÖĞµÄÊıÖµ
-				totalPrice=num*9999;
-				buyFunctionbar.setPrice("×Ü¼Û£º"+totalPrice);
+				num=Integer.parseInt(buyNumber.getText().toString()); //å–å‡ºEditTextä¸­çš„æ•°å€¼Öµ
+				priceOne=Integer.parseInt(commodity.getCommPrice());
+				totalPrice=num*priceOne;
+				buyFunctionbar.setPrice("æ€»ä»·ï¼š"+totalPrice);
 				
 			}
 			
@@ -75,17 +91,61 @@ public class PurchaseActivity extends Activity {  //¹ºÂòÒ³Ãæ
 	@Override
 		protected void onResume() {
 			super.onResume();
-			commodityDescribe.setText("ÄãÌØÃ´ÔÚ¶ºÎÒ£¿");
-			buyerName.setText("ÊÕ»õÈË£º"+"ÓÈÌÒ");
-			buyerTelephone.setText("13888888888");
-			buyerAddress.setText("¹ã¶«Ê¡¶«İ¸ÊĞËÉÉ½ºş´óÑ§Â·Ò»ºÅ¶«İ¸Àí¹¤Ñ§Ôº");
+			commodityDescribe.setText(commodity.getCommDescribe());	
+			singlePrice.setText("æ€»ä»·ï¼š"+commodity.getCommPrice());
 			
-			singlePrice.setText("µ¥¼Û£º"+"9999");
 			
+			OkHttpClient client =Server.getSharedClient();
+			Request request = Server.requestBuilderWithApi("me")
+					.method("get", null)
+					.build();
+			client.newCall(request).enqueue(new Callback() {
+				
+				@Override
+				public void onResponse(final Call arg0, Response arg1) throws IOException {
+					try{
+						final User user =new ObjectMapper().readValue(arg1.body().bytes(), User.class);
+						runOnUiThread(new Runnable() {
+							
+							@Override
+							public void run() {
+								PurchaseActivity.this.onResponse(arg0,user);//è·å–ç”¨æˆ·ä¿¡æ¯
+								
+							}
+						});
+					}catch(final Exception e){
+						runOnUiThread(new Runnable() {
+							
+							@Override
+							public void run() {
+								PurchaseActivity.this.onFailuer(arg0,e);
+							}
+						});
+					}
+				}
+				
+				@Override
+				public void onFailure(Call arg0, IOException arg1) {
+					PurchaseActivity.this.onFailuer(arg0,arg1);
+					
+				}
+			});
 			
 		}
 	
-	void goBuySuccess(){  //°´ÁË¹ºÂò°´Å¥ºóÌø×ªÒ³Ãæ
+	void goBuySuccess(){  //æŒ‰äº†è´­ä¹°æŒ‰é’®åè·³è½¬é¡µé¢
 		
+	}
+	
+	protected void onResponse(Call arg0,User user){
+		buyerName.setText("æ”¶è´§äººï¼š"+user.getAccount());
+		buyerTelephone.setText("è”ç³»ç”µè¯ï¼š"+user.getTelephone());
+		buyerAddress.setText("æ”¶è´§åœ°å€ï¼š"+user.getAddress());
+	}
+	
+	protected void onFailuer(Call arg0,Exception ex){
+		buyerName.setText("æ”¶è´§äººï¼š");
+		buyerTelephone.setText("è”ç³»ç”µè¯ï¼š");
+		buyerAddress.setText("æ”¶è´§åœ°å€ï¼š");
 	}
 }

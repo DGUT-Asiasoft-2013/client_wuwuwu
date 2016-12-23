@@ -133,6 +133,10 @@
             </LinearLayout>
         </FrameLayout>
 
+       
+   
+        
+        
         <!-- 价格 -->
 
         <TextView
@@ -144,6 +148,8 @@
             android:paddingRight="25dp"
             android:text="价格"
             android:textSize="18dp" />
+       
+        
     </FrameLayout>
 
     <fragment

@@ -17,6 +17,7 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -58,30 +59,30 @@ public class RegisterActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		fragInputCellAccount.setLabelText("ÕË»§Ãû");{
-			fragInputCellAccount.setHintText("ÇëÊäÈëÕË»§Ãû");
+		fragInputCellAccount.setLabelText("è´¦æˆ·å");{
+			fragInputCellAccount.setHintText("è¯·è¾“å…¥è´¦æˆ·å");
 		}
 
-		fragInputTelephone.setLabelText("ÊÖ»úºÅÂë");{
-			fragInputTelephone.setHintText("ÇëÊäÈëÊÖ»úºÅÂë");
+		fragInputTelephone.setLabelText("æ‰‹æœºå·ç ");{
+			fragInputTelephone.setHintText("è¯·è¾“å…¥æ‰‹æœºå·ç ");
 		}
 
-		fragInputNickname.setLabelText("êÇ³Æ");{
-			fragInputNickname.setHintText("ÇëÊäÈëêÇ³Æ");
+		fragInputNickname.setLabelText("æ˜µç§°");{
+			fragInputNickname.setHintText("è¯·è¾“å…¥æ˜µç§°");
 		}
 
-		fragInputCellPassword.setLabelText("ÃÜÂë");{
-			fragInputCellPassword.setHintText("ÇëÊäÈëÃÜÂë");
+		fragInputCellPassword.setLabelText("å¯†ç ");{
+			fragInputCellPassword.setHintText("è¯·è¾“å…¥å¯†ç ");
 			fragInputCellPassword.setIsPassword(true);
 		}
 
-		fragInputCellPasswordRepeat.setLabelText("ÖØ¸´ÃÜÂë");{
-			fragInputCellPasswordRepeat.setHintText("ÇëÖØ¸´ÊäÈëÃÜÂë");
+		fragInputCellPasswordRepeat.setLabelText("é‡å¤å¯†ç ");{
+			fragInputCellPasswordRepeat.setHintText("è¯·é‡å¤è¾“å…¥å¯†ç ");
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
 
-		fragInputCellAddress.setLabelText("ÊÕ»õµØÖ·");{
-			fragInputCellAddress.setHintText("ÇëÊäÈëÊÕ»õµØÖ·");
+		fragInputCellAddress.setLabelText("æ”¶è´§åœ°å€");{
+			fragInputCellAddress.setHintText("è¯·è¾“å…¥æ”¶è´§åœ°å€");
 		}
 
 		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
@@ -102,9 +103,9 @@ public class RegisterActivity extends Activity {
 		if(!password.equals(passwordRepeat)){
 
 			new AlertDialog.Builder(RegisterActivity.this)
-			.setMessage("ÖØ¸´ÃÜÂë²»Ò»ÖÂ")
+			.setMessage("é‡å¤å¯†ç ä¸ä¸€è‡´")
 			.setIcon(android.R.drawable.ic_dialog_alert)
-			.setNegativeButton("ºÃ", null)
+			.setNegativeButton("å¥½", null)
 			.show();
 
 			return;
@@ -140,14 +141,13 @@ public class RegisterActivity extends Activity {
 
 
 
-		Request request=Server.requestBuilderWithApi("register")   //ĞŞ¸ÄÁËÁ´½Ó
-
+		Request request=Server.requestBuilderWithApi("register") 
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();
 
 		final ProgressDialog progressDialog = new ProgressDialog(RegisterActivity.this);
-		progressDialog.setMessage("ÇëÉÔºò");
+		progressDialog.setMessage("è¯·ç¨å€™");
 		progressDialog.setCancelable(false);
 		progressDialog.setCanceledOnTouchOutside(false);
 
@@ -161,7 +161,9 @@ public class RegisterActivity extends Activity {
 					public void run() {
 						progressDialog.dismiss();
 
+						
 						try{
+							Toast.makeText(RegisterActivity.this, arg1.body().string(),Toast.LENGTH_LONG).show();
 							RegisterActivity.this.onResponse(arg0, arg1.body().string());
 						}catch (Exception e) {
 							e.printStackTrace();
@@ -197,9 +199,9 @@ public class RegisterActivity extends Activity {
 
 	void onResponse(Call arg0, String responseBody) {
 		new AlertDialog.Builder(this)
-		.setTitle("×¢²á³É¹¦")
+		.setTitle("æ³¨å†ŒæˆåŠŸ")
 		.setMessage(responseBody)
-		.setPositiveButton("ºÃ", new DialogInterface.OnClickListener() {
+		.setPositiveButton("å¥½", new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -213,9 +215,9 @@ public class RegisterActivity extends Activity {
 
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("ÇëÇóÊ§°Ü")
+		.setTitle("è¯·æ±‚å¤±è´¥")
 		.setMessage(arg1.getLocalizedMessage())
-		.setNegativeButton("ºÃ", null)
+		.setNegativeButton("å¥½", null)
 		.show();
 
 	}
