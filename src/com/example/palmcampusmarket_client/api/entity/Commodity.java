@@ -4,11 +4,11 @@ import java.io.Serializable;
 
 public class Commodity implements Serializable{
 	User user;
-	String CommName;         //商品名称
-	String CommPrice;        //商品价格
-	int CommNumber;          //商品数量
-	String CommDescribe;     //商品描述
-	String CommImage;        //商品图片
+	String CommName;         //鍟嗗搧鍚嶇О
+	String CommPrice;        //鍟嗗搧浠锋牸
+	int CommNumber;          //鍟嗗搧鏁伴噺
+	String CommDescribe;     //鍟嗗搧鎻忚堪
+	String CommImage;        //鍟嗗搧鍥剧墖
 
 	Integer id;
 

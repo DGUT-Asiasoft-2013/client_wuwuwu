@@ -93,7 +93,7 @@ public class NewCommodityActivity extends Activity {
 
 
 		final ProgressDialog progressDialog = new ProgressDialog(NewCommodityActivity.this);
-		progressDialog.setMessage("ÇëÉÔºó");
+		progressDialog.setMessage("è¯·ç¨å");
 		progressDialog.setCancelable(false);
 		progressDialog.setCanceledOnTouchOutside(false);
 
@@ -139,9 +139,9 @@ public class NewCommodityActivity extends Activity {
 
 	void onResponse(Call arg0,String responseBody){
 		new AlertDialog.Builder(this)
-		.setTitle("ÉÏ¼Ü³É¹¦")
+		.setTitle("ä¸Šæ¶æˆåŠŸ")
 		.setMessage(responseBody)
-		.setPositiveButton("ºÃ",new DialogInterface.OnClickListener() {
+		.setPositiveButton("å¥½",new DialogInterface.OnClickListener() {
 
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
@@ -153,9 +153,9 @@ public class NewCommodityActivity extends Activity {
 
 	void onFailure(Call arg0,Exception arg1){
 		new AlertDialog.Builder(this)
-		.setTitle("ÉÏ¼ÜÊ§°Ü")
+		.setTitle("ä¸Šæ¶å¤±è´¥")
 		.setMessage(arg1.getMessage())
-		.setNegativeButton("ºÃ", null)
+		.setNegativeButton("å¥½", null)
 		.show();
 
 	}
@@ -165,19 +165,19 @@ public class NewCommodityActivity extends Activity {
 
 		super.onResume();
 
-		fragInputCellName.setLabelText("ÉÌÆ·Ãû");{
-			fragInputCellName.setHintText("ÇëÊäÈëÉÌÆ·Ãû");
+		fragInputCellName.setLabelText("å•†å“å");{
+			fragInputCellName.setHintText("è¯·è¾“å…¥å•†å“å");
 		}
-		fragInputCellPrice.setLabelText("ÉÌÆ·¼Û¸ñ");{
-			fragInputCellPrice.setHintText("ÇëÊäÈëÉÌÆ·¼Û¸ñ");
-		}
-
-		fragInPutCellNumber.setLabelText("ÉÌÆ·ÊıÁ¿");{
-			fragInPutCellNumber.setHintText("ÇëÊäÈëÉÌÆ·ÊıÁ¿");
+		fragInputCellPrice.setLabelText("å•†å“ä»·æ ¼");{
+			fragInputCellPrice.setHintText("è¯·è¾“å…¥å•†å“ä»·æ ¼");
 		}
 
-		fragInputCellDescrible.setLabelText("ÉÌÆ·ÃèÊö");{
-			fragInputCellDescrible.setHintText("ÇëÊäÈëÉÌÆ·ÃèÊö");
+		fragInPutCellNumber.setLabelText("å•†å“æ•°é‡");{
+			fragInPutCellNumber.setHintText("è¯·è¾“å…¥å•†å“æ•°é‡");
+		}
+
+		fragInputCellDescrible.setLabelText("å•†å“æè¿°");{
+			fragInputCellDescrible.setHintText("è¯·è¾“å…¥å•†å“æè¿°");
 		}
 	}
 
