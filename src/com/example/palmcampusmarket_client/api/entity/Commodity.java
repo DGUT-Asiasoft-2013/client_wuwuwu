@@ -1,6 +1,7 @@
 package com.example.palmcampusmarket_client.api.entity;
 
 import java.io.Serializable;
+import java.util.Date;
 
 public class Commodity implements Serializable{
 	User user;
@@ -9,7 +10,22 @@ public class Commodity implements Serializable{
 	int CommNumber;          //商品数量
 	String CommDescribe;     //商品描述
 	String CommImage;        //商品图片
+	
+    Date createDate;
+    Date editDate;
 
+	public Date getCreateDate() {
+		return createDate;
+	}
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
+	}
+	public Date getEditDate() {
+		return editDate;
+	}
+	public void setEditDate(Date editDate) {
+		this.editDate = editDate;
+	}
 	Integer id;
 
 	public User getUser() {
