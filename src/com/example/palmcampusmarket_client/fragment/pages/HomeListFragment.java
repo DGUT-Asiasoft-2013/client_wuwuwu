@@ -75,9 +75,6 @@ public class HomeListFragment extends Fragment {
 			});
 		}
 		return view;
-
-
-
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {

@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/label"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:background="@android:color/white"
@@ -19,9 +19,16 @@
 
     <EditText
         android:id="@+id/edit"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_weight="3"
-        android:hint="请输入内容" />
+        android:layout_gravity="right"
+        android:background="@null"
+        android:drawableBottom="@drawable/line2"
+        android:ems="10"
+        android:hint="请输入内容" >
+
+        <requestFocus />
+    </EditText>
 
 </LinearLayout>
