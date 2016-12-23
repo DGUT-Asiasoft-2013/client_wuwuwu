@@ -8,21 +8,12 @@
     <RelativeLayout
         android:layout_width="60dp"
         android:layout_height="match_parent" >
-        
-        
+
         <com.example.palmcampusmarket_client.fragment.AvatarView
             android:id="@+id/commavatar"
             android:layout_width="48dp"
             android:layout_height="48dp"
             android:layout_centerInParent="true" />
-
-        <TextView
-            android:id="@+id/username"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="name"
-            android:textColor="@android:color/darker_gray" />
     </RelativeLayout>
 
     <FrameLayout
@@ -31,29 +22,38 @@
         android:layout_marginLeft="68dp" >
 
         <TextView
-            android:id="@+id/title"
+            android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="18dp"
-            android:text="Title"
+            android:text="name"
             android:textColor="@android:color/black"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/price"
+            android:id="@+id/creatdate"
             android:layout_width="wrap_content"
             android:layout_height="14dp"
-            android:textSize="12sp"
-            android:text="Commodity Price"
             android:layout_gravity="right"
-            android:textColor="#aaa" />
-        
+            android:text="creatdate"
+            android:textColor="#aaa"
+            android:textSize="12sp" />
+
         <TextView
-            android:id="@+id/text"
-            android:layout_marginTop="18dp"
-            android:layout_width="match_parent"
+            android:id="@+id/price"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:text="Content Text" />
+            android:paddingTop="40dp"
+            android:text="price"
+            android:textColor="@android:color/black" />
+
+        <TextView
+            android:id="@+id/seller"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingTop="40dp"
+            android:text="seller"
+            android:textColor="#aaa" />
     </FrameLayout>
 
 </FrameLayout>

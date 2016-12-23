@@ -5,7 +5,6 @@ import java.util.Date;
 
 public class Commodity implements Serializable{
 	User user;
-
 	String CommName;         //商品名称
 	String CommPrice;        //商品价格
 	int CommNumber;          //商品数量
@@ -13,8 +12,9 @@ public class Commodity implements Serializable{
 	String CommImage;        //商品图片
 	Date createDate;
     Date editDate;
+	Integer id;
 
-
+	
 	public Date getCreateDate() {
 		return createDate;
 	}
@@ -27,7 +27,6 @@ public class Commodity implements Serializable{
 	public void setEditDate(Date editDate) {
 		this.editDate = editDate;
 	}
-	Integer id;
 
 	public User getUser() {
 		return user;

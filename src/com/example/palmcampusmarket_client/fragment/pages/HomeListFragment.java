@@ -18,6 +18,7 @@ import android.app.Fragment;
 import android.content.Intent;
 import android.database.DataSetObserver;
 import android.os.Bundle;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -91,21 +92,23 @@ public class HomeListFragment extends Fragment {
 				view = convertView;
 			}
 
-			TextView commContent = (TextView) view.findViewById(R.id.text);
-			TextView commName = (TextView) view.findViewById(R.id.title);
-			TextView commtsellerName = (TextView) view.findViewById(R.id.username);
-			TextView commPrice  = (TextView) view.findViewById(R.id.price);
-
 			AvatarView commAvatar = (AvatarView) view.findViewById(R.id.commavatar);
+			TextView commName = (TextView) view.findViewById(R.id.name);
+			TextView commPrice  = (TextView) view.findViewById(R.id.price);
+			TextView commcreatedate = (TextView) view.findViewById(R.id.creatdate);		
+			TextView commtsellerName = (TextView) view.findViewById(R.id.seller);
 
 			Commodity commodity = data.get(position);
 
-			commContent.setText(commodity.getCommDescribe());
 			commName.setText(commodity.getCommName());
-			commtsellerName.setText(commodity.getUser().getNickname());
 			commPrice.setText(commodity.getCommPrice());
+			commtsellerName.setText(commodity.getUser().getNickname());
 			
 			commAvatar.load(Server.serverAddress+commodity.getCommImage());
+			String dateStr = DateFormat.format("yyyy-MM-dd hh:mm",commodity.getCreateDate()).toString();
+			commcreatedate.setText(dateStr);
+			
+			
 
 			return view;
 
@@ -201,7 +204,7 @@ public class HomeListFragment extends Fragment {
 
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
-		textLoadMore.setText("ÔØÈëÖÐ¡­");
+		textLoadMore.setText("ï¿½ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½");
 		Request request = Server.requestBuilderWithApi("home/"+(page+1)).get().build();
 		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
@@ -212,7 +215,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("¼ÓÔØ¸ü¶à");
+						textLoadMore.setText("ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½");
 
 					}
 				});
@@ -247,7 +250,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("¼ÓÔØ¸ü¶à");
+						textLoadMore.setText("ï¿½ï¿½ï¿½Ø¸ï¿½ï¿½ï¿½");
 
 					}
 				});

@@ -51,7 +51,7 @@ public class CommodityContentActivity extends Activity {
 			public void onResult(String result) {
 				// TODO Auto-generated method stub
 				
-				countCollected.setText(result + "ÊÕ²Ø");
+				countCollected.setText(result + "ï¿½Õ²ï¿½");
 				
 			}
 		});
@@ -62,7 +62,6 @@ public class CommodityContentActivity extends Activity {
 		describe = (TextView) findViewById(R.id.describe_commodity_content);
 		describe.setText(commodity.getCommDescribe());
 		
-	
 	
 	}
 
