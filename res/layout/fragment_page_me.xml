@@ -3,15 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <TextView 
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="me"
-        android:textSize="30sp"
-        />
-    
-
     <RelativeLayout
         android:id="@+id/me"
         android:layout_width="match_parent"

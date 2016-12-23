@@ -61,7 +61,7 @@
             android:id="@+id/bill_image_view"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/bill" />
 
         <TextView
             android:id="@+id/bill_textView"
@@ -84,7 +84,7 @@
             android:id="@+id/asset_image_view"
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/ic_launcher" />
+            android:src="@drawable/money" />
 
         <TextView
             android:id="@+id/asset_textView"

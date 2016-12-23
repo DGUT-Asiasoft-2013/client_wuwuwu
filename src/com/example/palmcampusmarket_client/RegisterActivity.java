@@ -18,6 +18,7 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -35,6 +36,7 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
 	SimpleTextInputCellFragment fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
+	int money = 0;
 
 
 	@Override
@@ -63,7 +65,8 @@ public class RegisterActivity extends Activity {
 			fragInputCellAccount.setHintText("请输入账户名");
 		}
 
-		fragInputTelephone.setLabelText("手机号码");{
+		fragInputTelephone.setLabelText("手机号码");
+		{
 			fragInputTelephone.setHintText("请输入手机号码");
 		}
 
@@ -94,16 +97,16 @@ public class RegisterActivity extends Activity {
 		});
 
 
-
 	}
-	void submit(){
+
+	void submit() {
 		String password = fragInputCellPassword.getText();
 		String passwordRepeat = fragInputCellPasswordRepeat.getText();
 
 		if(!password.equals(passwordRepeat)){
 
 			new AlertDialog.Builder(RegisterActivity.this)
-			.setMessage("重复密码不一致")
+			.setMessage("两次密码不一致")
 			.setIcon(android.R.drawable.ic_dialog_alert)
 			.setNegativeButton("好", null)
 			.show();
@@ -127,7 +130,8 @@ public class RegisterActivity extends Activity {
 				.addFormDataPart("nickname", nickname)
 				.addFormDataPart("telephone", telephone)
 				.addFormDataPart("passwordHash", password)
-				.addFormDataPart("address", address);
+				.addFormDataPart("address", address)
+				.addFormDataPart("money",String.valueOf(money));
 
 		if(fragInputAvatar.getPngData()!=null){
 			requestBodyBuilder
@@ -141,7 +145,8 @@ public class RegisterActivity extends Activity {
 
 
 
-		Request request=Server.requestBuilderWithApi("register") 
+		Request request=Server.requestBuilderWithApi("register")
+
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();
@@ -155,19 +160,18 @@ public class RegisterActivity extends Activity {
 
 			@Override
 			public void onResponse(final Call arg0,final Response arg1) throws IOException {
+				final String s = arg1.body().string();
 				runOnUiThread(new Runnable() {
-
 					@Override
 					public void run() {
 						progressDialog.dismiss();
 
-						
 						try{
-							Toast.makeText(RegisterActivity.this, arg1.body().string(),Toast.LENGTH_LONG).show();
-							RegisterActivity.this.onResponse(arg0, arg1.body().string());
+							RegisterActivity.this.onResponse(arg0, s);
 						}catch (Exception e) {
-							e.printStackTrace();
-							RegisterActivity.this.onFailure(arg0, e);
+						//	e.printStackTrace();
+						//	RegisterActivity.this.onFailure(arg0, e);
+							Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
 						}
 
 					}
@@ -183,7 +187,7 @@ public class RegisterActivity extends Activity {
 					public void run() {
 						progressDialog.dismiss();
 
-						RegisterActivity.this.onFailure(arg0, arg1);
+					//	RegisterActivity.this.onFailure(arg0, arg1);
 
 					}
 				});
@@ -215,15 +219,10 @@ public class RegisterActivity extends Activity {
 
 	void onFailure(Call arg0, Exception arg1) {
 		new AlertDialog.Builder(this)
-		.setTitle("请求失败")
+		.setTitle("注册失败")
 		.setMessage(arg1.getLocalizedMessage())
 		.setNegativeButton("好", null)
 		.show();
 
 	}
-
-
-
-
-
 }

@@ -14,7 +14,6 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 public class HomePageActivity extends Activity {
 
@@ -23,8 +22,6 @@ public class HomePageActivity extends Activity {
 	CollectionListFragment contentCollectionList = new CollectionListFragment();
 	ShoppingPageFragment contentShoppingPage = new ShoppingPageFragment();
 	MeFragment contentMe = new MeFragment();
-
-
 	MainTabbarFragment tabbar;
 
 	@Override
