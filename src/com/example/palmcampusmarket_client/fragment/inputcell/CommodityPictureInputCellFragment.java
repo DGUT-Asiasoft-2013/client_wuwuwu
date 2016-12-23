@@ -60,8 +60,8 @@ public class CommodityPictureInputCellFragment extends CommodityBaseInputCellFra
 
 	void onImageViewClicked(){
 		String[] items={
-				"ÅÄÕÕ",
-				"Ïà²á"
+				"æ‹ç…§",
+				"å›¾åº“"
 		};
 
 		new AlertDialog.Builder(getActivity())
@@ -85,7 +85,7 @@ public class CommodityPictureInputCellFragment extends CommodityBaseInputCellFra
 
 			}
 		})
-		.setNegativeButton("È¡Ïû", null)
+		.setNegativeButton("å¥½", null)
 		.show();
 	}
 
