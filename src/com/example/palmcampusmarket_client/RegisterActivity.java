@@ -151,7 +151,11 @@ public class RegisterActivity extends Activity {
 		}
 
 
-		Request request = Server.requestBuilderWithApi("register")
+
+		Request request=Server.requestBuilderWithApi("register")   //修改了链接
+
+
+
 				.method("post", null)
 				.post(requestBodyBuilder.build())
 				.build();
@@ -225,4 +229,5 @@ public class RegisterActivity extends Activity {
 		.show();
 
 	}
+
 }
