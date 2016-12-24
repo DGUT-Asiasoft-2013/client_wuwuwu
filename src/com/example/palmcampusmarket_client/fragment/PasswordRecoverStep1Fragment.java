@@ -40,7 +40,7 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 
 
 		fragTelephone.setLabelText("手机号码");
-		fragTelephone.setHintText("请输入手机号码");
+		fragTelephone.setHintText("输入手机号码");
 
 	}
 

@@ -11,6 +11,7 @@ import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -97,13 +98,13 @@ public class SearchActivity extends Activity {
 				int radioButtonId = group.getCheckedRadioButtonId();
 
 				RadioButton rb = (RadioButton) findViewById(radioButtonId);
-				if(rb.getText().equals("◊Ó–¬")){
+				if(rb.getText().equals("ÊúÄÊñ∞")){
 					sort = "time";
 					search(sort);
-				}else if(rb.getText().equals("◊ÓπÛ")){
+				}else if(rb.getText().equals("ÊúÄË¥µ")){
 					sort = "highprice";
 					search(sort);
-				}else if(rb.getText().equals("◊Ó±„“À")){
+				}else if(rb.getText().equals("ÊúÄ‰æøÂÆú")){
 					sort = "lowprice";
 					search(sort);
 				}
@@ -117,7 +118,7 @@ public class SearchActivity extends Activity {
 		if(!edit.getText().toString().equals("")){
 			reload(sort);
 		}else{
-			Toast.makeText(SearchActivity.this, "«Î ‰»Î…Ã∆∑√˚≥∆", Toast.LENGTH_SHORT).show();
+			Toast.makeText(SearchActivity.this, "ËæìÂÖ•ÂïÜÂìÅÂêçÁß∞", Toast.LENGTH_SHORT).show();
 			return;}
 	}
 
@@ -135,14 +136,14 @@ public class SearchActivity extends Activity {
 				view = convertView;
 			}
 
-			View image;
+			ImageView image;
 			TextView name;
 			TextView describe;
 			TextView price;
 
 			final TextView countCollected;
 
-			image = view.findViewById(R.id.image_search);
+			image = (ImageView) view.findViewById(R.id.image_search);
 			name = (TextView) view.findViewById(R.id.name_search);
 			describe = (TextView) view.findViewById(R.id.describe_search);
 			price = (TextView) view.findViewById(R.id.price_search);
@@ -153,7 +154,7 @@ public class SearchActivity extends Activity {
 
 			final Commodity commodity = data.get(position);
 
-			//						image.load();
+			image.load(Server.serverAddress + commodity.getCommImage());
 			name.setText(commodity.getCommName());
 			describe.setText(commodity.getCommDescribe());
 			price.setText(commodity.getCommPrice());
@@ -165,7 +166,7 @@ public class SearchActivity extends Activity {
 					Object countingTag = countCollected.getTag();
 
 					if(countingTag == commodity){
-						countCollected.setText(result +" ’≤ÿ");	
+						countCollected.setText(result +"Êî∂Ëóè");	
 					}		
 				}
 			});

@@ -10,8 +10,11 @@ import com.example.palmcampusmarket_client.R.id;
 import com.example.palmcampusmarket_client.R.layout;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Collections;
+import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,6 +23,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
+import android.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,49 +50,66 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CollectionsActivity extends Activity {
+public class CollectionsFragment extends Fragment {
 
 	ListView listView;
+	
+	View btnLoadMore;
+	TextView textLoadMore;
 
-	int page;	
+	int page = 0;	
 	List<Collections> data;
 
 	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
 	int MID;
 
+	View view;
+	
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_collections);
-		reload();
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		if(view == null){
+			view = inflater.inflate(R.layout.activity_collections,null);
+			
+			btnLoadMore = inflater.inflate(R.layout.widget_load_more_button, null);
+			textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
+			
+			listView = (ListView) view.findViewById(R.id.list_collections);
+			listView.addFooterView(btnLoadMore);
+			listView.setAdapter(listAdapter);
 
-		listView = (ListView) findViewById(R.id.list_collections);
-		listView.setAdapter(listAdapter);
+			listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+				@Override
+				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+					onItemClicked(position);
+				}
+			});
 
-			@Override
-			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-				onItemClicked(position);
-			}
-		});
+			
+			btnLoadMore.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					loadmore();
+
+				}
+			});
 
 
-		onItemLongClicked();
-
-
-
+			onItemLongClicked();
+		}
+		return view;
 	}
 
-
-
-
+	
 
 	@Override
-	protected void onResume() {
+	public void onResume() {
 		super.onResume();
-
+		
+		reload();
 
 	}
 
@@ -107,14 +128,14 @@ public class CollectionsActivity extends Activity {
 				view = convertView;
 			}
 
-			View image;
+			ImageView image;
 			TextView name;
 			TextView describe;
 			TextView price;
 
 			final TextView countCollected;
 
-			image = view.findViewById(R.id.image_collections);
+			image = (ImageView) view.findViewById(R.id.image_collections);
 			name = (TextView) view.findViewById(R.id.name_collections);
 			describe = (TextView) view.findViewById(R.id.describe_collections);
 			price = (TextView) view.findViewById(R.id.price_collections);
@@ -122,7 +143,7 @@ public class CollectionsActivity extends Activity {
 
 			final Collections collections = data.get(position);
 
-			//			image.load();
+			image.load(Server.serverAddress + collections.getId().getCommodity().getCommImage());
 			name.setText(collections.getId().getCommodity().getCommName());
 			describe.setText(collections.getId().getCommodity().getCommDescribe());
 			price.setText(collections.getId().getCommodity().getCommPrice());
@@ -135,7 +156,7 @@ public class CollectionsActivity extends Activity {
 					Object countingTag = countCollected.getTag();
 
 					if(countingTag == collections){
-						countCollected.setText(result +"�ղ�");	
+						countCollected.setText(result +"收藏");	
 					}		
 				}
 			});
@@ -165,7 +186,7 @@ public class CollectionsActivity extends Activity {
 
 	void reload(){
 
-		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
+		Toast.makeText(getActivity(), "reload", Toast.LENGTH_SHORT).show();
 
 		OkHttpClient client = Server.getSharedClient();
 		Request request = Server.requestBuilderWithCs("collections")
@@ -182,17 +203,17 @@ public class CollectionsActivity extends Activity {
 							new TypeReference<Page<Collections>>() {});
 
 
-					CollectionsActivity.this.runOnUiThread(new Runnable() {
+					getActivity().runOnUiThread(new Runnable() {
 						public void run() {
-							CollectionsActivity.this.page = collections.getNumber();
-							CollectionsActivity.this.data = collections.getContent();
+							CollectionsFragment.this.page = collections.getNumber();
+							CollectionsFragment.this.data = collections.getContent();
 							listAdapter.notifyDataSetInvalidated();
 						}
 					});					
 				} catch (final Exception e) {
-					CollectionsActivity.this.runOnUiThread(new Runnable() {
+					getActivity().runOnUiThread(new Runnable() {
 						public void run() {
-							new AlertDialog.Builder(CollectionsActivity.this)
+							new AlertDialog.Builder(getActivity())
 							.setMessage(e.getMessage())
 							.show();
 						}
@@ -202,9 +223,9 @@ public class CollectionsActivity extends Activity {
 
 			@Override
 			public void onFailure(final Call arg0, final IOException arg1) {
-				CollectionsActivity.this.runOnUiThread(new Runnable() {
+				getActivity().runOnUiThread(new Runnable() {
 					public void run() {
-						new AlertDialog.Builder(CollectionsActivity.this)
+						new AlertDialog.Builder(getActivity())
 						.setMessage(arg1.getMessage())
 						.show();
 					}
@@ -215,9 +236,9 @@ public class CollectionsActivity extends Activity {
 
 
 	void onItemClicked(int position){
-		Intent itnt = new Intent(this, CommodityContentActivity.class);
+		Intent itnt = new Intent(getActivity(), CommodityContentActivity.class);
 
-		itnt.putExtra("collections", data.get(position));
+		itnt.putExtra("commodity", data.get(position).getId().getCommodity());
 		startActivity(itnt);
 	}
 
@@ -228,8 +249,8 @@ public class CollectionsActivity extends Activity {
 
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-				menu.add(0,0,0,"��������");
-				menu.add(0,1,0,"ȡ���ղ�");		
+				menu.add(0,0,0,"查看商品详情");
+				menu.add(0,1,0,"取消收藏");		
 			}
 		});
 
@@ -246,17 +267,17 @@ public class CollectionsActivity extends Activity {
 
 		switch(item.getItemId()) {
 		case 0:
+			Intent itnt = new Intent(getActivity(), CommodityContentActivity.class);
 
-			Toast.makeText(this,
-					"��������",
-					Toast.LENGTH_SHORT).show();
+			itnt.putExtra("commodity", collections.getId().getCommodity());
+			startActivity(itnt);
+
+
 			break;
 
 		case 1:
 
-			Toast.makeText(this,
-					"ȡ���ղ�",
-					Toast.LENGTH_SHORT).show();
+			
 
 			MultipartBody body = new MultipartBody
 					.Builder()
@@ -272,10 +293,13 @@ public class CollectionsActivity extends Activity {
 
 				@Override
 				public void onResponse(Call arg0, Response arg1) throws IOException {
-					runOnUiThread(new Runnable() {
+					getActivity().runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {
+							Toast.makeText(getActivity(),
+									"已删除该收藏",
+									Toast.LENGTH_SHORT).show();
 							reload();
 						}
 					});
@@ -286,13 +310,10 @@ public class CollectionsActivity extends Activity {
 				public void onFailure(Call arg0, IOException arg1) {
 					// TODO Auto-generated method stub
 
-					runOnUiThread(new Runnable() {
+					getActivity().runOnUiThread(new Runnable() {
 
 						@Override
-						public void run() {
-							Toast.makeText(CollectionsActivity.this,
-									"ɾ��ʧ��",
-									Toast.LENGTH_SHORT).show();								
+						public void run() {						
 
 						}
 					});
@@ -308,7 +329,63 @@ public class CollectionsActivity extends Activity {
 		}
 
 		return super.onContextItemSelected(item);
+	}
+	
+	void loadmore(){
+		btnLoadMore.setEnabled(false);
+		textLoadMore.setText("载入中");
+		Request request = Server.requestBuilderWithCs("collections/"+(page+1)).get().build();
+		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
+			@Override
+			public void onResponse(Call arg0, Response arg1) throws IOException {
+				getActivity().runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btnLoadMore.setEnabled(true);
+						textLoadMore.setText("加载更多");
+
+					}
+				});
+				try{
+					final Page<Collections> collection = new ObjectMapper().readValue(arg1.body().string(), new TypeReference<Page<Commodity>>() {});
+					if(collection.getNumber()>page){
+						getActivity().runOnUiThread(new Runnable() {
+
+							@Override
+							public void run() {
+								if(data==null){
+									data = collection.getContent();
+								}else{
+									data.addAll(collection.getContent());
+								}
+								page = collection.getNumber();
+								listAdapter.notifyDataSetChanged();
+
+							}
+						});
+					}
+				}catch(Exception ex){
+					ex.printStackTrace();
+				}
+
+			}
+
+			@Override
+			public void onFailure(Call arg0, IOException arg1) {
+				getActivity().runOnUiThread(new Runnable() {
+
+					@Override
+					public void run() {
+						btnLoadMore.setEnabled(true);
+						textLoadMore.setText("加载更多");
+
+					}
+				});
+
+			}
+		});
 	}
 
 }

@@ -8,7 +8,9 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
-import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.collect.CommodityContentActivity;
+import com.example.palmcampusmarket_client.collect.SearchActivity;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -21,10 +23,12 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import okhttp3.Call;
@@ -64,6 +68,22 @@ public class HomeListFragment extends Fragment {
 
 
 			});
+			
+			Button btnSearch = (Button) view.findViewById(R.id.btn_search_home);
+			
+			btnSearch.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), SearchActivity.class);
+					startActivity(intent);;
+					
+				}
+			});
+			
+			
 
 			btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
@@ -75,9 +95,11 @@ public class HomeListFragment extends Fragment {
 			});
 		}
 		return view;
+	}
 
-
-
+	protected void goSearch() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {
@@ -92,7 +114,7 @@ public class HomeListFragment extends Fragment {
 				view = convertView;
 			}
 
-			AvatarView commAvatar = (AvatarView) view.findViewById(R.id.commavatar);
+			ImageView commAvatar = (ImageView) view.findViewById(R.id.commavatar);
 			TextView commName = (TextView) view.findViewById(R.id.name);
 			TextView commPrice  = (TextView) view.findViewById(R.id.price);
 			TextView commcreatedate = (TextView) view.findViewById(R.id.creatdate);		
@@ -105,7 +127,7 @@ public class HomeListFragment extends Fragment {
 			commtsellerName.setText(commodity.getUser().getNickname());
 			
 			commAvatar.load(Server.serverAddress+commodity.getCommImage());
-			String dateStr = DateFormat.format("yyyy-MM-dd hh:mm",commodity.getCreateDate()).toString();
+			String dateStr = DateFormat.format("yyyy-mm-dd hh:mm",commodity.getCreateDate()).toString();
 			commcreatedate.setText(dateStr);
 			
 			
@@ -197,14 +219,14 @@ public class HomeListFragment extends Fragment {
 
 	void onItemClicked(int position){
 		Commodity comm = data.get(position);
-		Intent itnt = new Intent(getActivity(),NewCommodityActivity.class);
-        itnt.putExtra("Commodity", comm);
+		Intent itnt = new Intent(getActivity(),CommodityContentActivity.class);
+        itnt.putExtra("commodity", comm);
 		startActivity(itnt);
 	}
 
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
-		textLoadMore.setText("�����С�");
+		textLoadMore.setText("载入中");
 		Request request = Server.requestBuilderWithApi("home/"+(page+1)).get().build();
 		Server.getSharedClient().newCall(request).enqueue(new Callback() {
 
@@ -215,7 +237,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("���ظ���");
+						textLoadMore.setText("加载更多");
 
 					}
 				});
@@ -250,7 +272,7 @@ public class HomeListFragment extends Fragment {
 					@Override
 					public void run() {
 						btnLoadMore.setEnabled(true);
-						textLoadMore.setText("���ظ���");
+						textLoadMore.setText("加载更多");
 
 					}
 				});

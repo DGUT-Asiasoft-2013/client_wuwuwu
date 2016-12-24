@@ -41,9 +41,7 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 		imageView  = (ImageView) view.findViewById(R.id.image);
 		labelText = (TextView) view.findViewById(R.id.label);
 		hintText = (TextView) view.findViewById(R.id.hint);
-
 		imageView.setOnClickListener(new View.OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
@@ -56,7 +54,9 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 	void onImageViewClicked(){
 		String[] items = {
 				"拍照",
+
 				"图库"
+
 		};
 		new AlertDialog.Builder(getActivity())
 		.setTitle(labelText.getText())
@@ -78,7 +78,8 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 
 			}
 		})
-		.setNegativeButton("好",null)
+
+		.setNegativeButton("取消",null)
 		.show();
 	}
 

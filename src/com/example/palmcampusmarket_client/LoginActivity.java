@@ -93,7 +93,6 @@ public class LoginActivity extends Activity {
 	}
 
 	void goLogin(){
-
 		
 
 
