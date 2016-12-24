@@ -86,7 +86,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 class="com.example.palmcampusmarket_client.fragment.inputcell.PictureInputCellFragment"
-                tools:layout="@layout/fragment_inputcell_picture" />
+                tools:layout="@layout/faragment_input_commodity_picture" />
 
           
             <Button
