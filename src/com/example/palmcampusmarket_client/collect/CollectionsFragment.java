@@ -14,6 +14,7 @@ import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -127,14 +128,14 @@ public class CollectionsFragment extends Fragment {
 				view = convertView;
 			}
 
-			AvatarView image;
+			ImageView image;
 			TextView name;
 			TextView describe;
 			TextView price;
 
 			final TextView countCollected;
 
-			image = (AvatarView) view.findViewById(R.id.image_collections);
+			image = (ImageView) view.findViewById(R.id.image_collections);
 			name = (TextView) view.findViewById(R.id.name_collections);
 			describe = (TextView) view.findViewById(R.id.describe_collections);
 			price = (TextView) view.findViewById(R.id.price_collections);

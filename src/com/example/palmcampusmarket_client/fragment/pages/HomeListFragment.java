@@ -10,7 +10,7 @@ import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CommodityContentActivity;
 import com.example.palmcampusmarket_client.collect.SearchActivity;
-import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -114,7 +114,7 @@ public class HomeListFragment extends Fragment {
 				view = convertView;
 			}
 
-			AvatarView commAvatar = (AvatarView) view.findViewById(R.id.commavatar);
+			ImageView commAvatar = (ImageView) view.findViewById(R.id.commavatar);
 			TextView commName = (TextView) view.findViewById(R.id.name);
 			TextView commPrice  = (TextView) view.findViewById(R.id.price);
 			TextView commcreatedate = (TextView) view.findViewById(R.id.creatdate);		

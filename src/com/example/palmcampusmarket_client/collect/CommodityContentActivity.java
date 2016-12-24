@@ -6,7 +6,7 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
-import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -14,7 +14,6 @@ import android.os.Handler;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import okhttp3.Call;
@@ -40,16 +39,16 @@ public class CommodityContentActivity extends Activity {
 
 
 		btnBack = (TextView) findViewById(R.id.btn_back_commodity_content);
-		
+
 		btnBack.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				finish();
-				
+
 			}
 		});
-		
+
 		btnCollect = (TextView) findViewById(R.id.btn_collect_commodity_content);
 
 		checkIsCollected(commodity, new OnCheckResultListener() {
@@ -65,10 +64,10 @@ public class CommodityContentActivity extends Activity {
 
 			}
 		});
-		
+
 		btnBuy = (Button) findViewById(R.id.btn_buy);
 
-		AvatarView image;
+		ImageView image;
 		TextView name;
 
 		final TextView countCollected;
@@ -79,21 +78,21 @@ public class CommodityContentActivity extends Activity {
 		TextView describe;
 
 
-		image = (AvatarView) findViewById(R.id.image_commodity_content);
-		//		image.
+		image = (ImageView) findViewById(R.id.image_commodity_content);
+		image.load(Server.serverAddress + commodity.getCommImage());
 
 		name = (TextView) findViewById(R.id.name_commodity_content);
 		name.setText(commodity.getCommName());
 
 		countCollected = (TextView) findViewById(R.id.collected_commodity_content);
-		
+
 		CountOfCollected.getCount(commodity, new OnCountResultListener() {
-			
+
 			@Override
 			public void onResult(String result) {
 				// TODO Auto-generated method stub
 				countCollected.setText(result + "收藏");
-				
+
 			}
 		});
 
