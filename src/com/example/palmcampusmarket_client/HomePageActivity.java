@@ -1,6 +1,7 @@
 package com.example.palmcampusmarket_client;
 
 
+import com.example.palmcampusmarket_client.collect.CollectionsFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnNewClickedListener;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnTabSelectedListener;
@@ -14,17 +15,14 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 
 public class HomePageActivity extends Activity {
 
 
 	HomeListFragment contentHomeList = new HomeListFragment();
-	CollectionListFragment contentCollectionList = new CollectionListFragment();
+	CollectionsFragment contentCollectionList = new CollectionsFragment();
 	ShoppingPageFragment contentShoppingPage = new ShoppingPageFragment();
 	MeFragment contentMe = new MeFragment();
-
-
 	MainTabbarFragment tabbar;
 
 	@Override

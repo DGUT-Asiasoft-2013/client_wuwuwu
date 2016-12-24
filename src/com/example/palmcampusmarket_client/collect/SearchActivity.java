@@ -97,13 +97,13 @@ public class SearchActivity extends Activity {
 				int radioButtonId = group.getCheckedRadioButtonId();
 
 				RadioButton rb = (RadioButton) findViewById(radioButtonId);
-				if(rb.getText().equals("×îĞÂ")){
+				if(rb.getText().equals("æœ€æ–°")){
 					sort = "time";
 					search(sort);
-				}else if(rb.getText().equals("×î¹ó")){
+				}else if(rb.getText().equals("æœ€è´µ")){
 					sort = "highprice";
 					search(sort);
-				}else if(rb.getText().equals("×î±ãÒË")){
+				}else if(rb.getText().equals("æœ€ä¾¿å®œ")){
 					sort = "lowprice";
 					search(sort);
 				}
@@ -117,7 +117,7 @@ public class SearchActivity extends Activity {
 		if(!edit.getText().toString().equals("")){
 			reload(sort);
 		}else{
-			Toast.makeText(SearchActivity.this, "ÇëÊäÈëÉÌÆ·Ãû³Æ", Toast.LENGTH_SHORT).show();
+			Toast.makeText(SearchActivity.this, "è¾“å…¥å•†å“åç§°", Toast.LENGTH_SHORT).show();
 			return;}
 	}
 
@@ -165,7 +165,7 @@ public class SearchActivity extends Activity {
 					Object countingTag = countCollected.getTag();
 
 					if(countingTag == commodity){
-						countCollected.setText(result +"ÊÕ²Ø");	
+						countCollected.setText(result +"æ”¶è—");	
 					}		
 				}
 			});
