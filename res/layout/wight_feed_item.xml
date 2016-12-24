@@ -9,7 +9,7 @@
         android:layout_width="60dp"
         android:layout_height="match_parent" >
 
-        <com.example.palmcampusmarket_client.fragment.AvatarView
+        <com.example.palmcampusmarket_client.fragment.ImageView
             android:id="@+id/commavatar"
             android:layout_width="48dp"
             android:layout_height="48dp"

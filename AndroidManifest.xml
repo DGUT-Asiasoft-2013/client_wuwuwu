@@ -26,7 +26,7 @@
         </activity>
         <activity android:name="com.example.palmcampusmarket_client.HelloActivity" />
         <activity android:name="com.example.palmcampusmarket_client.LoginActivity" />
-        <activity android:name="com.example.palmcampusmarket_client.collect.CollectionsActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.collect.CommodityContentActivity" />
         <activity android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity" />
         <activity android:name="com.example.palmcampusmarket_client.RegisterActivity" />
         <activity android:name="com.example.palmcampusmarket_client.collect.SearchActivity" />
