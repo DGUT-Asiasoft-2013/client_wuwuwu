@@ -5,10 +5,12 @@
     android:orientation="vertical" >
 
     <Button
-       android:id="@+id/searchButton"
+        android:id="@+id/searchButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#EDEDED"
+        android:layout_gravity="center_horizontal"
+        android:background="#F7F7F7"
+        android:drawableBottom="@drawable/line2"
         android:hint="请输入需要的物品" />
 
     <ListView
