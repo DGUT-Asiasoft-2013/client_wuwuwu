@@ -11,8 +11,7 @@
         android:id="@+id/label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-
-        android:gravity="center"
+       android:layout_marginLeft="4dp"
         android:text="选取图片"
         android:textColor="@android:color/black" />
 
