@@ -19,7 +19,7 @@
             android:text="＜"
             android:textSize="30sp" />
 
-        <ImageView
+        <com.example.palmcampusmarket_client.fragment.AvatarView
             android:id="@+id/image_commodity_content"
             android:layout_width="240dp"
             android:layout_height="160dp"

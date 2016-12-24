@@ -9,6 +9,7 @@ import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CommodityContentActivity;
+import com.example.palmcampusmarket_client.collect.SearchActivity;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -22,10 +23,12 @@ import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 import okhttp3.Call;
@@ -65,6 +68,22 @@ public class HomeListFragment extends Fragment {
 
 
 			});
+			
+			Button btnSearch = (Button) view.findViewById(R.id.btn_search_home);
+			
+			btnSearch.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), SearchActivity.class);
+					startActivity(intent);;
+					
+				}
+			});
+			
+			
 
 			btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
@@ -76,6 +95,11 @@ public class HomeListFragment extends Fragment {
 			});
 		}
 		return view;
+	}
+
+	protected void goSearch() {
+		// TODO Auto-generated method stub
+		
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {

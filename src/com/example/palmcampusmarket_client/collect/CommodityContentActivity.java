@@ -6,6 +6,7 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -67,7 +68,7 @@ public class CommodityContentActivity extends Activity {
 		
 		btnBuy = (Button) findViewById(R.id.btn_buy);
 
-		ImageView image;
+		AvatarView image;
 		TextView name;
 
 		final TextView countCollected;
@@ -78,7 +79,7 @@ public class CommodityContentActivity extends Activity {
 		TextView describe;
 
 
-		image = (ImageView) findViewById(R.id.image_commodity_content);
+		image = (AvatarView) findViewById(R.id.image_commodity_content);
 		//		image.
 
 		name = (TextView) findViewById(R.id.name_commodity_content);

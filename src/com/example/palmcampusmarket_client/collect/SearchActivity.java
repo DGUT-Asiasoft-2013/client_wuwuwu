@@ -11,6 +11,7 @@ import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -135,14 +136,14 @@ public class SearchActivity extends Activity {
 				view = convertView;
 			}
 
-			View image;
+			AvatarView image;
 			TextView name;
 			TextView describe;
 			TextView price;
 
 			final TextView countCollected;
 
-			image = view.findViewById(R.id.image_search);
+			image = (AvatarView) view.findViewById(R.id.image_search);
 			name = (TextView) view.findViewById(R.id.name_search);
 			describe = (TextView) view.findViewById(R.id.describe_search);
 			price = (TextView) view.findViewById(R.id.price_search);
@@ -153,7 +154,7 @@ public class SearchActivity extends Activity {
 
 			final Commodity commodity = data.get(position);
 
-			//						image.load();
+			image.load(Server.serverAddress + commodity.getCommImage());
 			name.setText(commodity.getCommName());
 			describe.setText(commodity.getCommDescribe());
 			price.setText(commodity.getCommPrice());

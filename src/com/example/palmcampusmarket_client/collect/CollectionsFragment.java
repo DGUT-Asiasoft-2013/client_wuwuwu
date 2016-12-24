@@ -268,7 +268,7 @@ public class CollectionsFragment extends Fragment {
 		case 0:
 			Intent itnt = new Intent(getActivity(), CommodityContentActivity.class);
 
-			itnt.putExtra("collections", collections);
+			itnt.putExtra("commodity", collections.getId().getCommodity());
 			startActivity(itnt);
 
 
