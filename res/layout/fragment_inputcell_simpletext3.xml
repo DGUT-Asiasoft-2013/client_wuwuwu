@@ -5,19 +5,20 @@
     android:layout_marginBottom="4dp"
     android:layout_marginTop="4dp"
     android:orientation="horizontal"
-    android:layout_marginLeft="10dp"
-    android:layout_marginRight="10dp"
-    android:background="@drawable/edit_bg" >   
+    android:background="@drawable/textview_select">"
   
     <ImageView
+        android:id="@+id/image"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
         android:layout_weight="4"/>
     <EditText
         android:id="@+id/edit"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:hint="请输入内容"
+        android:layout_marginRight="5dp"
         android:layout_weight="1"
         android:background="@null" />
 

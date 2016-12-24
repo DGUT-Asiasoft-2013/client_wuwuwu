@@ -1,7 +1,7 @@
 package com.example.palmcampusmarket_client.fragment;
 
 import com.example.palmcampusmarket_client.R;
-import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment3;
 
 import android.app.Fragment;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 public class PasswordRecoverStep1Fragment extends Fragment {
-	SimpleTextInputCellFragment fragTelephone; 
+	SimpleTextInputCellFragment3 fragTelephone; 
 	View view;
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -18,7 +18,7 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 		if(view==null){
 			view = inflater.inflate(R.layout.fragment_password_recover_step1, null);
 
-			fragTelephone = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_telephone);
+			fragTelephone = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_telephone);
 
 			view.findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
 
@@ -39,7 +39,7 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 		super.onResume();
 
 
-		fragTelephone.setLabelText("手机号码");
+		fragTelephone.setScr(R.drawable.phone);
 		fragTelephone.setHintText("输入手机号码");
 
 	}
