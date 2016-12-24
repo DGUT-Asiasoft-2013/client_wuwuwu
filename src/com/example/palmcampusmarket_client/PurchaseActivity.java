@@ -100,8 +100,9 @@ public class PurchaseActivity extends Activity {  //购买页面
 			super.onResume();
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
+			if(commodity.getCommImage()!=null){
 			commodityPicture.load(commodity.getCommImage());
-			
+			}
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
 					.method("get", null)
@@ -148,7 +149,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 				.addFormDataPart("commmodity_Id", commodity_Id.toString())
 				.addFormDataPart("commodityPrice", commodity.getCommPrice())
 				.addFormDataPart("buyNumber", buyNumber.getText().toString())
-				.addFormDataPart("totalPrice", getString(totalPrice));
+				.addFormDataPart("totalPrice", String.valueOf(totalPrice));
 		
 		Request request = Server.requestBuilderWithApi("purchaseHistory")  //写入消费记录表
 				.method("post", null)
