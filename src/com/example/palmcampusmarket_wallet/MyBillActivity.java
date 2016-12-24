@@ -2,11 +2,13 @@ package com.example.palmcampusmarket_wallet;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
@@ -47,6 +49,13 @@ public class MyBillActivity extends Activity {
         bill_listview = (ListView) findViewById(R.id.bill_list);
         bill_listview.setAdapter(listadapter);
 
+        bill_listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                particulars(position);
+            }
+        });
+
 
     }
 
@@ -54,6 +63,15 @@ public class MyBillActivity extends Activity {
     public void onResume() {
         super.onResume();
         reload();
+    }
+
+    void particulars(int position){
+        Bill bill = new Bill();
+        bill = dates.get(position);
+        Intent intent = new Intent(MyBillActivity.this,ImageShower.class);
+        intent.putExtra("bill",bill);
+        startActivity(intent);
+
     }
 
     void reload() {
@@ -135,7 +153,6 @@ public class MyBillActivity extends Activity {
             viewHoder.bill_list_item_time.setText(DateFormat.format("yyyy-mm-dd hh:mm", dates.get(position).getCreateDate()));
             return convertview;
         }
-
         class ViewHoder {
             ImageView imageView;
             TextView bill_list_item_name;
