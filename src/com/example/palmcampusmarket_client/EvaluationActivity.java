@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -23,7 +24,7 @@ import okhttp3.Response;
 public class EvaluationActivity extends Activity {
 
 	TextView commodityDescribe;
-	ImageView commodityPicture;
+	AvatarView commodityPicture;
 	EditText evaluation;
 	RatingBar ratingBar;
 	Commodity commodity;
@@ -35,7 +36,7 @@ public class EvaluationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_evaluation);
 		commodityDescribe=(TextView)findViewById(R.id.commodity_describe);
-		commodityPicture=(ImageView)findViewById(R.id.commodity_picture);
+		commodityPicture=(AvatarView)findViewById(R.id.commodity_picture);
 		evaluation=(EditText)findViewById(R.id.evaluation);
 		ratingBar=(RatingBar)findViewById(R.id.ratingBar);
 
@@ -56,6 +57,7 @@ public class EvaluationActivity extends Activity {
 		super.onResume();
 		
 		commodityDescribe.setText(commodity.getCommDescribe());
+		commodityPicture.load(commodity.getCommImage());
 	}
 	
 	void goEvaluationSubmit(){

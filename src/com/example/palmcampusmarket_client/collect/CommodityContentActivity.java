@@ -2,6 +2,8 @@ package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
 
+
+import com.example.palmcampusmarket_client.PurchaseActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
@@ -9,6 +11,7 @@ import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResul
 import com.example.palmcampusmarket_client.fragment.ImageView;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -135,8 +138,20 @@ public class CommodityContentActivity extends Activity {
 				});
 
 			}
-		});		
+		});
+		
+		btnBuy.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				Intent itnt = new Intent(CommodityContentActivity.this, PurchaseActivity.class);
+				itnt.putExtra("infomation", commodity);
+				startActivity(itnt);
+			}
+		});
 	}
+	
+	
 
 	@Override
 	protected void onResume() {

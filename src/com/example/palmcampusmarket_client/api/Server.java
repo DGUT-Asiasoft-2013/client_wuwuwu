@@ -36,7 +36,6 @@ public class Server {
 
 	public static Request.Builder requestBuilderWithApi(String api){
 		return new Request.Builder()
-
 				.url(serverAddress+"api/"+api);
 	}
 

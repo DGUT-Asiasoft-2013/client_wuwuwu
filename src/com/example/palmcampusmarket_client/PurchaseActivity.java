@@ -5,10 +5,14 @@ import java.io.IOException;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.User;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
@@ -18,22 +22,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-///��ťûд
-public class PurchaseActivity extends Activity {  //����ҳ��
+///按钮没写
+public class PurchaseActivity extends Activity {  //购买页面
 
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
 	Button btnAdd,btnSub;
 	EditText buyNumber;
-	ImageView commodityPicture;
+	AvatarView commodityPicture;
 	int num,totalPrice,priceOne;
 	Commodity commodity;
 	PurchaseFragmentFunctionbar buyFunctionbar;
+	Integer buyerId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,7 +53,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 		buyerAddress=(TextView)findViewById(R.id.buyer_address);//买家地址ַ
 		singlePrice=(TextView)findViewById(R.id.buy_price);//单价
 		buyNumber=(EditText)findViewById(R.id.buy_number);//购买数量
-		commodityPicture=(ImageView)findViewById(R.id.commodity_picture);//物品图片
+		commodityPicture=(AvatarView)findViewById(R.id.commodity_picture);//物品图片
 		buyFunctionbar=(PurchaseFragmentFunctionbar)getFragmentManager().findFragmentById(R.id.frag_tabber);
 		
 		commodity=(Commodity)getIntent().getSerializableExtra("infomation");//从商品详情页面获取商品信息
@@ -55,7 +62,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			
 			@Override
 			public void onClick(View v) {
-				goBuySuccess();
+				goBuyNow();
 				
 			}
 		});
@@ -93,8 +100,9 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			super.onResume();
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
-			
-			
+			if(commodity.getCommImage()!=null){
+			commodityPicture.load(commodity.getCommImage());
+			}
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
 					.method("get", null)
@@ -133,14 +141,74 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			
 		}
 	
-	void goBuySuccess(){  //按了购买按钮后跳转页面
+	void goBuyNow(){  //按了购买按钮后跳转页面
+		OkHttpClient client =Server.getSharedClient();
+		Integer commodity_Id = commodity.getId();
+		MultipartBody.Builder requestBody =new MultipartBody.Builder()
+				.setType(MultipartBody.FORM)
+				.addFormDataPart("commmodity_Id", commodity_Id.toString())
+				.addFormDataPart("commodityPrice", commodity.getCommPrice())
+				.addFormDataPart("buyNumber", buyNumber.getText().toString())
+				.addFormDataPart("totalPrice", String.valueOf(totalPrice));
 		
+		Request request = Server.requestBuilderWithApi("purchaseHistory")  //写入消费记录表
+				.method("post", null)
+				.post(requestBody.build())
+				.build();
+		
+		final ProgressDialog progressDialog = new ProgressDialog(PurchaseActivity.this);
+		progressDialog.setMessage("请稍候");
+		progressDialog.setCancelable(false);
+		progressDialog.setCanceledOnTouchOutside(false);
+		
+		client.newCall(request).enqueue(new Callback() {
+			
+			@Override
+			public void onResponse(final Call arg0, Response arg1) throws IOException {
+				final String s = arg1.body().string();
+				runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						progressDialog.dismiss();
+						
+						try{
+							PurchaseActivity.this.onSubmitResponse(arg0, s);
+						}catch(Exception e){
+							Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
+						}
+					}
+				});
+				
+			}
+			
+			@Override
+			public void onFailure(Call arg0, IOException arg1) {
+				
+				
+			}
+		});
 	}
 	
+	protected void onSubmitResponse(Call arg0, String s) {
+		new AlertDialog.Builder(this)
+		.setTitle("购买成功")
+		.setMessage(s)
+		.setPositiveButton("好", new DialogInterface.OnClickListener() {
+
+			@Override
+			public void onClick(DialogInterface dialog, int which) {
+				finish();
+
+			}
+		})
+		.show();
+	}
+
 	protected void onResponse(Call arg0,User user){
 		buyerName.setText("收货人："+user.getAccount());
 		buyerTelephone.setText("联系电话："+user.getTelephone());
 		buyerAddress.setText("收货地址："+user.getAddress());
+		buyerId=user.getId();
 	}
 	
 	protected void onFailuer(Call arg0,Exception ex){
