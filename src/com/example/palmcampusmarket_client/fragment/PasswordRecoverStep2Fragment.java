@@ -3,7 +3,7 @@ package com.example.palmcampusmarket_client.fragment;
 
 
 import com.example.palmcampusmarket_client.R;
-import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment3;
 
 import android.app.AlertDialog;
 import android.app.Fragment;
@@ -14,8 +14,8 @@ import android.view.ViewGroup;
 
 public class PasswordRecoverStep2Fragment extends Fragment {
 	View view;
-	SimpleTextInputCellFragment fragPassword;
-	SimpleTextInputCellFragment fragPasswordRepeat;
+	SimpleTextInputCellFragment3 fragPassword;
+	SimpleTextInputCellFragment3 fragPasswordRepeat;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -23,8 +23,8 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 
 		if(view==null){
 			view = inflater.inflate(R.layout.fragment_password_recover_step2,null);
-			fragPassword=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_password);
-			fragPasswordRepeat=(SimpleTextInputCellFragment)getFragmentManager().findFragmentById(R.id.input_password_repeat);
+			fragPassword=(SimpleTextInputCellFragment3)getFragmentManager().findFragmentById(R.id.input_password);
+			fragPasswordRepeat=(SimpleTextInputCellFragment3)getFragmentManager().findFragmentById(R.id.input_password_repeat);
 		}
 
 		view.findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
@@ -47,13 +47,13 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 
 
 
-		fragPassword.setLabelText("密码");{
+		fragPassword.setScr(R.drawable.password1);{
 			fragPassword.setHintText("请输入密码");
 			fragPassword.setIsPassword(true);
 		}
 
 
-		fragPasswordRepeat.setLabelText("确认密码");{
+		fragPasswordRepeat.setScr(R.drawable.lock);{
 			fragPasswordRepeat.setHintText("请重新输入密码");
 
 			fragPasswordRepeat.setIsPassword(true);

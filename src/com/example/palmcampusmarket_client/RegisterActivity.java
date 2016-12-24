@@ -1,7 +1,7 @@
 package com.example.palmcampusmarket_client;
 
 
-import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment3;
 
 import java.io.IOException;
 
@@ -29,12 +29,12 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class RegisterActivity extends Activity {
-	SimpleTextInputCellFragment fragInputCellAccount;
-	SimpleTextInputCellFragment fragInputTelephone;
-	SimpleTextInputCellFragment fragInputNickname;
-	SimpleTextInputCellFragment fragInputCellPassword;
-	SimpleTextInputCellFragment fragInputCellPasswordRepeat;
-	SimpleTextInputCellFragment fragInputCellAddress;
+	SimpleTextInputCellFragment3 fragInputCellAccount;
+	SimpleTextInputCellFragment3 fragInputTelephone;
+	SimpleTextInputCellFragment3 fragInputNickname;
+	SimpleTextInputCellFragment3 fragInputCellPassword;
+	SimpleTextInputCellFragment3 fragInputCellPasswordRepeat;
+	SimpleTextInputCellFragment3 fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
 	int money = 0;
 
@@ -46,12 +46,12 @@ public class RegisterActivity extends Activity {
 
 
 		setContentView(R.layout.activity_register);
-		fragInputCellAccount = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_account);
-		fragInputTelephone = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_telephone);
-		fragInputNickname = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_nickname);
-		fragInputCellPassword = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password);
-		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_password_repeat);
-		fragInputCellAddress = (SimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.input_address);
+		fragInputCellAccount = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_account);
+		fragInputTelephone = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_telephone);
+		fragInputNickname = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_nickname);
+		fragInputCellPassword = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_password);
+		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_password_repeat);
+		fragInputCellAddress = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
 
 
@@ -63,34 +63,34 @@ public class RegisterActivity extends Activity {
 		// TODO Auto-generated method stub
 		super.onResume();
 
-		fragInputCellAccount.setLabelText("账户名");
+		fragInputCellAccount.setScr(R.drawable.user);
 		{
 			fragInputCellAccount.setHintText("请输入账户名");
 		}
 
-		fragInputTelephone.setLabelText("手机号码");
+		fragInputTelephone.setScr(R.drawable.phone);
 		{
 			fragInputTelephone.setHintText("请输入手机号码");
 		}
 
-		fragInputNickname.setLabelText("昵称");
+		fragInputNickname.setScr(R.drawable.name);
 		{
 			fragInputNickname.setHintText("请输入昵称");
 		}
 
-		fragInputCellPassword.setLabelText("密码");
+		fragInputCellPassword.setScr(R.drawable.password1);
 		{
 			fragInputCellPassword.setHintText("请输入密码");
 			fragInputCellPassword.setIsPassword(true);
 		}
 
-		fragInputCellPasswordRepeat.setLabelText("重复密码");
+		fragInputCellPasswordRepeat.setScr(R.drawable.lock);
 		{
 			fragInputCellPasswordRepeat.setHintText("请重复输入密码");
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
 
-		fragInputCellAddress.setLabelText("收货地址");
+		fragInputCellAddress.setScr(R.drawable.adress);
 		{
 			fragInputCellAddress.setHintText("请输入收货地址");
 		}
