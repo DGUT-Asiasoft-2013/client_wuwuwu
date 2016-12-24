@@ -4,12 +4,34 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
-    <Button
-       android:id="@+id/searchButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#EDEDED"
-        android:hint="请输入需要的物品" />
+          <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:gravity="right"
+            android:orientation="horizontal"
+            android:background="@android:color/white" >
+
+            <TextView
+                android:id="@+id/title_home"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_margin="3dp"
+                android:layout_toLeftOf="@+id/btn_search_home"
+                android:text="掌上校园"
+                android:textColor="@android:color/holo_blue_light"
+                android:gravity="center_vertical"
+                android:textStyle="italic"
+                android:textSize="33sp" />
+
+            <Button
+                android:id="@+id/btn_search_home"
+                android:layout_width="33dp"
+                android:layout_height="33dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/image_search" />
+        </RelativeLayout>
 
     <ListView
         android:id="@+id/homelist"

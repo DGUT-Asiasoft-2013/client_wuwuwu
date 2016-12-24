@@ -52,6 +52,7 @@
             android:id="@+id/comm_describle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            
             android:layout_marginTop="10dp"
             class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext" />
@@ -62,7 +63,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             class="com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment"
-            tools:layout="@layout/fragment_inputcell_picture" />
+            tools:layout="@layout/faragment_input_commodity_picture" />
 
         <Button
             android:id="@+id/btn_add"
