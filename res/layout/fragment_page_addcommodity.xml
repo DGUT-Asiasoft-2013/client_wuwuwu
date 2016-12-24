@@ -52,6 +52,7 @@
             android:id="@+id/comm_describle"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            
             android:layout_marginTop="10dp"
             class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
             tools:layout="@layout/fragment_inputcell_simpletext" />

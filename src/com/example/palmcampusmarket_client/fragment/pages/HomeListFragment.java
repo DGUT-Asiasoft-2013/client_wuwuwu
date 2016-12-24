@@ -123,8 +123,8 @@ public class HomeListFragment extends Fragment {
 			Commodity commodity = data.get(position);
 
 			commName.setText(commodity.getCommName());
-			commPrice.setText(commodity.getCommPrice());
-			commtsellerName.setText(commodity.getUser().getNickname());
+			commPrice.setText("￥"+commodity.getCommPrice());
+			commtsellerName.setText("卖家 "+commodity.getUser().getNickname());
 			
 			commAvatar.load(Server.serverAddress+commodity.getCommImage());
 			String dateStr = DateFormat.format("yyyy-mm-dd hh:mm",commodity.getCreateDate()).toString();
