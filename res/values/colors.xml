@@ -5,7 +5,7 @@
     <color name="blank">#000000</color>
     <color name="huise">#f5f5f5</color>
     <color name="fense">#F6CB90</color>
-    <color name="login_background">#F05829</color>
+    <color name="login_background">#ff0099cc</color>
     <color name="orange">#F05829</color>
     <color name="login_button_background">#71c297</color>
       <color name="content_color">#666666</color>

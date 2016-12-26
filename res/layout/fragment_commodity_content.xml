@@ -63,7 +63,7 @@
             android:layout_below="@+id/collected_commodity_content" >
 
             <Button
-                android:id="@+id/btn_buy"
+                android:id="@+id/btn_commodity_content_buy"
                 android:layout_width="110dp"
                 android:layout_height="32dp"
                 android:layout_alignParentRight="true"

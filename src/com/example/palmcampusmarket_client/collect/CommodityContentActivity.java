@@ -2,6 +2,7 @@ package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
 
+import com.example.palmcampusmarket_client.PurchaseActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
@@ -12,6 +13,7 @@ import com.example.palmcampusmarket_client.fragment.pages.HomeListFragment;
 import android.R.integer;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -327,6 +329,9 @@ public class CommodityContentActivity extends Activity {
 		ImageView image;
 		image = (ImageView) findViewById(R.id.image_commodity_content);
 		image.load(Server.serverAddress + commodity.getCommImage());
+		
+
+		
 
 
 

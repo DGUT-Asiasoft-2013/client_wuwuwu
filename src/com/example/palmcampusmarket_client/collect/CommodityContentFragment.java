@@ -1,14 +1,17 @@
 package com.example.palmcampusmarket_client.collect;
 
+import com.example.palmcampusmarket_client.PurchaseActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.collect.CountOfCollected.OnCountResultListener;
 
 import android.app.Fragment;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -35,6 +38,9 @@ public class CommodityContentFragment extends Fragment {
 		if(view == null){
 			view = inflater.inflate(R.layout.fragment_commodity_content, null);
 			final Commodity commodity = (Commodity) getActivity().getIntent().getSerializableExtra("commodity");
+			
+			
+			
 			TextView name;
 			name = (TextView) view.findViewById(R.id.name_commodity_content);
 			name.setText(commodity.getCommName());
@@ -68,7 +74,17 @@ public class CommodityContentFragment extends Fragment {
 			describe.setText(commodity.getCommDescribe());
 			
 			Button btnBuy;
-			btnBuy = (Button) view.findViewById(R.id.btn_buy);
+			btnBuy = (Button) view.findViewById(R.id.btn_commodity_content_buy);
+			
+			btnBuy.setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					Intent itnt = new Intent(getActivity(), PurchaseActivity.class);
+					itnt.putExtra("infomation", commodity);
+					startActivity(itnt);
+				}
+			});
 			
 		}		
 		
