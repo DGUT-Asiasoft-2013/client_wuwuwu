@@ -50,7 +50,7 @@ public class HomeListFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		if(view == null){
-			view = inflater.inflate(R.layout.fragment_page_home_list, null);
+			view = inflater.inflate(R.layout.new_fragment_home_list, null);
 			btnLoadMore = inflater.inflate(R.layout.widget_load_more_button, null);
 			textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
 
@@ -69,7 +69,7 @@ public class HomeListFragment extends Fragment {
 
 			});
 			
-			Button btnSearch = (Button) view.findViewById(R.id.btn_search_home);
+			Button btnSearch = (Button) view.findViewById(R.id.search_commodity_input);
 			
 			btnSearch.setOnClickListener(new OnClickListener() {
 				

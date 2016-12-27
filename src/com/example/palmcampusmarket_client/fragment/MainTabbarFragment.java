@@ -10,14 +10,15 @@ import android.view.ViewGroup;
 
 public class MainTabbarFragment extends Fragment {
 
-	View btnNew,tabHome,tabCollection,tabShoppingCart,tabMe;
+	View tabHome,tabCollection,tabShoppingCart,tabMe;
+	//View btnNew
 	View[] tabs;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		View view = inflater.inflate(R.layout.fragment_page_home, null);
 
 
-		btnNew = view.findViewById(R.id.btn_new);
+	//	btnNew = view.findViewById(R.id.btn_new);
 		tabHome = view.findViewById(R.id.tab_home);
 		tabCollection = view.findViewById(R.id.tab_collection);
 		tabShoppingCart = view.findViewById(R.id.tab_shoppingCart);
@@ -37,13 +38,13 @@ public class MainTabbarFragment extends Fragment {
 			});
 		}
 
-		btnNew.setOnClickListener(new View.OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				onNewClicked();
-			}
-		});
+//		btnNew.setOnClickListener(new View.OnClickListener() {
+//
+//			@Override
+//			public void onClick(View v) {
+//				onNewClicked();
+//			}
+//		});
 
 		return view;
 	}
