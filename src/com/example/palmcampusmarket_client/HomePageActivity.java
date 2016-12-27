@@ -2,6 +2,7 @@ package com.example.palmcampusmarket_client;
 
 
 import com.example.palmcampusmarket_client.collect.CollectionsFragment;
+import com.example.palmcampusmarket_client.collect.NewActivity;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnNewClickedListener;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnTabSelectedListener;
@@ -49,7 +50,7 @@ public class HomePageActivity extends Activity {
 			@Override
 			public void onNewClicked() {
 
-				bringUpEditor();
+				bringUpNewActivity();
 			}
 		});
 	}
@@ -57,8 +58,8 @@ public class HomePageActivity extends Activity {
 	
 
 	
-	void bringUpEditor(){
-		Intent itnt = new Intent(this, NewCommodityActivity.class);
+	void bringUpNewActivity(){
+		Intent itnt = new Intent(this, NewActivity.class);
 		startActivity(itnt);
 		overridePendingTransition(R.anim.slide_in_bottom, R.anim.none);
 	}
