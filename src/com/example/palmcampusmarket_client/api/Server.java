@@ -26,7 +26,9 @@ public class Server {
 
 
 
+
 	public static String serverAddress = "http://172.27.15.29:8080/membercenter/";
+
 
 
 	public  static Request.Builder requestBuilderWithWallet(String wallet){

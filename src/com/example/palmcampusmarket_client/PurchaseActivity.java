@@ -101,7 +101,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
 			if(commodity.getCommImage()!=null){
-			commodityPicture.load(commodity.getCommImage());
+			commodityPicture.load(Server.serverAddress + commodity.getCommImage());
 			}
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
