@@ -51,12 +51,12 @@
     </LinearLayout>
 
     
-    <!--  <Button                //加号按钮省略
+      <Button                
         android:id="@+id/btn_new"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:text="+"
-        android:textColor="@android:color/white" /> -->
+        android:textColor="@android:color/white" /> 
    
 
     <LinearLayout
