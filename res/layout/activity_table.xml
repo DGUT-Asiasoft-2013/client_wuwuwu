@@ -48,7 +48,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/Rating" />
+                android:src="@drawable/rating" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -129,7 +129,7 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_gravity="center"
-                android:src="@drawable/Tumblr" />
+                android:src="@drawable/tumblr" />
 
             <TextView
                 android:id="@+id/textView5"
