@@ -17,9 +17,9 @@
             android:layout_height="34dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
-            android:paddingLeft="2dp"
-            android:paddingTop="2dp"
+            android:gravity="center"
             android:text="＜"
+            android:background="#1C86EE"
             android:textSize="30sp" />
 
         <com.example.palmcampusmarket_client.fragment.ImageView
