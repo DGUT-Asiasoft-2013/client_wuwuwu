@@ -10,7 +10,8 @@ import android.view.ViewGroup;
 
 public class MainTabbarFragment extends Fragment {
 
-	View btnNew,tabHome,tabCollection,tabShoppingCart,tabMe;
+	View tabHome,tabCollection,tabShoppingCart,tabMe;
+	View btnNew;
 	View[] tabs;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {

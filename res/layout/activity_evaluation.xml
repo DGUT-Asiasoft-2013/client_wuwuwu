@@ -13,14 +13,14 @@
             android:layout_height="match_parent"
             android:weightSum="10" >
 
-            <ImageView
-                android:id="@+id/commodity_picture"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="7"
-                android:padding="5dp"
-                android:src="@drawable/text_picture2" >
-            </ImageView>
+            
+            <com.example.palmcampusmarket_client.fragment.ImageDown
+                    android:id="@+id/commodity_picture"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="7"
+                    android:padding="5dp"
+                    android:src="@drawable/text_picture2" />
 
             <TextView
                 android:id="@+id/commodity_describe"
