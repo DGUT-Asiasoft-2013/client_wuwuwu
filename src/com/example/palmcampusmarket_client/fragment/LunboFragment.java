@@ -1,11 +1,13 @@
-package com.example.palmcampusmarket_client;
+package com.example.palmcampusmarket_client.fragment;
 
 import java.util.ArrayList;  
 import java.util.List;  
 import java.util.concurrent.Executors;  
 import java.util.concurrent.ScheduledExecutorService;  
-import java.util.concurrent.TimeUnit;  
-  
+import java.util.concurrent.TimeUnit;
+
+import com.example.palmcampusmarket_client.R;
+
 import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;  
@@ -52,9 +54,10 @@ public class LunboFragment extends Fragment {
     private ScheduledExecutorService scheduledExecutorService;
 	private View view;  
   
-    public View onCreateview(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {   
+	@Override
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {   
     	view = inflater.inflate(R.layout.lunbo,null);  
-        mViewPaper = (ViewPager)getActivity().findViewById(R.id.vp);  
+        mViewPaper = (ViewPager)view.findViewById(R.id.vp);  
           
         //显示的图片  
         images = new ArrayList<ImageView>();  
@@ -65,13 +68,13 @@ public class LunboFragment extends Fragment {
         }  
         //显示的小点  
         dots = new ArrayList<View>();  
-        dots.add(getActivity().findViewById(R.id.dot_0));  
-        dots.add(getActivity().findViewById(R.id.dot_1));  
-        dots.add(getActivity().findViewById(R.id.dot_2));  
-        dots.add(getActivity().findViewById(R.id.dot_3));  
-        dots.add(getActivity().findViewById(R.id.dot_4));  
+        dots.add(view.findViewById(R.id.dot_0));  
+        dots.add(view.findViewById(R.id.dot_1));  
+        dots.add(view.findViewById(R.id.dot_2));  
+        dots.add(view.findViewById(R.id.dot_3));  
+        dots.add(view.findViewById(R.id.dot_4));  
           
-        title = (TextView) getActivity().findViewById(R.id.title);  
+        title = (TextView) view.findViewById(R.id.title);  
         title.setText(titles[0]);  
           
         adapter = new ViewPagerAdapter();  
