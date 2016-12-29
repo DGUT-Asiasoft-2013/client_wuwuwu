@@ -47,8 +47,8 @@ public class NewCommodityActivity extends Activity {
 		fragInputCellDescrible = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
 		fragInputImage = (CommodityPictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
 
-		
-		
+
+
 		findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -66,7 +66,7 @@ public class NewCommodityActivity extends Activity {
 		String number = fragInPutCellNumber.getText();
 		String describle = fragInputCellDescrible.getText();
 		byte[] image = fragInputImage.getPngData();
-		
+
 		//if(name.isEmpty())
 
 		OkHttpClient client = Server.getSharedClient();
