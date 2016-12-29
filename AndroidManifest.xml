@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.palmcampusmarket_client.HelloActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.TableActivity" />
         <activity android:name="com.example.palmcampusmarket_client.LoginActivity" />
         <activity android:name="com.example.palmcampusmarket_client.collect.CommodityContentActivity" />
         <activity android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity" />
