@@ -6,11 +6,13 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;  
 import java.util.concurrent.TimeUnit;  
   
-import android.app.Activity;  
+import android.app.Activity;
+import android.app.Fragment;
 import android.os.Bundle;  
 import android.os.Handler;  
 import android.support.v4.view.PagerAdapter;  
-import android.support.v4.view.ViewPager;  
+import android.support.v4.view.ViewPager;
+import android.view.LayoutInflater;
 import android.view.Menu;  
 import android.view.View;  
 import android.view.ViewGroup;  
@@ -21,9 +23,9 @@ import android.widget.TextView;
  * 程序主入口 
  * 
  */  
-public class LunboActivity extends Activity {  
+public class LunboFragment extends Fragment {  
   
-    private ViewPager mViewPaper;  
+	private ViewPager mViewPaper;  
     private List<ImageView> images;  
     private List<View> dots;  
     private int currentItem;  
@@ -47,30 +49,29 @@ public class LunboActivity extends Activity {
         };  
     private TextView title;  
     private ViewPagerAdapter adapter;  
-    private ScheduledExecutorService scheduledExecutorService;  
+    private ScheduledExecutorService scheduledExecutorService;
+	private View view;  
   
-    @Override  
-    protected void onCreate(Bundle savedInstanceState) {  
-        super.onCreate(savedInstanceState);  
-        setContentView(R.layout.lunbo);  
-        mViewPaper = (ViewPager) findViewById(R.id.vp);  
+    public View onCreateview(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {   
+    	view = inflater.inflate(R.layout.lunbo,null);  
+        mViewPaper = (ViewPager)getActivity().findViewById(R.id.vp);  
           
         //显示的图片  
         images = new ArrayList<ImageView>();  
         for(int i = 0; i < imageIds.length; i++){  
-            ImageView imageView = new ImageView(this);  
+            ImageView imageView = new ImageView(getActivity());  
             imageView.setBackgroundResource(imageIds[i]);  
             images.add(imageView);  
         }  
         //显示的小点  
         dots = new ArrayList<View>();  
-        dots.add(findViewById(R.id.dot_0));  
-        dots.add(findViewById(R.id.dot_1));  
-        dots.add(findViewById(R.id.dot_2));  
-        dots.add(findViewById(R.id.dot_3));  
-        dots.add(findViewById(R.id.dot_4));  
+        dots.add(getActivity().findViewById(R.id.dot_0));  
+        dots.add(getActivity().findViewById(R.id.dot_1));  
+        dots.add(getActivity().findViewById(R.id.dot_2));  
+        dots.add(getActivity().findViewById(R.id.dot_3));  
+        dots.add(getActivity().findViewById(R.id.dot_4));  
           
-        title = (TextView) findViewById(R.id.title);  
+        title = (TextView) getActivity().findViewById(R.id.title);  
         title.setText(titles[0]);  
           
         adapter = new ViewPagerAdapter();  
@@ -98,12 +99,12 @@ public class LunboActivity extends Activity {
             public void onPageScrollStateChanged(int arg0) {  
                   
             }  
-        });  
+        });
+		return view;  
     }  
   
     /** 
      * 自定义Adapter 
-     * @author liuyazhuang 
      * 
      */  
     private class ViewPagerAdapter extends PagerAdapter{  
@@ -141,13 +142,13 @@ public class LunboActivity extends Activity {
         // Inflate the menu; this adds items to the action bar if it is present.  
         getMenuInflater().inflate(R.menu.lunbo, menu);  
         return true;  
-    }  
+    }  *
   
     /** 
      * 利用线程池定时执行动画轮播 
      */  
-    @Override  
-    protected void onStart() {  
+    @Override
+	public void onStart() {  
         // TODO Auto-generated method stub  
         super.onStart();  
         scheduledExecutorService = Executors.newSingleThreadScheduledExecutor();  
@@ -161,7 +162,6 @@ public class LunboActivity extends Activity {
       
     /** 
      * 图片轮播任务 
-     * @author liuyazhuang 
      * 
      */  
     private class ViewPageTask implements Runnable{  
@@ -181,8 +181,8 @@ public class LunboActivity extends Activity {
             mViewPaper.setCurrentItem(currentItem);  
         };  
     };  
-    @Override  
-    protected void onStop() {  
+    @Override
+	public void onStop() {  
         // TODO Auto-generated method stub  
         super.onStop();  
         if(scheduledExecutorService != null){  

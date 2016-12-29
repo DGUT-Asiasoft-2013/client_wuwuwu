@@ -40,7 +40,6 @@
         <activity android:name="com.example.palmcampusmarket_wallet.SettingActivity"/>
         <activity android:name="com.example.palmcampusmarket_wallet.ImageShower"
             android:theme="@style/ImageScale"/>
-        <activity android:name="com.example.palmcampusmarket_client.LunboActivity"/>
         
     </application>
 
