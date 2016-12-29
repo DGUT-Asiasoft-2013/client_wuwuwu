@@ -73,9 +73,9 @@ public class LoginActivity extends Activity {
 
 		super.onResume();
 
-		
+
 		fragAccount.setHintText("请输入账户名");                    
-	
+
 		fragPassword.setHintText("请输入密码");
 		fragPassword.setIsPassword(true);
 	}
@@ -93,7 +93,7 @@ public class LoginActivity extends Activity {
 	}
 
 	void goLogin(){
-		
+
 
 
 		String account = fragAccount.getText();       //获取用户输入的账号
@@ -132,15 +132,15 @@ public class LoginActivity extends Activity {
 
 					runOnUiThread(new Runnable() {
 
-					@Override
-					public void run() {
-						progressDialog.dismiss();
-						startHomePageActivity();
+						@Override
+						public void run() {
+							progressDialog.dismiss();
+							startHomePageActivity();
 						}
 					});	
 				}catch(final Exception e){
 					runOnUiThread(new Runnable() {
-						
+
 						@Override
 						public void run() {
 							progressDialog.dismiss();
@@ -150,7 +150,7 @@ public class LoginActivity extends Activity {
 							.show();
 						}
 					});
-					
+
 				}
 			}
 
