@@ -142,7 +142,7 @@ public class NewCommodityActivity extends Activity {
 	void onResponse(Call arg0,String responseBody){
 		new AlertDialog.Builder(this)
 		.setTitle("上架成功")
-		.setMessage(responseBody)
+		//		.setMessage(responseBody)
 		.setPositiveButton("好",new DialogInterface.OnClickListener() {
 
 			@Override
@@ -156,7 +156,7 @@ public class NewCommodityActivity extends Activity {
 	void onFailure(Call arg0,Exception arg1){
 		new AlertDialog.Builder(this)
 		.setTitle("上架失败")
-		.setMessage(arg1.getMessage())
+		//		.setMessage(arg1.getMessage())
 		.setNegativeButton("好", null)
 		.show();
 

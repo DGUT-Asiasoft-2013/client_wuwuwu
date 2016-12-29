@@ -30,6 +30,7 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TableLayout;
 import android.widget.TextView;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -43,6 +44,7 @@ public class HomeListFragment extends Fragment {
 	View btnLoadMore;
 	TextView textLoadMore;
 
+
 	List<Commodity> data;
 	int page = 0;
 
@@ -53,8 +55,11 @@ public class HomeListFragment extends Fragment {
 			view = inflater.inflate(R.layout.new_fragment_home_list, null);
 			btnLoadMore = inflater.inflate(R.layout.widget_load_more_button, null);
 			textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
+			View listViewHeader = inflater.inflate(R.layout.activity_table, null);
+
 
 			listView = (ListView) view.findViewById(R.id.homelist);
+			listView.addHeaderView(listViewHeader);
 			listView.addFooterView(btnLoadMore);
 			listView.setAdapter(listAdapter);
 
@@ -68,22 +73,22 @@ public class HomeListFragment extends Fragment {
 
 
 			});
-			
+
 			Button btnSearch = (Button) view.findViewById(R.id.search_commodity_input);
-			
+
 			btnSearch.setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
 					intent.setClass(getActivity(), SearchActivity.class);
 					startActivity(intent);;
-					
+
 				}
 			});
-			
-			
+
+
 
 			btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
@@ -99,7 +104,7 @@ public class HomeListFragment extends Fragment {
 
 	protected void goSearch() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	BaseAdapter listAdapter = new BaseAdapter() {
@@ -125,12 +130,12 @@ public class HomeListFragment extends Fragment {
 			commName.setText(commodity.getCommName());
 			commPrice.setText("￥"+commodity.getCommPrice());
 			commtsellerName.setText("卖家 "+commodity.getUser().getNickname());
-			
+
 			commAvatar.load(Server.serverAddress+commodity.getCommImage());
 			String dateStr = DateFormat.format("yyyy-mm-dd hh:mm",commodity.getCreateDate()).toString();
 			commcreatedate.setText(dateStr);
-			
-			
+
+
 
 			return view;
 
@@ -220,7 +225,7 @@ public class HomeListFragment extends Fragment {
 	void onItemClicked(int position){
 		Commodity comm = data.get(position);
 		Intent itnt = new Intent(getActivity(),CommodityContentActivity.class);
-        itnt.putExtra("commodity", comm);
+		itnt.putExtra("commodity", comm);
 		startActivity(itnt);
 	}
 
