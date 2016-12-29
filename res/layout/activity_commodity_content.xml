@@ -1,28 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent" >
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
     <RelativeLayout
         android:id="@+id/image_view"
-        android:layout_width="match_parent"
-        android:layout_height="160dp" >
+        android:layout_width="wrap_content"
+        android:layout_height="168dp"
+        android:background="@android:color/white" >
 
         <TextView
             android:id="@+id/btn_back_commodity_content"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:paddingTop="2dp"
-            android:paddingLeft="2dp"
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
+            android:gravity="center"
             android:text="＜"
+            android:background="#1C86EE"
             android:textSize="30sp" />
 
         <com.example.palmcampusmarket_client.fragment.ImageView
             android:id="@+id/image_commodity_content"
             android:layout_width="240dp"
-            android:layout_height="160dp"
+            android:layout_height="165dp"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true" />
 
@@ -32,192 +35,63 @@
             android:layout_height="34dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:paddingTop="2dp"
             android:paddingRight="2dp"
+            android:paddingTop="2dp"
             android:text="☆"
             android:textColor="#ff9933"
             android:textSize="30sp" />
     </RelativeLayout>
 
-    <TextView
-        android:id="@+id/name_commodity_content"
+    <RadioGroup
+        android:id="@+id/rd_content"
         android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/image_view"
-        android:ellipsize="end"
-        android:gravity="center_vertical"
-        android:lines="1"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="商品名称"
-        android:textSize="22sp" />
+        android:layout_height="35dp"
+        android:layout_gravity="center"
+        android:orientation="horizontal" >
 
-    <TextView
-        android:id="@+id/collected_commodity_content"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:gravity="center_vertical"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/name_commodity_content"
-        android:paddingLeft="20dp"
-        android:text="xx收藏"
-        android:textColor="#808080" />
+        <RadioButton
+            android:id="@+id/rd_commodity"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tabbar_check"
+            android:button="@null"
+            android:checked="true"
+            android:gravity="center"
+            android:text="商品"
+            android:textColor="@color/tabbar_checked_text_color"
+            android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/rmb_commodity_content"
-        android:layout_width="30dp"
-        android:layout_height="55dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/collected_commodity_content"
-        android:gravity="center_vertical"
-        android:paddingLeft="20dp"
-        android:text="¥"
-        android:textColor="#66cc99"
-        android:textSize="20sp" />
+        <RadioButton
+            android:id="@+id/rd_evaluation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tabbar_check"
+            android:button="@null"
+            android:gravity="center"
+            android:text="评价"
+            android:textColor="@color/tabbar_checked_text_color"
+            android:textSize="25sp" />
 
-    <TextView
-        android:id="@+id/price_commodity_content"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_below="@+id/collected_commodity_content"
-        android:layout_toRightOf="@+id/rmb_commodity_content"
-        android:gravity="center_vertical"
-        android:paddingLeft="5dp"
-        android:text="9999"
-        android:textColor="#66cc99"
-        android:textSize="20sp" />
+        <RadioButton
+            android:id="@+id/rd_seller"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/tabbar_check"
+            android:button="@null"
+            android:gravity="center"
+            android:text="卖家"
+            android:textColor="@color/tabbar_checked_text_color"
+            android:textSize="25sp" />
+    </RadioGroup>
 
 
     <FrameLayout
-        android:id="@+id/frag_btn_buy"
-        android:layout_width="120dp"
-        android:layout_height="55dp"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/collected_commodity_content" >
-
-        <Button
-            android:id="@+id/btn_buy"
-            android:layout_width="110dp"
-            android:layout_height="32dp"
-            android:layout_alignParentRight="true"
-            android:layout_gravity="center_vertical"
-            android:background="#ffcc99"
-            android:text="购买"
-            android:textSize="20sp" />
+        android:id="@+id/content_checked"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
     </FrameLayout>
 
-    <View
-        android:id="@+id/line_view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/rmb_commodity_content"
-        android:background="@android:color/darker_gray" />
-
-    <View
-        android:id="@+id/line_view2"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/image_view"
-        android:background="@android:color/darker_gray" />
-
-    <View
-        android:id="@+id/line_view3"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/describe_commodity_content"
-        android:background="@android:color/darker_gray" />
-
-    <TextView
-        android:id="@+id/text_view"
-        android:layout_width="match_parent"
-        android:layout_height="22dp"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/line_view"
-        android:gravity="center_vertical"
-        android:paddingLeft="20dp"
-        android:text="商品介绍："
-        android:textColor="#0066cc" />
-
-    <TextView
-        android:id="@+id/describe_commodity_content"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/text_view"
-        android:ellipsize="end"
-        android:lines="10"
-        android:paddingBottom="5dp"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:text="商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍
-            商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍商品介绍" />
-
-    <RelativeLayout
-        android:id="@+id/num_view"
-        android:layout_width="wrap_content"
-        android:layout_height="55dp"
-        android:layout_below="@+id/collected_commodity_content"
-        android:layout_marginRight="5dp"
-        android:layout_toLeftOf="@+id/frag_btn_buy"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:id="@+id/num_textview"
-            android:layout_width="35dp"
-            android:layout_height="55dp"
-            android:text="剩余:"
-            android:textSize="12sp" 
-            android:gravity="center"/>
-
-        <TextView
-            android:id="@+id/num_commodity_content"
-            android:layout_width="50dp"
-            android:layout_height="55dp"
-            android:gravity="center_vertical"
-            android:layout_toRightOf="@+id/num_textview"
-            android:text="9999"
-            android:lines="1"
-            android:textStyle="italic"
-            android:textSize="20sp"
-            android:textColor="@android:color/holo_red_light" />
-    </RelativeLayout>
-
-    <TextView
-        android:id="@+id/seller_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_toLeftOf="@+id/seller_commodity_content"
-        android:layout_below="@+id/name_commodity_content"
-        android:paddingRight="2dp"
-        android:text="卖家："
-        android:gravity="center_vertical"
-        android:textSize="11sp"
-        android:textColor="#808080" />
-
-    <TextView
-        android:id="@+id/seller_commodity_content"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_alignLeft="@+id/frag_btn_buy"
-        android:layout_alignParentRight="true"
-        android:layout_below="@+id/name_commodity_content"
-        android:gravity="center_vertical"
-        android:text="我是卖家"
-        android:lines="1"
-        android:paddingRight="2dp"
-        android:textColor="@android:color/holo_blue_light"
-        android:textSize="13sp" />
-
-</RelativeLayout>
+</LinearLayout>

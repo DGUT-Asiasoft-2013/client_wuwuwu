@@ -14,7 +14,7 @@
             android:id="@+id/wallet_back"
             android:layout_width="wrap_content"
             android:layout_height="50dp"
-            android:background="@color/orange"
+            android:background="#ff0099cc"
             android:src="@drawable/fanhui_02" />
 
         <TextView

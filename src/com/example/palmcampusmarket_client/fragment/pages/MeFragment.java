@@ -2,6 +2,7 @@ package com.example.palmcampusmarket_client.fragment.pages;
 
 import android.app.Fragment;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,19 +12,33 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.palmcampusmarket_client.R;
+import com.example.palmcampusmarket_client.api.Server;
+import com.example.palmcampusmarket_client.api.entity.User;
+import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageDown;
 import com.example.palmcampusmarket_wallet.ImageShower;
 import com.example.palmcampusmarket_wallet.MyWalletActivity;
 import com.example.palmcampusmarket_wallet.SettingActivity;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 /**
  * Created by Administrator on 2016/12/22.
  */
 public class MeFragment extends Fragment implements View.OnClickListener{
    View view;
-
-   // AvatarView my_avatarview;
+   User current_user;
+  // ImageDown my_avatarview;
+  AvatarView my_avatarview;
     TextView my_nickname,photo_tongyong_text,collect_tongyong_text,wallet_tongyong_text,setting_tongyong_text;
-    ImageView photo_tongyong_iv,wallet_tongyong_iv,collect_tongyong_iv,setting_tongyong_iv,my_avatarview;
+    ImageView photo_tongyong_iv,wallet_tongyong_iv,collect_tongyong_iv,setting_tongyong_iv;
     RelativeLayout me,my_page_photo,my_page_collect,my_page_wallet,my_page_setting;
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
        if (view == null){
@@ -39,6 +54,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                @Override
                public void onClick(View view) {
                    Intent intent = new Intent(getActivity(),ImageShower.class);
+                   intent.putExtra("user",current_user);
                    startActivity(intent);
                }
            });
@@ -62,6 +78,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                 break;
             case R.id.me:
                 intent.setClass(getActivity(),SettingActivity.class);
+
                 startActivity(intent);
                 break;
         }
@@ -69,7 +86,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
 
     public void findview(){
         me = (RelativeLayout) view.findViewById(R.id.me);
-        my_avatarview = (ImageView) view.findViewById(R.id.my_page_avatar);
+        my_avatarview = (AvatarView) view.findViewById(R.id.my_page_image);
         my_nickname = (TextView) view.findViewById(R.id.my_page_ninckname);
         my_page_photo = (RelativeLayout) view.findViewById(R.id.my_page_photo);
         my_page_collect = (RelativeLayout) view.findViewById(R.id.my_page_collect);
@@ -97,5 +114,56 @@ public class MeFragment extends Fragment implements View.OnClickListener{
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        OkHttpClient client = Server.getSharedClient();
+        Request request = Server.requestBuilderWithApi("me").get().build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(final Call call, final IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        MeFragment.this.onFailuer(call,e);
+                    }
+                });
 
+            }
+            @Override
+            public void onResponse(final Call call, final Response response) throws IOException {
+                try {
+                    final User user = new ObjectMapper().readValue(response.body().bytes(), User.class);
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MeFragment.this.onResponse(call, user);
+                        }
+                    });
+                }catch (final Exception e){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            MeFragment.this.onFailuer(call,e);
+                        }
+                    });
+                }
+
+            }
+        });
+    }
+
+    protected void onResponse(Call call, User user){
+        current_user = user;
+        my_avatarview.load(Server.serverAddress+user.getAvatar());
+        my_nickname.setText(user.getAccount());
+
+
+
+
+    }
+
+    protected void onFailuer(Call call, Exception ex){
+
+    }
 }
