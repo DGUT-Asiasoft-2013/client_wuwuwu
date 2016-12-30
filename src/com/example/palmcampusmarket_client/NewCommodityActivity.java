@@ -7,16 +7,19 @@ import java.io.IOException;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
-
-
+import com.example.palmcampusmarket_client.fragment.inputcell.CommodityTypeInputFragment;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.TextView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -33,6 +36,11 @@ public class NewCommodityActivity extends Activity {
 	CommoditySimpleTextInputCellFragment fragInputCellPrice;  
 	CommoditySimpleTextInputCellFragment fragInPutCellNumber;
 	CommoditySimpleTextInputCellFragment fragInputCellDescrible;
+    CommodityTypeInputFragment fragmentInputCellType;                  //修改：类型
+
+
+
+
 	CommodityPictureInputCellFragment fragInputImage;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,9 +54,10 @@ public class NewCommodityActivity extends Activity {
 		fragInPutCellNumber = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_number);
 		fragInputCellDescrible = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_describle);
 		fragInputImage = (CommodityPictureInputCellFragment) getFragmentManager().findFragmentById(R.id.comm_image);
+		fragmentInputCellType = (CommodityTypeInputFragment) getFragmentManager().findFragmentById(R.id.type);   //修改：类型
 
-		
-		
+
+
 		findViewById(R.id.btn_add).setOnClickListener(new View.OnClickListener() {
 
 			@Override
@@ -66,7 +75,7 @@ public class NewCommodityActivity extends Activity {
 		String number = fragInPutCellNumber.getText();
 		String describle = fragInputCellDescrible.getText();
 		byte[] image = fragInputImage.getPngData();
-		
+		String type = fragmentInputCellType.getTypeItem();        //类型
 		//if(name.isEmpty())
 
 		OkHttpClient client = Server.getSharedClient();
@@ -76,7 +85,9 @@ public class NewCommodityActivity extends Activity {
 				.addFormDataPart("CommName", name)
 				.addFormDataPart("CommPrice", price)
 				.addFormDataPart("CommNumber", number)
-				.addFormDataPart("CommDescrible", describle);
+				.addFormDataPart("CommDescrible", describle)
+				.addFormDataPart("CommType", type);
+
 
 		if(fragInputImage.getPngData()!=null){
 			requestBulderBody
