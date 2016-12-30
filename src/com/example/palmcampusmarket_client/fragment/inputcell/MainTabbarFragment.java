@@ -20,7 +20,7 @@ public class MainTabbarFragment extends Fragment {
 		View view = inflater.inflate(R.layout.fragment_page_home, null);
 		
 		
-	//	btnNew = view.findViewById(R.id.btn_new);
+		btnNew = view.findViewById(R.id.btn_new);
 		
 		btnNew.setOnClickListener(new View.OnClickListener() {
 			

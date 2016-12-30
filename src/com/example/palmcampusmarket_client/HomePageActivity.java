@@ -2,6 +2,7 @@ package com.example.palmcampusmarket_client;
 
 
 import com.example.palmcampusmarket_client.collect.CollectionsFragment;
+import com.example.palmcampusmarket_client.collect.NewFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnNewClickedListener;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnTabSelectedListener;
@@ -13,8 +14,12 @@ import com.example.palmcampusmarket_client.fragment.pages.ShoppingPageFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.TextView;
 
 public class HomePageActivity extends Activity {
 
@@ -24,6 +29,7 @@ public class HomePageActivity extends Activity {
 	ShoppingPageFragment contentShoppingPage = new ShoppingPageFragment();
 	MeFragment contentMe = new MeFragment();
 	MainTabbarFragment tabbar;
+	View newFrame;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +37,29 @@ public class HomePageActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_palmcampus);
 
+		newFrame = findViewById(R.id.frame_new_outside);
+		newFrame.setVisibility(View.GONE);
+		newFrame.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(newFrame.getVisibility() == View.VISIBLE){
+					newFrame.setVisibility(View.GONE);
+				}else{
+					newFrame.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+
 		tabbar = (MainTabbarFragment) getFragmentManager().findFragmentById(R.id.frag_tabbar);
 
-	    tabbar.setOnTabSelectedListener(new OnTabSelectedListener() {
-			
+		tabbar.setOnTabSelectedListener(new OnTabSelectedListener() {
+
 			@Override
 			public void onTabSelected(int index) {
 				changeContentFragment(index);
-				
+
 			}
 		});
 
@@ -48,19 +69,62 @@ public class HomePageActivity extends Activity {
 
 			@Override
 			public void onNewClicked() {
-
-				bringUpEditor();
+				toggleNewActivity();
 			}
 		});
+
+
 	}
 
-	
 
-	
-	void bringUpEditor(){
+
+	@Override
+	public void onBackPressed() {
+		// TODO Auto-generated method stub
+
+		if(newFrame.getVisibility() == View.VISIBLE){
+			newFrame.setVisibility(View.GONE);
+		}else{
+			finish();
+		}
+
+	}
+
+
+
+
+	void toggleNewActivity(){
+		//		Intent itnt = new Intent(this, NewActivity.class);
+		//		startActivity(itnt);
+		//		overridePendingTransition(R.anim.slide_in_bottom, R.anim.none);
+
+		//
+		//		NewDialog newDialog = new NewDialog(this);		
+		//		newDialog.show();
+		//		overridePendingTransition(R.anim.slide_in_bottom, R.anim.none);
+
+		//		NewPopupwindow newPopWindow = new NewPopupwindow(tabbar.getActivity());  
+		//        newPopWindow.showPopupWindow(tabbar.getView());
+		//        newPopWindow.setOnNewCommodityClickedListener(new OnNewCommodityClickedListener() {
+		//			
+		//			@Override
+		//			public void onNewCommodityClicked() {
+		//				// TODO Auto-generated method stub
+		//				goNewCommodity();
+		//			}
+		//		});
+
+		if(newFrame.getVisibility() == View.VISIBLE){
+			newFrame.setVisibility(View.GONE);
+		}else{
+			newFrame.setVisibility(View.VISIBLE);
+		}
+	}
+
+	void goNewCommodity() {
+		// TODO Auto-generated method stub
 		Intent itnt = new Intent(this, NewCommodityActivity.class);
 		startActivity(itnt);
-		overridePendingTransition(R.anim.slide_in_bottom, R.anim.none);
 	}
 
 
