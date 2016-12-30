@@ -3,6 +3,7 @@ package com.example.palmcampusmarket_client.fragment.pages;
 import java.io.IOException;
 import java.util.List;
 
+import com.example.palmcampusmarket_client.DispilayActivity;
 import com.example.palmcampusmarket_client.NewCommodityActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
@@ -43,6 +44,7 @@ public class HomeListFragment extends Fragment {
 	ListView listView;
 	View btnLoadMore;
 	TextView textLoadMore;
+	Button btnSearch,imageView1,imageView2,imageView3,imageView4,imageView5,imageView6;
 
 
 	List<Commodity> data;
@@ -74,7 +76,67 @@ public class HomeListFragment extends Fragment {
 
 			});
 
-			Button btnSearch = (Button) view.findViewById(R.id.search_commodity_input);
+			imageView1.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DispilayActivity.class);
+					startActivity(intent);;
+				}
+			});
+
+			imageView2.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DispilayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			imageView3.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+			imageView4.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DispilayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			imageView5.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DispilayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			imageView6.setOnClickListener(new OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DispilayActivity.class);
+					startActivity(intent);;
+				}
+			});
+
+			btnSearch = (Button) view.findViewById(R.id.search_commodity_input);
 
 			btnSearch.setOnClickListener(new OnClickListener() {
 
