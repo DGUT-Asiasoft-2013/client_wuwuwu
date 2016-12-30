@@ -3,6 +3,8 @@ package com.example.palmcampusmarket_client.fragment.pages;
 import java.io.IOException;
 import java.util.List;
 
+
+import com.example.palmcampusmarket_client.DisplayActivity;
 import com.example.palmcampusmarket_client.NewCommodityActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
@@ -29,6 +31,7 @@ import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TableLayout;
 import android.widget.TextView;
@@ -43,6 +46,8 @@ public class HomeListFragment extends Fragment {
 	ListView listView;
 	View btnLoadMore;
 	TextView textLoadMore;
+	LinearLayout linearLayout1,linearLayout2,linearLayout3,linearLayout4,linearLayout5,linearLayout6;
+
 
 
 	List<Commodity> data;
@@ -74,9 +79,76 @@ public class HomeListFragment extends Fragment {
 
 			});
 
+			linearLayout1 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout1);
+			linearLayout2 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout2);
+			linearLayout3 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout3);
+			linearLayout4 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout4);
+			linearLayout5 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout5);
+			linearLayout6 = (LinearLayout) listViewHeader.findViewById(R.id.linearLayout6);
+
+			linearLayout1.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayActivity.class);
+					startActivity(intent);;
+				}
+			});
+
+			linearLayout2.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			linearLayout3.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+
+				}
+			});
+			linearLayout4.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			linearLayout5.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayActivity.class);
+					startActivity(intent);;
+				}
+			});
+			linearLayout6.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayActivity.class);
+					startActivity(intent);;
+				}
+			});
+
 			Button btnSearch = (Button) view.findViewById(R.id.search_commodity_input);
 
-			btnSearch.setOnClickListener(new OnClickListener() {
+			btnSearch.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
