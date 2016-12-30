@@ -6,6 +6,7 @@ import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
+import com.example.palmcampusmarket_client.fragment.ImageDown;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -36,7 +37,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
 	Button btnAdd,btnSub;
 	EditText buyNumber;
-	AvatarView commodityPicture;
+	ImageDown commodityPicture;
 	int num,totalPrice,priceOne;
 	Commodity commodity;
 	PurchaseFragmentFunctionbar buyFunctionbar;
@@ -53,7 +54,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 		buyerAddress=(TextView)findViewById(R.id.buyer_address);//买家地址ַ
 		singlePrice=(TextView)findViewById(R.id.buy_price);//单价
 		buyNumber=(EditText)findViewById(R.id.buy_number);//购买数量
-		commodityPicture=(AvatarView)findViewById(R.id.commodity_picture);//物品图片
+		commodityPicture=(ImageDown)findViewById(R.id.commodity_picture);//物品图片
 		buyFunctionbar=(PurchaseFragmentFunctionbar)getFragmentManager().findFragmentById(R.id.frag_tabber);
 		
 		commodity=(Commodity)getIntent().getSerializableExtra("infomation");//从商品详情页面获取商品信息
@@ -101,7 +102,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
 			if(commodity.getCommImage()!=null){
-			commodityPicture.load(commodity.getCommImage());
+			commodityPicture.load(Server.serverAddress+commodity.getCommImage());
 			}
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
@@ -146,8 +147,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 		Integer commodity_Id = commodity.getId();
 		MultipartBody.Builder requestBody =new MultipartBody.Builder()
 				.setType(MultipartBody.FORM)
-				.addFormDataPart("commmodity_Id", commodity_Id.toString())
-				.addFormDataPart("commodityPrice", commodity.getCommPrice())
+				.addFormDataPart("commodity_Id", commodity_Id.toString())
 				.addFormDataPart("buyNumber", buyNumber.getText().toString())
 				.addFormDataPart("totalPrice", String.valueOf(totalPrice));
 		
