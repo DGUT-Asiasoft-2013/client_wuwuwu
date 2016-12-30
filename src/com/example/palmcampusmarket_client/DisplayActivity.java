@@ -3,7 +3,7 @@ package com.example.palmcampusmarket_client;
 import android.app.Activity;
 import android.os.Bundle;
 
-public class DispilayActivity extends Activity {
+public class DisplayActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -12,3 +12,4 @@ public class DispilayActivity extends Activity {
 	}
 
 }
+
