@@ -76,7 +76,6 @@ public class NewCommodityActivity extends Activity {
 		String describle = fragInputCellDescrible.getText();
 		byte[] image = fragInputImage.getPngData();
 		String type = fragmentInputCellType.getTypeItem();        //类型
-		//if(name.isEmpty())
 
 		OkHttpClient client = Server.getSharedClient();
 		MultipartBody.Builder requestBulderBody = new MultipartBody.Builder()
@@ -153,7 +152,7 @@ public class NewCommodityActivity extends Activity {
 	void onResponse(Call arg0,String responseBody){
 		new AlertDialog.Builder(this)
 		.setTitle("上架成功")
-		.setMessage(responseBody)
+		//		.setMessage(responseBody)
 		.setPositiveButton("好",new DialogInterface.OnClickListener() {
 
 			@Override
@@ -167,7 +166,7 @@ public class NewCommodityActivity extends Activity {
 	void onFailure(Call arg0,Exception arg1){
 		new AlertDialog.Builder(this)
 		.setTitle("上架失败")
-		.setMessage(arg1.getMessage())
+		//		.setMessage(arg1.getMessage())
 		.setNegativeButton("好", null)
 		.show();
 
