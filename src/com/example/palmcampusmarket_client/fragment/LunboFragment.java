@@ -43,11 +43,11 @@ public class LunboFragment extends Fragment {
     };  
     //存放图片的标题  
     private String[]  titles = new String[]{  
-            "巩俐不低俗，我就不能低俗",   
-            "扑树又回来啦！再唱经典老歌引万人大合唱",    
-            "揭秘北京电影如何升级",     
-            "乐视网TV版大派送",      
-            "热血屌丝的反杀"  
+            "1",   
+            "2",    
+            "3",     
+            "4",      
+            "5"  
         };  
     private TextView title;  
     private ViewPagerAdapter adapter;  
