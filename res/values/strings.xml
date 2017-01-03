@@ -5,8 +5,8 @@
     <string name="hello_world">Hello world!</string>
     
      <string-array name="commoditytype">
-     <item>掏书</item>  
-    <item>掏车</item>  
+     <item>书</item>  
+    <item>车</item>  
     <item>电子产品</item>  
     <item>生活用品</item>
     <item>食品</item>
