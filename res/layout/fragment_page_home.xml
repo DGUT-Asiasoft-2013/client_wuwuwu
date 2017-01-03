@@ -55,8 +55,7 @@
         android:id="@+id/btn_new"
         android:layout_width="38dp"
         android:layout_height="38dp"
-        android:text="+"
-        android:textColor="@android:color/white" /> 
+        android:background="@drawable/newup" /> 
    
 
     <LinearLayout

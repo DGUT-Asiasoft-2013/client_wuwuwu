@@ -37,7 +37,7 @@ public class NewNeedActivity extends Activity {
 		setContentView(R.layout.fragment_pag_addneeds);
 
 		fragInputCellTitle = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.need_name);
-		fragInputCellTitle.setLabelText("商品名");{
+		fragInputCellTitle.setLabelText("标题");{
 			fragInputCellTitle.setHintText("请输入商品名");
 		}
 
