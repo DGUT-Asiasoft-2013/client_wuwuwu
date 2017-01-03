@@ -39,10 +39,10 @@ public class AddCommodityType extends Activity {
 			public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
 
 
-				TextView commType = (TextView) findViewById(R.id.comm_type);
+		//		TextView commType = (TextView) findViewById(R.id.comm_type);
 				//获取Spinner控件的适配器
 				ArrayAdapter<String> adapter = (ArrayAdapter<String>)parent.getAdapter();
-				commType.setText(adapter.getItem(position));
+	//			commType.setText(adapter.getItem(position));
 
 			}
 
