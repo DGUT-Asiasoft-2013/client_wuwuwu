@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical" >
 
     <RelativeLayout
@@ -18,8 +19,8 @@
             android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:gravity="center"
+            android:background="@drawable/btn_new_pressed"
             android:text="＜"
-            android:background="#1C86EE"
             android:textSize="30sp" />
 
         <com.example.palmcampusmarket_client.fragment.ImageView
