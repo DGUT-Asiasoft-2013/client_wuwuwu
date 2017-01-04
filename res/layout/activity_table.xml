@@ -36,14 +36,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/goo" />
 
                 <TextView
                     android:id="@+id/textView1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="分类"
+                    android:text="淘书"
                     android:textSize="7sp" />
             </LinearLayout>
 
@@ -58,14 +58,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/bebo" />
 
                 <TextView
                     android:id="@+id/textView2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="推荐"
+                    android:text="淘车"
                     android:textSize="7sp" />
             </LinearLayout>
 
@@ -80,14 +80,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/link" />
 
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="活动"
+                    android:text="电子产品"
                     android:textSize="7sp" />
             </LinearLayout>
         </TableRow>
@@ -110,14 +110,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/face" />
 
                 <TextView
                     android:id="@+id/textView4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="充值"
+                    android:text="生活用品"
                     android:textSize="7sp" />
             </LinearLayout>
 
@@ -132,14 +132,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/dirable" />
 
                 <TextView
                     android:id="@+id/textView5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="生活"
+                    android:text="食品"
                     android:textSize="7sp" />
             </LinearLayout>
 
@@ -154,14 +154,14 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/ic_launcher" />
+                    android:src="@drawable/tumb" />
 
                 <TextView
                     android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:text="附近"
+                    android:text="其它"
                     android:textSize="7sp" />
             </LinearLayout>
         </TableRow>

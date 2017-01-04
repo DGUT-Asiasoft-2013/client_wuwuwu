@@ -5,6 +5,10 @@ import java.io.IOException;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.User;
+
+import com.example.palmcampusmarket_client.fragment.AvatarView;
+
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -16,10 +20,11 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.MultipartBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
@@ -55,7 +60,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			
 			@Override
 			public void onClick(View v) {
-				goBuySuccess();
+				goBuyNow();
 				
 			}
 		});
@@ -93,8 +98,11 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			super.onResume();
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
-			
-			
+
+			if(commodity.getCommImage()!=null){
+				commodityPicture.load(Server.serverAddress+commodity.getCommImage());
+			}
+
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
 					.method("get", null)
@@ -133,7 +141,16 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			
 		}
 	
-	void goBuySuccess(){  //按了购买按钮后跳转页面
+
+	void goBuyNow(){  //按了购买按钮后跳转页面
+		OkHttpClient client =Server.getSharedClient();
+		Integer commodity_Id = commodity.getId();
+		MultipartBody.Builder requestBody =new MultipartBody.Builder()
+				.setType(MultipartBody.FORM)
+				.addFormDataPart("commodity_Id", commodity_Id.toString())
+				.addFormDataPart("buyNumber", buyNumber.getText().toString())
+				.addFormDataPart("totalPrice", String.valueOf(totalPrice));
+
 		
 	}
 	

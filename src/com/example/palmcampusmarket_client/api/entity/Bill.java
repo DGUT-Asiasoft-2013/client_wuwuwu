@@ -12,6 +12,9 @@ public class Bill implements Serializable{
     Date editDate;
     Commodity commodity;
     User user;
+    int buyNumber;
+    int totalPrice;
+    
     public User getUser() {
         return user;
     }
@@ -54,4 +57,21 @@ public class Bill implements Serializable{
         this.commodity = commodity;
     }
 
+	public int getBuyNumber() {
+		return buyNumber;
+	}
+
+	public void setBuyNumber(int buyNumber) {
+		this.buyNumber = buyNumber;
+	}
+
+	public int getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(int totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+    
 }

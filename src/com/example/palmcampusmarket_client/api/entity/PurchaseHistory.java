@@ -5,49 +5,61 @@ import java.util.Date;
 
 public class PurchaseHistory implements Serializable{ //消费记录表
 
+	Integer Id;
 	User user;
-	Integer commodity_Id;
+	Commodity commodity;
 	int buyNumber;
 	int totalPrice;
-	int commodityPrice;
 	Date createDate;
 	
 	public User getUser() {
 		return user;
 	}
+	
 	public void setUser(User user) {
 		this.user = user;
 	}
-	public Integer getCommodity() {
-		return commodity_Id;
-	}
-	public void setCommodity(Integer commodity) {
-		this.commodity_Id = commodity;
-	}
+	
 	public int getBuyNumber() {
 		return buyNumber;
 	}
+	
 	public void setBuyNumber(int buyNumber) {
 		this.buyNumber = buyNumber;
 	}
+	
 	public int getTotalPrice() {
 		return totalPrice;
 	}
+	
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
+	
 	public Date getCreateDate() {
 		return createDate;
 	}
+	
 	public void setCreateDate(Date createDate) {
 		this.createDate = createDate;
 	}
-	public int getCommodityPrice() {
-		return commodityPrice;
+
+	public Integer getId() {
+		return Id;
 	}
-	public void setCommodityPrice(int commodityPrice) {
-		this.commodityPrice = commodityPrice;
+
+	public void setId(Integer id) {
+		Id = id;
 	}
+
+	public Commodity getCommodity() {
+		return commodity;
+	}
+
+	public void setCommodity(Commodity commodity) {
+		this.commodity = commodity;
+	}
+	
 	
 	
 }
