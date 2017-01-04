@@ -34,7 +34,7 @@ import okhttp3.Response;
  */
 public class MeFragment extends Fragment implements View.OnClickListener{
    View view;
-
+   User current_user;
   // ImageDown my_avatarview;
   AvatarView my_avatarview;
     TextView my_nickname,photo_tongyong_text,collect_tongyong_text,wallet_tongyong_text,setting_tongyong_text;
@@ -54,6 +54,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
                @Override
                public void onClick(View view) {
                    Intent intent = new Intent(getActivity(),ImageShower.class);
+                   intent.putExtra("user",current_user);
                    startActivity(intent);
                }
            });
@@ -153,6 +154,7 @@ public class MeFragment extends Fragment implements View.OnClickListener{
     }
 
     protected void onResponse(Call call, User user){
+        current_user = user;
         my_avatarview.load(Server.serverAddress+user.getAvatar());
         my_nickname.setText(user.getAccount());
 

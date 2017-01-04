@@ -24,7 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.palmcampusmarket_client.HelloActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.TableActivity" />
         <activity android:name="com.example.palmcampusmarket_client.LoginActivity" />
         <activity android:name="com.example.palmcampusmarket_client.collect.CommodityContentActivity" />
         <activity android:name="com.example.palmcampusmarket_client.PasswordRecoverActivity" />
@@ -33,11 +33,13 @@
         <activity android:name="com.example.palmcampusmarket_client.EvaluationActivity" />
         <activity android:name="com.example.palmcampusmarket_client.NewCommodityActivity" />
         <activity android:name="com.example.palmcampusmarket_client.HomePageActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" />
         <activity android:name="com.example.palmcampusmarket_client.PurchaseActivity" />
-        <activity android:name="com.example.palmcampusmarket_wallet.SettingActivity"/>
+        <activity android:name="com.example.palmcampusmarket_wallet.SettingActivity"/>        
+        <activity android:name="com.example.palmcampusmarket_client.collect.NewNeedActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.ImageShower"
             android:theme="@style/ImageScale"/>
     </application>

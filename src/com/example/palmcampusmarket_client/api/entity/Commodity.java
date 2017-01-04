@@ -10,6 +10,8 @@ public class Commodity implements Serializable{
 	int CommNumber;          //商品数量
 	String CommDescribe;     //商品描述
 	String CommImage;        //商品图片
+	
+	String CommType;      //商品类型
 	Date createDate;
     Date editDate;
 	Integer id;
@@ -83,6 +85,14 @@ public class Commodity implements Serializable{
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getCommType() {
+		return CommType;
+	}
+	public void setCommType(String commType) {
+		CommType = commType;
+	}
+	
 
+	
 
 }

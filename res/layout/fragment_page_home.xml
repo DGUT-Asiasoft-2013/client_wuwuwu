@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="60dp"
+    android:layout_height="38dp"
     android:background="@android:color/holo_blue_dark"
     android:orientation="horizontal" >
 
@@ -15,8 +15,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:scaleType="fitCenter"
             android:src="@drawable/home" />
 
@@ -24,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="首页"
+            android:textSize="8sp"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
@@ -36,8 +37,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:scaleType="fitCenter"
             android:src="@drawable/collection" />
 
@@ -45,15 +46,18 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="收藏"
+            android:textSize="8sp"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
-    <Button
+    
+      <Button                
         android:id="@+id/btn_new"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="38dp"
+        android:layout_height="38dp"
         android:text="+"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white" /> 
+   
 
     <LinearLayout
         android:id="@+id/tab_shoppingCart"
@@ -64,8 +68,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:scaleType="fitCenter"
             android:src="@drawable/shoppingcart" />
 
@@ -73,6 +77,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="购物车"
+            android:textSize="8sp"
             android:textColor="@android:color/white" />
     </LinearLayout>
 
@@ -85,8 +90,8 @@
         android:orientation="vertical" >
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
             android:scaleType="fitCenter"
             android:src="@drawable/me" />
 
@@ -94,6 +99,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的校园"
+            android:textSize="8sp"
             android:textColor="@android:color/white" />
     </LinearLayout>
 

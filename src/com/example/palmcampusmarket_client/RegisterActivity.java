@@ -208,7 +208,7 @@ public class RegisterActivity extends Activity {
 	void onResponse(Call arg0, String responseBody) {
 		new AlertDialog.Builder(this)
 		.setTitle("注册成功")
-		.setMessage(responseBody)
+		//.setMessage(responseBody)
 		.setPositiveButton("好", new DialogInterface.OnClickListener() {
 
 			@Override

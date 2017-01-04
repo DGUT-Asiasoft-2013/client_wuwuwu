@@ -5,15 +5,14 @@ import java.io.IOException;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.User;
+
 import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.example.palmcampusmarket_client.fragment.ImageDown;
+
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.text.Editable;
@@ -23,7 +22,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MultipartBody;
@@ -31,8 +29,8 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-///按钮没写
-public class PurchaseActivity extends Activity {  //购买页面
+///��ťûд
+public class PurchaseActivity extends Activity {  //����ҳ��
 
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
 	Button btnAdd,btnSub;
@@ -41,7 +39,6 @@ public class PurchaseActivity extends Activity {  //购买页面
 	int num,totalPrice,priceOne;
 	Commodity commodity;
 	PurchaseFragmentFunctionbar buyFunctionbar;
-	Integer buyerId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -101,9 +98,11 @@ public class PurchaseActivity extends Activity {  //购买页面
 			super.onResume();
 			commodityDescribe.setText(commodity.getCommDescribe());	
 			singlePrice.setText("总价："+commodity.getCommPrice());
+
 			if(commodity.getCommImage()!=null){
 			commodityPicture.load(Server.serverAddress+commodity.getCommImage());
 			}
+
 			OkHttpClient client =Server.getSharedClient();
 			Request request = Server.requestBuilderWithApi("me")
 					.method("get", null)
@@ -142,6 +141,7 @@ public class PurchaseActivity extends Activity {  //购买页面
 			
 		}
 	
+
 	void goBuyNow(){  //按了购买按钮后跳转页面
 		OkHttpClient client =Server.getSharedClient();
 		Integer commodity_Id = commodity.getId();
@@ -150,65 +150,14 @@ public class PurchaseActivity extends Activity {  //购买页面
 				.addFormDataPart("commodity_Id", commodity_Id.toString())
 				.addFormDataPart("buyNumber", buyNumber.getText().toString())
 				.addFormDataPart("totalPrice", String.valueOf(totalPrice));
+
 		
-		Request request = Server.requestBuilderWithApi("purchaseHistory")  //写入消费记录表
-				.method("post", null)
-				.post(requestBody.build())
-				.build();
-		
-		final ProgressDialog progressDialog = new ProgressDialog(PurchaseActivity.this);
-		progressDialog.setMessage("请稍候");
-		progressDialog.setCancelable(false);
-		progressDialog.setCanceledOnTouchOutside(false);
-		
-		client.newCall(request).enqueue(new Callback() {
-			
-			@Override
-			public void onResponse(final Call arg0, Response arg1) throws IOException {
-				final String s = arg1.body().string();
-				runOnUiThread(new Runnable() {
-					@Override
-					public void run() {
-						progressDialog.dismiss();
-						
-						try{
-							PurchaseActivity.this.onSubmitResponse(arg0, s);
-						}catch(Exception e){
-							Toast.makeText(getBaseContext(),s,Toast.LENGTH_LONG).show();
-						}
-					}
-				});
-				
-			}
-			
-			@Override
-			public void onFailure(Call arg0, IOException arg1) {
-				
-				
-			}
-		});
 	}
 	
-	protected void onSubmitResponse(Call arg0, String s) {
-		new AlertDialog.Builder(this)
-		.setTitle("购买成功")
-		.setMessage(s)
-		.setPositiveButton("好", new DialogInterface.OnClickListener() {
-
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				finish();
-
-			}
-		})
-		.show();
-	}
-
 	protected void onResponse(Call arg0,User user){
 		buyerName.setText("收货人："+user.getAccount());
 		buyerTelephone.setText("联系电话："+user.getTelephone());
 		buyerAddress.setText("收货地址："+user.getAddress());
-		buyerId=user.getId();
 	}
 	
 	protected void onFailuer(Call arg0,Exception ex){

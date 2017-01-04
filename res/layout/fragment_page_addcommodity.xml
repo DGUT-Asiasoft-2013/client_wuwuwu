@@ -9,70 +9,93 @@
         android:layout_height="50dp"
         android:layout_gravity="top"
         android:gravity="center"
-        android:text="物品上架" />
+        android:text="物品上架"
+        android:textSize="20sp" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="314dp"
-        android:layout_marginTop="50dp" >
-    </ScrollView>
-
-    <LinearLayout
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="50dp"
-        android:background="@android:color/white"
-        android:orientation="vertical" >
+        android:layout_marginTop="50dp" >
 
-        <fragment
-            android:id="@+id/comm_name"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
-            tools:layout="@layout/fragment_inputcell_simpletext" />
+            android:layout_height="match_parent"
+            android:background="@android:color/white"
+            android:orientation="vertical" >
 
-        <fragment
-            android:id="@+id/comm_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
-            tools:layout="@layout/fragment_inputcell_simpletext" />
+            <fragment
+                android:id="@+id/comm_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
 
-        <fragment
-            android:id="@+id/comm_number"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
-            tools:layout="@layout/fragment_inputcell_simpletext" />
+            <fragment
+                android:id="@+id/comm_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
 
-        <fragment
-            android:id="@+id/comm_describle"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            
-            android:layout_marginTop="10dp"
-            class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
-            tools:layout="@layout/fragment_inputcell_simpletext" />
+            <fragment
+                android:id="@+id/comm_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
 
-        <fragment
-            android:id="@+id/comm_image"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            class="com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment"
-            tools:layout="@layout/faragment_input_commodity_picture" />
+            <fragment
+                android:id="@+id/comm_describle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                tools:layout="@layout/fragment_inputcell_simpletext" />
 
-        <Button
-            android:id="@+id/btn_add"
-            android:layout_width="90dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:background="@drawable/shape"
-            android:text="上架"
-            android:textColor="@android:color/black" />
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:id="@+id/label_type"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:text="请选择类型"
+                    android:textColor="@android:color/black" />
+
+                <Spinner
+                    android:id="@+id/type"
+                    android:layout_width="match_parent"
+                    android:layout_height="47dp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <fragment
+                android:id="@+id/comm_image"
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:layout_marginTop="10dp"
+                class="com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment"
+                tools:layout="@layout/faragment_input_commodity_picture" />
+
+            <Button
+                android:id="@+id/btn_add"
+                android:layout_width="90dp"
+                android:layout_height="50dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/shape"
+                android:text="发布"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </ScrollView>
 
 </FrameLayout>
