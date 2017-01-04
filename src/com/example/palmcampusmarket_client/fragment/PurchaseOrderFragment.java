@@ -18,7 +18,7 @@ public class PurchaseOrderFragment extends Fragment {
 	CheckBox check;
 	TextView commodity_describe,buyer_telephone,buyer_name;
 	Button pay;
-	ImageDown commodity_picture;
+	ImageView commodity_picture;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class PurchaseOrderFragment extends Fragment {
 		buyer_telephone=(TextView)view.findViewById(R.id.buyer_telephone);
 		buyer_name=(TextView)view.findViewById(R.id.buyer_name);
 		pay=(Button)view.findViewById(R.id.pay);
-		commodity_picture=(ImageDown)view.findViewById(R.id.commodity_picture);
+		commodity_picture=(ImageView)view.findViewById(R.id.commodity_picture);
 
 		return view;
 	}

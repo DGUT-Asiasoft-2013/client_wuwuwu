@@ -10,6 +10,7 @@ import com.example.palmcampusmarket_client.api.entity.Page;
 import com.example.palmcampusmarket_client.api.entity.PurchaseHistory;
 import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.ImageDown;
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.example.palmcampusmarket_client.fragment.pages.HomeListFragment;
 import com.fasterxml.jackson.core.type.TypeReference;
@@ -100,14 +101,14 @@ public class PurchaseOrderActivity extends Fragment {
 				CheckBox check;
 				TextView commodity_describe,buyer_telephone,buyer_name;
 				Button pay;
-				ImageDown commodity_picture;
+				ImageView commodity_picture;
 				
 				check=(CheckBox)view.findViewById(R.id.check);
 				commodity_describe=(TextView)view.findViewById(R.id.commodity_describe);
 				buyer_telephone=(TextView)view.findViewById(R.id.buyer_telephone);
 				buyer_name=(TextView)view.findViewById(R.id.buyer_name);
 				pay=(Button)view.findViewById(R.id.pay);
-				commodity_picture=(ImageDown)view.findViewById(R.id.commodity_picture);
+				commodity_picture=(ImageView)view.findViewById(R.id.commodity_picture);
 				
 				final PurchaseHistory purchaseHistory=data.get(position);
 				final Commodity commodity=purchaseHistory.getCommodity();

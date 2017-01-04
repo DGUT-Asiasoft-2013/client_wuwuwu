@@ -7,8 +7,8 @@ import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.api.entity.User;
 
 import com.example.palmcampusmarket_client.fragment.AvatarView;
-import com.example.palmcampusmarket_client.fragment.ImageDown;
 
+import com.example.palmcampusmarket_client.fragment.ImageView;
 import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -20,7 +20,7 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+
 import android.widget.TextView;
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -35,7 +35,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 	TextView commodityDescribe,buyerName,buyerTelephone,buyerAddress,singlePrice;
 	Button btnAdd,btnSub;
 	EditText buyNumber;
-	ImageDown commodityPicture;
+	ImageView commodityPicture;
 	int num,totalPrice,priceOne;
 	Commodity commodity;
 	PurchaseFragmentFunctionbar buyFunctionbar;
@@ -51,7 +51,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 		buyerAddress=(TextView)findViewById(R.id.buyer_address);//买家地址ַ
 		singlePrice=(TextView)findViewById(R.id.buy_price);//单价
 		buyNumber=(EditText)findViewById(R.id.buy_number);//购买数量
-		commodityPicture=(ImageDown)findViewById(R.id.commodity_picture);//物品图片
+		commodityPicture=(ImageView)findViewById(R.id.commodity_picture);//物品图片
 		buyFunctionbar=(PurchaseFragmentFunctionbar)getFragmentManager().findFragmentById(R.id.frag_tabber);
 		
 		commodity=(Commodity)getIntent().getSerializableExtra("infomation");//从商品详情页面获取商品信息
@@ -100,7 +100,7 @@ public class PurchaseActivity extends Activity {  //����ҳ��
 			singlePrice.setText("总价："+commodity.getCommPrice());
 
 			if(commodity.getCommImage()!=null){
-			commodityPicture.load(Server.serverAddress+commodity.getCommImage());
+				commodityPicture.load(Server.serverAddress+commodity.getCommImage());
 			}
 
 			OkHttpClient client =Server.getSharedClient();
