@@ -8,7 +8,7 @@ public class DisplayActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.new_fragment_home_list);
+		setContentView(R.layout.type_book);
 	}
 
 }

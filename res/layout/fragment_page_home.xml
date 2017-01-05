@@ -18,7 +18,7 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/home" />
+            android:src="@drawable/home_new" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -40,7 +40,7 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/collection" />
+            android:src="@drawable/star" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -53,9 +53,10 @@
     
       <Button                
         android:id="@+id/btn_new"
-        android:layout_width="38dp"
-        android:layout_height="38dp"
-        android:text="+"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/edit_new"
         android:textColor="@android:color/white" /> 
    
 
@@ -71,7 +72,7 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/shoppingcart" />
+            android:src="@drawable/shop_new" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -93,7 +94,7 @@
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/me" />
+            android:src="@drawable/me_new2" />
 
         <TextView
             android:layout_width="wrap_content"
