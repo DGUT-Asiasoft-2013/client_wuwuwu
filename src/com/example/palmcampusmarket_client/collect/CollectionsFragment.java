@@ -175,7 +175,7 @@ public class CollectionsFragment extends Fragment {
 		@Override
 		public Object getItem(int position) {
 			// TODO Auto-generated method stub
-			return null;
+			return data.get(position);
 		}
 
 		@Override

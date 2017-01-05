@@ -295,7 +295,7 @@ public class HomeListFragment extends Fragment {
 	}
 
 	void onItemClicked(int position){
-		Commodity comm = data.get(position);
+		Commodity comm = data.get(position-1);
 		Intent itnt = new Intent(getActivity(),CommodityContentActivity.class);
 		itnt.putExtra("commodity", comm);
 		startActivity(itnt);
