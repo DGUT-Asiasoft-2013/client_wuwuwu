@@ -27,13 +27,14 @@
                     android:text="图片标题"  
                     android:textColor="@android:color/white" />  
       
-                <LinearLayout  
+                <LinearLayout
+                    android:id="@+id/dotLayout"  
                     android:layout_width="wrap_content"  
                     android:layout_height="wrap_content"  
                     android:layout_marginTop="3dip"  
                     android:orientation="horizontal" >  
       
-                    <View  
+<!--                     <View  
                         android:id="@+id/dot_0"  
                         android:layout_width="5dip"  
                         android:layout_height="5dip"  
@@ -68,7 +69,7 @@
                         android:layout_height="5dip"  
                         android:layout_marginLeft="2dip"  
                         android:layout_marginRight="2dip"   
-                        android:background="@drawable/dot_normal"/>  
+                        android:background="@drawable/dot_normal"/>   -->
                       
                 </LinearLayout>  
             </LinearLayout>  
