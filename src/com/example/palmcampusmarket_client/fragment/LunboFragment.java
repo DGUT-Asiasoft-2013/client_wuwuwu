@@ -23,6 +23,8 @@ import android.app.ActionBar.LayoutParams;
 import android.app.Activity;
 import android.app.DownloadManager.Request;
 import android.content.Intent;
+import android.content.Loader;
+import android.media.Image;
 import android.net.Uri;
 import android.app.Fragment;
 import android.os.Bundle;  
@@ -168,20 +170,26 @@ public class LunboFragment extends Fragment {
 
 		@Override  
 		public Object instantiateItem(ViewGroup view, final int position) {  
-			// TODO Auto-generated method stub  
-			view.addView(images.get(position));
-			Commodity currentSelectedCommodity = current_commodity.get(position);   //当前页面的商品信息
-			title.setText(currentSelectedCommodity.getCommDescribe());  //从商品信息中读取描述
+
+			final Commodity comm = current_commodity.get(position);
+			Log.d("asdfasdfasdfasdf", "pic at "+position+" "+comm.getCommDescribe()+" "+comm.getCommImage());
+			ImageView img =images.get(position);
+			view.addView(img);
+			String imageLoadingUrl = Server.serverAddress+comm.getCommImage(); 
+			Log.d("loading image", imageLoadingUrl);
+			
+			img.load(imageLoadingUrl);
+			
 			images.get(position).setOnClickListener(new OnClickListener() {
 				
 				@Override
 				public void onClick(View view) {
-					 Commodity comm = current_commodity.get(position);
 					 Intent itnt = new Intent(getActivity(),CommodityContentActivity.class);
 					 itnt.putExtra("commodity", comm);
                      startActivity(itnt);
 				}
 			});
+			
 			return images.get(position);  //添加指定位置的图片
 		}  
 
@@ -201,6 +209,7 @@ public class LunboFragment extends Fragment {
 		for(Commodity commodity : data){              //for循环吧图片一张张读取出来
 			ImageView imageView = new ImageView(getActivity());  
 			imageView.load(Server.serverAddress+commodity.getCommImage());  
+			imageView.setTag(commodity);
 			images.add(imageView);
 		}
 		for(int i=0;i<images.size();i++){                  //根据图片个数动态创建小点
@@ -271,7 +280,9 @@ public class LunboFragment extends Fragment {
 	 */  
 	private Handler mHandler = new Handler(){  
 		public void handleMessage(android.os.Message msg) { 
-			mViewPaper.setCurrentItem(currentItem);  
+			mViewPaper.setCurrentItem(currentItem);
+			title.setText(current_commodity.get(currentItem).getCommDescribe());  //从商品信息中读取描述
+			
 		};  
 	};  
 	@Override
