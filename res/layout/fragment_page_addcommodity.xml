@@ -84,7 +84,7 @@
                 android:layout_height="70dp"
                 android:layout_marginTop="10dp"
                 class="com.example.palmcampusmarket_client.fragment.inputcell.CommodityPictureInputCellFragment"
-                tools:layout="@layout/faragment_input_commodity_picture" />
+                tools:layout="@layout/fragment_input_commodity_picture" />
 
             <Button
                 android:id="@+id/btn_add"
