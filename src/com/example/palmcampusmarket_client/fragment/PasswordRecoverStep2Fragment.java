@@ -11,6 +11,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class PasswordRecoverStep2Fragment extends Fragment {
 	View view;
@@ -26,6 +28,15 @@ public class PasswordRecoverStep2Fragment extends Fragment {
 			fragPassword=(SimpleTextInputCellFragment3)getFragmentManager().findFragmentById(R.id.input_password);
 			fragPasswordRepeat=(SimpleTextInputCellFragment3)getFragmentManager().findFragmentById(R.id.input_password_repeat);
 		}
+
+		view.findViewById(R.id.password_recover_setp2_back).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				getFragmentManager().popBackStack();
+			}
+		});
 
 		view.findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
 

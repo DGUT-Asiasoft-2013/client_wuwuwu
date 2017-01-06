@@ -26,7 +26,7 @@ public class HomePageActivity extends Activity {
 
 	HomeListFragment contentHomeList = new HomeListFragment();
 	CollectionsFragment contentCollectionList = new CollectionsFragment();
-	ShoppingPageFragment contentShoppingPage = new ShoppingPageFragment();
+	PurchaseOrderActivity contentShoppingPage = new PurchaseOrderActivity();
 	MeFragment contentMe = new MeFragment();
 	MainTabbarFragment tabbar;
 	View newFrame;

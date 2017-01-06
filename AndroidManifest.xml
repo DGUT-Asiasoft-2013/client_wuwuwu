@@ -33,7 +33,12 @@
         <activity android:name="com.example.palmcampusmarket_client.EvaluationActivity" />
         <activity android:name="com.example.palmcampusmarket_client.NewCommodityActivity" />
         <activity android:name="com.example.palmcampusmarket_client.HomePageActivity" />
-        <activity android:name="com.example.palmcampusmarket_client.DisplayActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayBookActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayBicycleActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayElectronicActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayDailyUseActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayFoodActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.DisplayOtherActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyWalletActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.MyBillActivity" />
         <activity android:name="com.example.palmcampusmarket_wallet.RechargeActivity" />

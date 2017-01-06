@@ -66,7 +66,11 @@ public class ImageView extends View {
 		load(Server.serverAddress + user.getAvatar());
 	}
 	
-	public void load(String url){
+	String currentLoadingUrl;
+	
+	public void load(final String url){
+		currentLoadingUrl = url;
+		
 		OkHttpClient client = Server.getSharedClient();
 		
 		Request request = new Request.Builder()
@@ -78,6 +82,8 @@ public class ImageView extends View {
 			
 			@Override
 			public void onResponse(Call arg0, Response arg1) throws IOException {
+				if(currentLoadingUrl != url) return;
+				
 				try{
 					byte[] bytes = arg1.body().bytes();
 					final Bitmap bmp = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
@@ -97,6 +103,7 @@ public class ImageView extends View {
 			
 			@Override
 			public void onFailure(Call arg0, IOException arg1) {
+				if(currentLoadingUrl != url) return;
 				mainThreadHandler.post(new Runnable() {
 					public void run() {
 						setBitmap(null);
