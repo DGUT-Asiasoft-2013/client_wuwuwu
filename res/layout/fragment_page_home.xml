@@ -6,7 +6,6 @@
     android:orientation="horizontal" >
 
     <LinearLayout
-        android:id="@+id/tab_home"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -14,11 +13,12 @@
         
         android:orientation="vertical" >
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/tab_home"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/home" />
+            android:background="@layout/drawable_home" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -29,18 +29,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tab_collection"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/tab_collection"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/collection" />
+            android:background="@layout/drawable_star" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -60,18 +60,18 @@
    
 
     <LinearLayout
-        android:id="@+id/tab_shoppingCart"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/tab_shoppingCart"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/shoppingcart" />
+            android:background="@layout/drawable_shoppingcart" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -82,18 +82,18 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/tab_me"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageView
+        <ImageButton
+            android:id="@+id/tab_me"
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/me" />
+            android:background="@layout/drawable_me"/>
 
         <TextView
             android:layout_width="wrap_content"

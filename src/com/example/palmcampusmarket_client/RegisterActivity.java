@@ -17,6 +17,9 @@ import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import okhttp3.Call;
@@ -36,6 +39,7 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment3 fragInputCellPasswordRepeat;
 	SimpleTextInputCellFragment3 fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
+	ImageButton btn_back;
 	int money = 0;
 
 
@@ -53,6 +57,14 @@ public class RegisterActivity extends Activity {
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_password_repeat);
 		fragInputCellAddress = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
+		btn_back = (ImageButton)findViewById(R.id.register_back);
+		btn_back.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				finish();
+				
+			}
+		});
 
 
 
