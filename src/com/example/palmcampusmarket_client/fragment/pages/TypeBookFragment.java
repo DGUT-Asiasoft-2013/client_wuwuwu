@@ -20,6 +20,7 @@ import android.content.Intent;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,7 @@ public class TypeBookFragment extends Fragment {
     		textLoadMore = (TextView) btnLoadMore.findViewById(R.id.text_more);
     		
     		
-    		listView = (ListView) view.findViewById(R.id.search_commodity_type_book);
+    		listView = (ListView) view.findViewById(R.id.commodity_type_book);
     		listView.addFooterView(btnLoadMore);
     		listView.setAdapter(listAdapter);
     		
@@ -71,7 +72,6 @@ public class TypeBookFragment extends Fragment {
 				
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
 					Intent intent = new Intent();
 					intent.setClass(getActivity(), SearchActivity.class);
 					startActivity(intent);
@@ -91,11 +91,6 @@ public class TypeBookFragment extends Fragment {
     	return view;
     }
     
-   
-
-
-
-
 
 	BaseAdapter listAdapter = new BaseAdapter() {
 		
@@ -120,6 +115,7 @@ public class TypeBookFragment extends Fragment {
 			Commodity commodity = data.get(position);
 
 			commName.setText(commodity.getCommName());
+			Log.d("commentname----------", commodity.getCommName());
 			commPrice.setText("￥"+commodity.getCommPrice());
 			commtsellerName.setText("卖家 "+commodity.getUser().getNickname());
 
@@ -157,7 +153,7 @@ public class TypeBookFragment extends Fragment {
 
 
 	void reload() {
-		Request request= Server.requestBuilderWithApi("home")
+		Request request= Server.requestBuilderWithApi("type/书/")
 				.get()
 				.build();
 		
