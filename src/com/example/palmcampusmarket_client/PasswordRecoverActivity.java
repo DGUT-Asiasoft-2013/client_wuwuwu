@@ -13,6 +13,10 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.KeyEvent;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MultipartBody;
@@ -24,12 +28,14 @@ public class PasswordRecoverActivity extends Activity {
 
 	PasswordRecoverStep1Fragment step1 = new PasswordRecoverStep1Fragment();
 	PasswordRecoverStep2Fragment step2 = new PasswordRecoverStep2Fragment();
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 
 		setContentView(R.layout.activity_password_recover);
+
 
 		step1.setOnGoNextListener(new OnGoNextListener() {
 
@@ -51,8 +57,6 @@ public class PasswordRecoverActivity extends Activity {
 
 		getFragmentManager().beginTransaction().replace(R.id.container, step1).commit();
 	}
-
-
 
 	void goStep2(){
 		getFragmentManager()
