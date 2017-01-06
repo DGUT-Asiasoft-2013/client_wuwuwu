@@ -6,6 +6,7 @@
     android:orientation="horizontal" >
 
     <LinearLayout
+        android:id="@+id/tab_home"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
@@ -13,8 +14,7 @@
         
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_home"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
@@ -25,18 +25,18 @@
             android:layout_height="wrap_content"
             android:text="首页"
             android:textSize="8sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@layout/color" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/tab_collection"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_collection"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
@@ -47,7 +47,7 @@
             android:layout_height="wrap_content"
             android:text="收藏"
             android:textSize="8sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@layout/color" />
     </LinearLayout>
 
     
@@ -56,18 +56,18 @@
         android:layout_width="38dp"
         android:layout_height="38dp"
         android:text="+"
-        android:textColor="@android:color/white" /> 
+        android:textColor="@layout/color" /> 
    
 
     <LinearLayout
+        android:id="@+id/tab_shoppingCart"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_shoppingCart"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
@@ -78,18 +78,18 @@
             android:layout_height="wrap_content"
             android:text="购物车"
             android:textSize="8sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@layout/color" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/tab_me"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_me"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:scaleType="fitCenter"
@@ -100,7 +100,7 @@
             android:layout_height="wrap_content"
             android:text="我的校园"
             android:textSize="8sp"
-            android:textColor="@android:color/white" />
+            android:textColor="@layout/color" />
     </LinearLayout>
 
 </LinearLayout>
