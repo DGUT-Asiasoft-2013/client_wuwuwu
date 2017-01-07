@@ -10,17 +10,28 @@
         android:layout_height="match_parent"
         android:orientation="vertical" >
 
-        <TextView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="44dp"
-            android:gravity="center"
-            android:text="我的收藏"
-            android:textSize="30sp" />
+            android:layout_height="50dp"
+            android:background="@color/login_background"
+            android:orientation="horizontal" >
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
+            <ImageButton
+                android:id="@+id/mycolloections_back"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:background="#ff0099cc"
+                android:src="@drawable/fanhui_02" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="我的收藏"
+                android:textColor="@color/white"
+                android:textSize="20sp" />
+        </RelativeLayout>
 
         <ListView
             android:id="@+id/list_collections"

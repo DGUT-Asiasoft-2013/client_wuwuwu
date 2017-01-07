@@ -7,6 +7,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="2dp"
+        android:layout_marginRight="2dp"
         android:orientation="horizontal" >
 
         <LinearLayout
@@ -17,20 +19,20 @@
             <TextView
                 android:id="@+id/title_needs"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
+                android:layout_height="20dp"
                 android:text="求购二手单车"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="25sp"
+                android:textSize="18sp"
                 android:textStyle="italic|bold" />
 
             <TextView
                 android:id="@+id/text_needs"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:lines="5"
+                android:layout_height="50dp"
+                android:lines="4"
                 android:padding="2dp"
                 android:text="99999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999"
-                android:textSize="15sp" />
+                android:textSize="13sp" />
         </LinearLayout>
 
         <LinearLayout
@@ -40,9 +42,11 @@
 
             <com.example.palmcampusmarket_client.fragment.AvatarView
                 android:id="@+id/avatar_needs_author"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
-                android:layout_gravity="center_horizontal" />
+                android:layout_width="35dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="3dp"
+                android:layout_marginBottom="2dp" />
 
             <TextView
                 android:id="@+id/name_needs_author"
@@ -50,19 +54,19 @@
                 android:layout_height="20dp"
                 android:gravity="center"
                 android:lines="1"
-                android:padding="2dp"
                 android:text="爱上对方过后就哭了"
                 android:textColor="@android:color/darker_gray"
                 android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
+                android:layout_height="20dp"
+                android:gravity="center"
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginLeft="3dp"
                     android:background="@drawable/time" />
@@ -74,7 +78,7 @@
                     android:layout_gravity="center_vertical"
                     android:lines="1"
                     android:text="33天"
-                    android:textSize="22sp"
+                    android:textSize="15sp"
                     android:textStyle="bold|italic" />
             </LinearLayout>
         </LinearLayout>

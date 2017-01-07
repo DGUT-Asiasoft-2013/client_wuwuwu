@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.User;
+import com.example.palmcampusmarket_client.collect.CollectionsActivity;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
 import com.example.palmcampusmarket_client.fragment.ImageDown;
 import com.example.palmcampusmarket_wallet.ImageShower;
@@ -69,6 +70,8 @@ public class MeFragment extends Fragment implements View.OnClickListener{
             case R.id.my_page_photo:
                 break;
             case R.id.my_page_collect:
+            	intent.setClass(getActivity(),CollectionsActivity.class);
+                startActivity(intent);
                 break;
             case R.id.my_page_wallet:
                 intent.setClass(getActivity(),MyWalletActivity.class);

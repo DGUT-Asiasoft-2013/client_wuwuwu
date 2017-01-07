@@ -50,7 +50,7 @@ import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
-public class CollectionsFragment extends Fragment {
+public class CollectionsActivity extends Activity {
 
 	ListView listView;
 	
@@ -63,46 +63,50 @@ public class CollectionsFragment extends Fragment {
 	List<Map<String, Object>> list = new ArrayList<Map<String, Object>>();
 
 	int MID;
-
-	View view;
 	
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		if(view == null){
-			view = inflater.inflate(R.layout.activity_collections,null);
-			
-			btnLoadMore = inflater.inflate(R.layout.widget_load_more_button, null);
-			textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
-			
-			listView = (ListView) view.findViewById(R.id.list_collections);
-			listView.addFooterView(btnLoadMore);
-			listView.setAdapter(listAdapter);
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_collections);
+		btnLoadMore = getLayoutInflater().inflate(R.layout.widget_load_more_button, null);
+		textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
+		
+		
+		
+		findViewById(R.id.mycolloections_back).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+            	finish();
+            }
+        });
+		
+		listView = (ListView) findViewById(R.id.list_collections);
+		listView.addFooterView(btnLoadMore);
+		listView.setAdapter(listAdapter);
 
-			listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+		listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
-				@Override
-				public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-					onItemClicked(position);
-				}
-			});
+			@Override
+			public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+				onItemClicked(position);
+			}
+		});
 
-			
-			btnLoadMore.setOnClickListener(new View.OnClickListener() {
+		
+		btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
-				@Override
-				public void onClick(View v) {
-					loadmore();
+			@Override
+			public void onClick(View v) {
+				loadmore();
 
-				}
-			});
+			}
+		});
 
 
-			onItemLongClicked();
-		}
-		return view;
+		onItemLongClicked();
 	}
-
+	
 	
 
 	@Override
@@ -186,7 +190,7 @@ public class CollectionsFragment extends Fragment {
 
 	void reload(){
 
-		Toast.makeText(getActivity(), "reload", Toast.LENGTH_SHORT).show();
+		Toast.makeText(this, "reload", Toast.LENGTH_SHORT).show();
 
 		OkHttpClient client = Server.getSharedClient();
 		Request request = Server.requestBuilderWithCs("collections")
@@ -203,17 +207,17 @@ public class CollectionsFragment extends Fragment {
 							new TypeReference<Page<Collections>>() {});
 
 
-					getActivity().runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 						public void run() {
-							CollectionsFragment.this.page = collections.getNumber();
-							CollectionsFragment.this.data = collections.getContent();
+							page = collections.getNumber();
+							data = collections.getContent();
 							listAdapter.notifyDataSetInvalidated();
 						}
 					});					
 				} catch (final Exception e) {
-					getActivity().runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 						public void run() {
-							new AlertDialog.Builder(getActivity())
+							new AlertDialog.Builder(CollectionsActivity.this)
 							.setMessage(e.getMessage())
 							.show();
 						}
@@ -223,9 +227,9 @@ public class CollectionsFragment extends Fragment {
 
 			@Override
 			public void onFailure(final Call arg0, final IOException arg1) {
-				getActivity().runOnUiThread(new Runnable() {
+				runOnUiThread(new Runnable() {
 					public void run() {
-						new AlertDialog.Builder(getActivity())
+						new AlertDialog.Builder(CollectionsActivity.this)
 						.setMessage(arg1.getMessage())
 						.show();
 					}
@@ -236,7 +240,7 @@ public class CollectionsFragment extends Fragment {
 
 
 	void onItemClicked(int position){
-		Intent itnt = new Intent(getActivity(), CommodityContentActivity.class);
+		Intent itnt = new Intent(this, CommodityContentActivity.class);
 
 		itnt.putExtra("commodity", data.get(position).getId().getCommodity());
 		startActivity(itnt);
@@ -267,7 +271,7 @@ public class CollectionsFragment extends Fragment {
 
 		switch(item.getItemId()) {
 		case 0:
-			Intent itnt = new Intent(getActivity(), CommodityContentActivity.class);
+			Intent itnt = new Intent(this, CommodityContentActivity.class);
 
 			itnt.putExtra("commodity", collections.getId().getCommodity());
 			startActivity(itnt);
@@ -293,11 +297,11 @@ public class CollectionsFragment extends Fragment {
 
 				@Override
 				public void onResponse(Call arg0, Response arg1) throws IOException {
-					getActivity().runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {
-							Toast.makeText(getActivity(),
+							Toast.makeText(CollectionsActivity.this,
 									"已删除该收藏",
 									Toast.LENGTH_SHORT).show();
 							reload();
@@ -310,7 +314,7 @@ public class CollectionsFragment extends Fragment {
 				public void onFailure(Call arg0, IOException arg1) {
 					// TODO Auto-generated method stub
 
-					getActivity().runOnUiThread(new Runnable() {
+					runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {						
@@ -339,7 +343,7 @@ public class CollectionsFragment extends Fragment {
 
 			@Override
 			public void onResponse(Call arg0, Response arg1) throws IOException {
-				getActivity().runOnUiThread(new Runnable() {
+				runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {
@@ -351,7 +355,7 @@ public class CollectionsFragment extends Fragment {
 				try{
 					final Page<Collections> collection = new ObjectMapper().readValue(arg1.body().string(), new TypeReference<Page<Commodity>>() {});
 					if(collection.getNumber()>page){
-						getActivity().runOnUiThread(new Runnable() {
+						runOnUiThread(new Runnable() {
 
 							@Override
 							public void run() {
@@ -374,7 +378,7 @@ public class CollectionsFragment extends Fragment {
 
 			@Override
 			public void onFailure(Call arg0, IOException arg1) {
-				getActivity().runOnUiThread(new Runnable() {
+				runOnUiThread(new Runnable() {
 
 					@Override
 					public void run() {

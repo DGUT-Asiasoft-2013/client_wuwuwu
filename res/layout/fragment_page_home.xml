@@ -45,7 +45,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="收藏"
+            android:text="需求"
             android:textSize="8sp"
             android:textColor="@android:color/white" />
     </LinearLayout>

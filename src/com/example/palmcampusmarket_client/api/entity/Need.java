@@ -7,7 +7,7 @@ public class Need implements Serializable{
 	User user;
 	
 	String title;
-	String text;
+	String content;
 	Date endDate;
 	
 	Date createDate;
@@ -23,11 +23,11 @@ public class Need implements Serializable{
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getText() {
-		return text;
+	public String getContent() {
+		return content;
 	}
-	public void setText(String text) {
-		this.text = text;
+	public void setContent(String content) {
+		this.content = content;
 	}
 	public Date getEndDate() {
 		return endDate;
