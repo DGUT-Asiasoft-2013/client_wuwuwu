@@ -57,30 +57,30 @@ public class CommodityContentActivity extends Activity {
 		});
 
 		btnCollect = (TextView) findViewById(R.id.btn_collect_commodity_content);
-		
+
 		btnCollect.setOnClickListener(new OnClickListener() {
-			
-						@Override
-						public void onClick(View v) {
-							checkIsCollected(commodity,new OnCheckResultListener() {
-			
-								@Override
-								public void onResult(String result) {
-									// TODO Auto-generated method stub
-			
-									if(result.equals("false")){
-										btnCollect.setText("☆");
-			
-									}else{
-										btnCollect.setText("★");
-									}		
-									changeCollected(result,commodity);
-			
-								}
-							});
-			
-						}
-					});		
+
+			@Override
+			public void onClick(View v) {
+				checkIsCollected(commodity,new OnCheckResultListener() {
+
+					@Override
+					public void onResult(String result) {
+						// TODO Auto-generated method stub
+
+						if(result.equals("false")){
+							btnCollect.setText("☆");
+
+						}else{
+							btnCollect.setText("★");
+						}		
+						changeCollected(result,commodity);
+
+					}
+				});
+
+			}
+		});		
 
 		checkIsCollected(commodity, new OnCheckResultListener() {
 
@@ -99,9 +99,9 @@ public class CommodityContentActivity extends Activity {
 		ImageView image;
 		image = (ImageView) findViewById(R.id.image_commodity_content);
 		image.load(Server.serverAddress + commodity.getCommImage());
-		
 
-		
+
+
 
 
 

@@ -1,82 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
     <include
-        layout="@layout/include_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        layout="@layout/include_title" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
-        android:background="@drawable/my_tab_background_d"/>
-    <RelativeLayout
+        android:background="@drawable/my_tab_background_d" />
 
+    <RelativeLayout
         android:id="@+id/me_item"
         android:layout_width="match_parent"
         android:layout_height="120dp"
         android:background="@drawable/textview_select"
-        android:clickable="true">
+        android:clickable="true" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="10dp"/>
-        
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="我的" />
+
         <ImageView
             android:id="@+id/me_item_iv"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="54dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:layout_marginEnd="54dp"
-            android:src="@drawable/ic_launcher"/>
+            android:layout_marginRight="54dp"
+            android:src="@drawable/ic_launcher" />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
     </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/textview_select"
-        android:clickable="true">
+        android:clickable="true" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="名字"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-           />
+            android:text="名字" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="......................."
             android:layout_centerVertical="true"
             android:paddingRight="54dp"
-            />
+            android:text="......................." />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -84,54 +87,55 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/textview_select"
-        android:clickable="true">
+        android:clickable="true" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的二维码"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            />
+            android:text="我的二维码" />
+
         <ImageView
             android:layout_width="40dp"
             android:layout_height="40dp"
-            android:src="@drawable/qr_code"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:layout_marginRight="45dp"/>
+            android:layout_centerVertical="true"
+            android:layout_marginRight="45dp"
+            android:src="@drawable/qr_code" />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
     </RelativeLayout>
+
     <RelativeLayout
         android:id="@+id/me_item_address"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/textview_select"
-        android:clickable="true">
+        android:clickable="true" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的地址"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            />
+            android:text="我的地址" />
 
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -139,32 +143,56 @@
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:background="@drawable/textview_select"
-        android:clickable="true">
+        android:clickable="true" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="个性签名"
             android:layout_centerVertical="true"
             android:layout_marginLeft="10dp"
-            />
+            android:text="个性签名" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
-            android:text="............"
             android:layout_centerVertical="true"
-            android:paddingRight="54dp"
             android:paddingLeft="100dp"
-            />
+            android:paddingRight="54dp"
+            android:text="............" />
+
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:src="@drawable/arrow"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="10dp"/>
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/me_item_passwordmodify"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/textview_select"
+        android:clickable="true" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="修改密码" />
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/arrow" />
     </RelativeLayout>
 
 </LinearLayout>

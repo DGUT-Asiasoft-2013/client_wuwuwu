@@ -6,14 +6,14 @@
     android:orientation="horizontal" >
 
     <LinearLayout
+        android:id="@+id/tab_home"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_home"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:background="@layout/drawable_home"
@@ -23,19 +23,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="首页"
-            android:textColor="@android:color/white"
+            android:textColor="@layout/color"
             android:textSize="8sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/tab_collection"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_collection"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:background="@layout/drawable_star"
@@ -45,7 +45,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="收藏"
-            android:textColor="@android:color/white"
+            android:textColor="@layout/color"
             android:textSize="8sp" />
     </LinearLayout>
 
@@ -62,7 +62,7 @@
             android:id="@+id/btn_new"
             android:layout_width="18dp"
             android:layout_height="18dp"
-            android:background="@drawable/edit_new"
+            android:background="@drawable/write"
             android:scaleType="fitCenter" />
 
         <TextView
@@ -75,22 +75,29 @@
 
     <!--
     <Button
+<<<<<<< HEAD
         android:id="@+id/btn_new"
         android:layout_width="20dp"
         android:layout_height="20dp"
+=======
+        android:id="@+id/btn_new"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+>>>>>>> branch 'master' of https://github.com/DGUT-Asiasoft-2013/client_wuwuwu.git
         android:layout_marginTop="5dp"
         android:background="@drawable/edit_new"
-        android:textColor="@android:color/white" />-->
-
+<<<<<<< HEAD
+        android:textColor="@android:color/white" />
+    -->
     <LinearLayout
+        android:id="@+id/tab_shoppingCart"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_shoppingCart"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:background="@layout/drawable_shoppingcart"
@@ -100,19 +107,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="购物车"
-            android:textColor="@android:color/white"
+            android:textColor="@layout/color"
             android:textSize="8sp" />
     </LinearLayout>
 
     <LinearLayout
+        android:id="@+id/tab_me"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1"
         android:gravity="center"
         android:orientation="vertical" >
 
-        <ImageButton
-            android:id="@+id/tab_me"
+        <ImageView
             android:layout_width="18dp"
             android:layout_height="18dp"
             android:background="@layout/drawable_me"
@@ -122,7 +129,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我的校园"
-            android:textColor="@android:color/white"
+            android:textColor="@layout/color"
             android:textSize="8sp" />
     </LinearLayout>
 
