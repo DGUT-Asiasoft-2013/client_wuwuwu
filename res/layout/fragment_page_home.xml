@@ -49,13 +49,38 @@
             android:textSize="8sp" />
     </LinearLayout>
 
+    <!-- 修改加号为发布按钮 -->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <ImageButton
+            android:id="@+id/btn_new"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@drawable/edit_new"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布"
+            android:textColor="@android:color/white"
+            android:textSize="8sp" />
+    </LinearLayout>
+
+    <!--
     <Button
         android:id="@+id/btn_new"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
         android:layout_marginTop="5dp"
         android:background="@drawable/edit_new"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white" />-->
 
     <LinearLayout
         android:layout_width="0dp"
@@ -99,9 +124,6 @@
             android:text="我的校园"
             android:textColor="@android:color/white"
             android:textSize="8sp" />
-
-        <ImageButton>
-        </ImageButton>
     </LinearLayout>
 
 </LinearLayout>

@@ -41,8 +41,6 @@ public class Server {
 		return new Request.Builder()
 				.url(serverAddress+"cs/"+cs);
 	}
-
-
 }
 
 
