@@ -27,6 +27,7 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Request;
@@ -36,9 +37,8 @@ public class AddressListFragment extends Fragment {
 	View view;
 	ListView listView;
 	Button btnAddAddress;
-	List<Address> page;
-	List<User> data;
-	User user;
+	List<Address> data;
+
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -93,11 +93,18 @@ public class AddressListFragment extends Fragment {
 			TextView addTelephone = (TextView) view.findViewById(R.id.telephone_address);
 			TextView addAddress = (TextView) view.findViewById(R.id.play_address);
 
-			User user = data.get(position);
+			//			User user = data.get(position);
 
-			addName.setText(user.getNickname());
-			addTelephone.setText(user.getTelephone());
-			addAddress.setText(user.getAddress());
+			Address address = data.get(position);
+
+			addName.setText("收货人: "+address.getAddress_name());
+			addTelephone.setText("电话: "+address.getAddress_telephone());
+			addAddress.setText("地址: "+address.getAddress());
+
+
+			//			addName.setText(user.getNickname());
+			//			addTelephone.setText(user.getTelephone());
+			//			addAddress.setText(user.getAddress());
 
 			return view;
 		}
@@ -129,14 +136,16 @@ public class AddressListFragment extends Fragment {
 	}
 
 	void onItemClicked(int position){
-		user = data.get(position);
+		//		user = data.get(position);
+		Address address = data.get(position);
 		Intent itnt = new Intent(getActivity(),AddressContentActivity.class);
-		itnt.putExtra("user", user);
+		itnt.putExtra("address", address);
 		startActivity(itnt);
 	}
 
 	void reload(){
-		Request request = Server.requestBuilderWithApi("/address/{user_id}")
+
+		Request request = Server.requestBuilderWithApi("addresslist")
 				.get()
 				.build();
 
@@ -145,14 +154,16 @@ public class AddressListFragment extends Fragment {
 			@Override
 			public void onResponse(Call arg0, Response arg1) throws IOException {
 				try{
-					final Page<Address> data = new ObjectMapper()
-							.readValue(arg1.body().string(), new TypeReference<Page<Address>>() {});
+					data = new ObjectMapper()
+							.readValue(arg1.body().string(), 
+									new TypeReference<List<Address>>() {});
 
 					getActivity().runOnUiThread(new Runnable() {
 
 						@Override
 						public void run() {
-							AddressListFragment.this.page=data.getContent();
+							//	AddressListFragment.this.data=data.getContent();
+							//							Toast.makeText(getActivity(), "数据解析成功", Toast.LENGTH_LONG).show();
 							listAdapter.notifyDataSetInvalidated();
 
 						}
