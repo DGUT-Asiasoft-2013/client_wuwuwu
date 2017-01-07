@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/a"
-    android:orientation="vertical" >
+    android:background="@drawable/a" >
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbarThumbVertical="@android:color/transparent"
+         >
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -39,8 +47,8 @@
         android:id="@+id/input_password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment2"
-        tools:layout="@layout/fragment_inputcell_simpletext2" />
+        class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment4"
+        tools:layout="@layout/fragment_inputcell_simpletext4" />
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="20dp">
@@ -97,5 +105,7 @@
             android:padding="2dp"
             android:text="忘记密码?" />
     </LinearLayout>
+    </LinearLayout>
+    </ScrollView>
 
-</LinearLayout>
+</FrameLayout>

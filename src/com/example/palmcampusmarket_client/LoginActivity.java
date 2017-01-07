@@ -30,6 +30,7 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment2;
+import com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment4;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;
@@ -38,7 +39,8 @@ import android.os.Bundle;
 import android.view.View;
 
 public class LoginActivity extends Activity {
-	SimpleTextInputCellFragment2 fragPassword,fragAccount;  
+	SimpleTextInputCellFragment2 fragAccount;
+	SimpleTextInputCellFragment4 fragPassword;
     private CheckBox rem_pw, auto_login;      
     private SharedPreferences sp;
 
@@ -74,7 +76,7 @@ public class LoginActivity extends Activity {
 		});
 
 		fragAccount=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_account);
-		fragPassword=(SimpleTextInputCellFragment2)getFragmentManager().findFragmentById(R.id.input_password);
+		fragPassword=(SimpleTextInputCellFragment4)getFragmentManager().findFragmentById(R.id.input_password);
 		sp = this.getSharedPreferences("userInfo", Context.MODE_WORLD_READABLE);
 		rem_pw = (CheckBox) findViewById(R.id.remember_password);  
         auto_login = (CheckBox) findViewById(R.id.autologin);
