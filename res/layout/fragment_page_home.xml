@@ -99,9 +99,6 @@
             android:text="我的校园"
             android:textColor="@android:color/white"
             android:textSize="8sp" />
-
-        <ImageButton>
-        </ImageButton>
     </LinearLayout>
 
 </LinearLayout>
