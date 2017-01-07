@@ -8,60 +8,8 @@
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="75dp" >
-
-            <com.example.palmcampusmarket_client.fragment.AvatarView
-                android:id="@+id/avatar_seller_content"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_margin="5dp" />
-
-            <TextView
-                android:id="@+id/name_seller_content"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_toRightOf="@+id/avatar_seller_content"
-                android:padding="5dp"
-                android:text="卖家名称"
-                android:textSize="25sp" />
-
-            <LinearLayout
-                android:id="@+id/account_view"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignBottom="@+id/avatar_seller_content"
-                android:layout_toRightOf="@+id/avatar_seller_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="用户名:"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp" />
-
-                <TextView
-                    android:id="@+id/account_seller_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:padding="5dp"
-                    android:text="abcd"
-                    android:textColor="@android:color/darker_gray"
-                    android:textSize="15sp" />
-            </LinearLayout>
-        </RelativeLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@android:color/darker_gray" />
-
         <LinearLayout
-            android:id="@+id/btn_seller_telephone"
+            android:id="@+id/btn_author_telephone"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal" >
@@ -74,7 +22,7 @@
                 android:background="@drawable/phone" />
 
             <TextView
-                android:id="@+id/telephone_seller_content"
+                android:id="@+id/telephone_author_content"
                 android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
@@ -86,7 +34,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical|right"
                 android:paddingRight="10dp"
-                android:text="点击联系卖家"
+                android:text="点击联系发布者"
                 android:textColor="@android:color/darker_gray"
                 android:textSize="15sp" />
         </LinearLayout>
@@ -109,7 +57,7 @@
                 android:background="@drawable/home" />
 
             <TextView
-                android:id="@+id/address_seller_content"
+                android:id="@+id/address_author_content"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"

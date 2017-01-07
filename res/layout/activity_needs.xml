@@ -9,7 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical" >
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -17,7 +16,7 @@
             android:orientation="horizontal" >
 
             <ImageButton
-                android:id="@+id/mycolloections_back"
+                android:id="@+id/needs_back"
                 android:layout_width="wrap_content"
                 android:layout_height="50dp"
                 android:background="#ff0099cc"
@@ -28,13 +27,14 @@
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
-                android:text="我的收藏"
+                android:text="需求中心"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
 
+
         <ListView
-            android:id="@+id/list_collections"
+            android:id="@+id/list_needs"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white" >

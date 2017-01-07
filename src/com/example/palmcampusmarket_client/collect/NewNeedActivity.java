@@ -1,17 +1,23 @@
 package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 import com.example.palmcampusmarket_client.NewCommodityActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment;
 
+import android.R.integer;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -28,6 +34,7 @@ public class NewNeedActivity extends Activity {
 
 	CommoditySimpleTextInputCellFragment fragInputCellTitle;
 	EditText content;
+	EditText day;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -37,9 +44,11 @@ public class NewNeedActivity extends Activity {
 		setContentView(R.layout.fragment_pag_addneeds);
 
 		fragInputCellTitle = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.need_name);
-		fragInputCellTitle.setLabelText("商品名");{
-			fragInputCellTitle.setHintText("请输入商品名");
+		fragInputCellTitle.setLabelText("标题");{
+			fragInputCellTitle.setHintText("请输入标题");
 		}
+		
+		day = (EditText) findViewById(R.id.need_day);
 
 		content = (EditText) findViewById(R.id.need_content);
 
@@ -68,7 +77,21 @@ public class NewNeedActivity extends Activity {
 		if(text.equals(null)){
 			Toast.makeText(getApplicationContext(), "请详细描述您的需求",
 				     Toast.LENGTH_SHORT).show();
+		}else{
+			
 		}
+		
+		String dtime;
+		if(day.getText().toString().equals(null)){
+			day.setText("1");
+			dtime = day.getText().toString();
+		}else{
+			dtime = day.getText().toString();
+		}
+		
+		
+		
+		
 		
 		
 		OkHttpClient client = Server.getSharedClient();
@@ -77,9 +100,11 @@ public class NewNeedActivity extends Activity {
 				.setType(MultipartBody.FORM)
 				
 				.addFormDataPart("title", title)
-				.addFormDataPart("content", text);
+				.addFormDataPart("content", text)
+				.addFormDataPart("day", dtime);
 		
 		Request request = Server.requestBuilderWithCs("need")
+				.method("post", null)
 				.post(body.build())
 				.build();
 		
@@ -138,6 +163,7 @@ public class NewNeedActivity extends Activity {
 		
 	}
 
+	
 	protected void onFailure(Call arg0, Exception e) {
 		// TODO Auto-generated method stub
 		new AlertDialog.Builder(this)
