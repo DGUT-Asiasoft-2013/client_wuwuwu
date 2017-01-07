@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:orientation="vertical" >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:background="@color/login_background"
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/address_back"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="#ff0099cc"
+                android:src="@drawable/fanhui_02" />
+
+            <TextView
+                android:id="@+id/address_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:text="新增地址"
+                android:textColor="@color/white"
+                android:textSize="15sp" />
+        </RelativeLayout>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@android:color/white"
+                android:orientation="vertical" >
+
+                <fragment
+                    android:id="@+id/address_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                    tools:layout="@layout/fragment_inputcell_simpletext" />
+
+                <fragment
+                    android:id="@+id/address_telephone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                    tools:layout="@layout/fragment_inputcell_simpletext" />
+
+                <fragment
+                    android:id="@+id/address_add"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    class="com.example.palmcampusmarket_client.fragment.inputcell.CommoditySimpleTextInputCellFragment"
+                    tools:layout="@layout/fragment_inputcell_simpletext" />
+
+                <Button
+                    android:id="@+id/btn_determine"
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginRight="5dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@android:color/holo_green_light"
+                    android:text="确定"
+                    android:textColor="@android:color/white" />
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</FrameLayout>

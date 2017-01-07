@@ -3,8 +3,12 @@ package com.example.palmcampusmarket_client.fragment.pages;
 import java.io.IOException;
 import java.util.List;
 
-
-import com.example.palmcampusmarket_client.DisplayActivity;
+import com.example.palmcampusmarket_client.DisplayBicycleActivity;
+import com.example.palmcampusmarket_client.DisplayBookActivity;
+import com.example.palmcampusmarket_client.DisplayDailyUseActivity;
+import com.example.palmcampusmarket_client.DisplayElectronicActivity;
+import com.example.palmcampusmarket_client.DisplayFoodActivity;
+import com.example.palmcampusmarket_client.DisplayOtherActivity;
 import com.example.palmcampusmarket_client.NewCommodityActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
@@ -90,10 +94,10 @@ public class HomeListFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					
 					Intent intent = new Intent();
-					intent.setClass(getActivity(), DisplayActivity.class);
-					startActivity(intent);;
+					intent.setClass(getActivity(), DisplayBookActivity.class);
+					startActivity(intent);
 				}
 			});
 
@@ -101,17 +105,19 @@ public class HomeListFragment extends Fragment {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					
 					Intent intent = new Intent();
-					intent.setClass(getActivity(), DisplayActivity.class);
-					startActivity(intent);;
+					intent.setClass(getActivity(), DisplayBicycleActivity.class);
+					startActivity(intent);
 				}
 			});
 			linearLayout3.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
-					// TODO Auto-generated method stub
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), DisplayElectronicActivity.class);
+					startActivity(intent);
 
 				}
 			});
@@ -121,8 +127,8 @@ public class HomeListFragment extends Fragment {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
-					intent.setClass(getActivity(), DisplayActivity.class);
-					startActivity(intent);;
+					intent.setClass(getActivity(), DisplayDailyUseActivity.class);
+					startActivity(intent);
 				}
 			});
 			linearLayout5.setOnClickListener(new View.OnClickListener() {
@@ -131,8 +137,8 @@ public class HomeListFragment extends Fragment {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
-					intent.setClass(getActivity(), DisplayActivity.class);
-					startActivity(intent);;
+					intent.setClass(getActivity(), DisplayFoodActivity.class);
+					startActivity(intent);
 				}
 			});
 			linearLayout6.setOnClickListener(new View.OnClickListener() {
@@ -141,8 +147,8 @@ public class HomeListFragment extends Fragment {
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
-					intent.setClass(getActivity(), DisplayActivity.class);
-					startActivity(intent);;
+					intent.setClass(getActivity(), DisplayOtherActivity.class);
+					startActivity(intent);
 				}
 			});
 
@@ -155,7 +161,7 @@ public class HomeListFragment extends Fragment {
 					// TODO Auto-generated method stub
 					Intent intent = new Intent();
 					intent.setClass(getActivity(), SearchActivity.class);
-					startActivity(intent);;
+					startActivity(intent);
 
 				}
 			});

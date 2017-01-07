@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/login_background"
+        android:orientation="horizontal" >
+
+        <ImageButton
+            android:id="@+id/addresslist_back"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="#ff0099cc"
+            android:src="@drawable/fanhui_02" />
+
+        <TextView
+            android:id="@+id/admin_address"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:text="管理我的地址"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+    </RelativeLayout>
+
+    <ListView
+        android:id="@+id/addresslist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.56" >
+    </ListView>
+
+    <Button
+        android:id="@+id/add_address"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_gravity="end"
+        android:text="新增我的地址" />
+
+</LinearLayout>

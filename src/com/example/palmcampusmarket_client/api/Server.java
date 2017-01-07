@@ -25,7 +25,6 @@ public class Server {
 	}
 
 
-
 	public static String serverAddress = "http://172.27.15.15:8080/membercenter/";
 
 
@@ -43,8 +42,6 @@ public class Server {
 		return new Request.Builder()
 				.url(serverAddress+"cs/"+cs);
 	}
-
-
 }
 
 
