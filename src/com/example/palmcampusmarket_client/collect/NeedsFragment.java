@@ -1,6 +1,7 @@
 package com.example.palmcampusmarket_client.collect;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -39,7 +40,7 @@ import okhttp3.Response;
 public class NeedsFragment extends Fragment {
 
 	ListView listView;
-	
+
 	View btnLoadMore;
 	TextView textLoadMore;
 
@@ -51,25 +52,25 @@ public class NeedsFragment extends Fragment {
 	int MID;
 
 	View view;
-	
+
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		if(view == null){
 			view = inflater.inflate(R.layout.activity_needs,null);
-			
+
 			view.findViewById(R.id.needs_back).setOnClickListener(new OnClickListener() {
-				
+
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
-					
+
 				}
 			});
-			
+
 			btnLoadMore = inflater.inflate(R.layout.widget_load_more_button, null);
 			textLoadMore =(TextView) btnLoadMore.findViewById(R.id.text_more);
-			
+
 			listView = (ListView) view.findViewById(R.id.list_needs);
 			listView.addFooterView(btnLoadMore);
 			listView.setAdapter(listAdapter);
@@ -82,7 +83,7 @@ public class NeedsFragment extends Fragment {
 				}
 			});
 
-			
+
 			btnLoadMore.setOnClickListener(new View.OnClickListener() {
 
 				@Override
@@ -96,12 +97,12 @@ public class NeedsFragment extends Fragment {
 		return view;
 	}
 
-	
+
 
 	@Override
 	public void onResume() {
 		super.onResume();
-		
+
 		reload();
 
 	}
@@ -140,24 +141,24 @@ public class NeedsFragment extends Fragment {
 			name.setText(needs.getUser().getNickname());
 			title.setText(needs.getTitle());
 			text.setText(needs.getContent());
-			if(getGapCount(needs.getEndDate())<0){
+			if(getGapCount(needs.getEndDate())<=0){
 				time.setText("已过期");
 			}else{
 				time.setText(getGapCount(needs.getEndDate())+"天");	
 			}
-			
+
 
 
 			return view;
 		}
-		
+
 		/**
-		* 获取两个日期之间的间隔天数,进一法。
-		* @return
-		*/
+		 * 获取两个日期之间的间隔天数,进一法。
+		 * @return
+		 */
 		public int getGapCount(Date endDate) {
 			double millisecond = endDate.getTime()-System.currentTimeMillis();
-			
+
 			return (int) Math.ceil(millisecond/1000/60/60/24);
 		}
 
@@ -181,6 +182,10 @@ public class NeedsFragment extends Fragment {
 			return data==null ? 0 : data.size();
 		}
 	};
+	
+	SimpleDateFormat formatter = new SimpleDateFormat ("yyyy-MM-dd hh:mm:ss");       
+	Date curDate = new Date(System.currentTimeMillis());//获取当前时间       
+	String now = formatter.format(curDate);  
 
 	void reload(){
 
@@ -240,7 +245,7 @@ public class NeedsFragment extends Fragment {
 		startActivity(itnt);
 	}
 
-	
+
 	void loadmore(){
 		btnLoadMore.setEnabled(false);
 		textLoadMore.setText("载入中");

@@ -46,7 +46,6 @@ public class HomePageActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(newFrame.getVisibility() == View.VISIBLE){
 					newFrame.setVisibility(View.GONE);
-					tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
 				}else{
 					newFrame.setVisibility(View.VISIBLE);
 				}
@@ -85,7 +84,6 @@ public class HomePageActivity extends Activity {
 
 		if(newFrame.getVisibility() == View.VISIBLE){
 			newFrame.setVisibility(View.GONE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
 		}else{
 			finish();
 		}
@@ -118,11 +116,9 @@ public class HomePageActivity extends Activity {
 
 		if(newFrame.getVisibility() == View.VISIBLE){
 			newFrame.setVisibility(View.GONE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
 			
 		}else{
 			newFrame.setVisibility(View.VISIBLE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newdown);
 		}
 	}
 
