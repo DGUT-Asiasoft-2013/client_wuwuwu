@@ -1,5 +1,7 @@
 package com.example.palmcampusmarket_client.collect;
 
+import java.text.SimpleDateFormat;
+
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.Need;
@@ -19,10 +21,8 @@ import android.widget.TextView;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 
 public class NeedContentActivity extends Activity {
-
-	ImageButton btnBack;
-	Button btnReply;
-	RadioGroup tabbar;
+	
+	ImageButton btnReply;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -33,18 +33,8 @@ public class NeedContentActivity extends Activity {
 
 		final Need need = (Need) getIntent().getSerializableExtra("need");
 
-		btnBack = (ImageButton) findViewById(R.id.back_need_content);
 
-		btnBack.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				finish();
-
-			}
-		});
-
-		btnReply = (Button) findViewById(R.id.btn_reply_need);
+		btnReply = (ImageButton) findViewById(R.id.btn_reply_need);
 
 		btnReply.setOnClickListener(new OnClickListener() {
 
@@ -68,64 +58,21 @@ public class NeedContentActivity extends Activity {
 
 		TextView name = (TextView) findViewById(R.id.name_need_content);
 		name.setText(need.getUser().getNickname());
+		
+		TextView createDate = (TextView) findViewById(R.id.createdate_need_content);
+		createDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(need.getCreateDate()));
+		
+		TextView endDate = (TextView) findViewById(R.id.enddate_need_content);
+		endDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(need.getEndDate()));
 
 		TextView text = (TextView) findViewById(R.id.text_need_content);
 		text.setText(need.getContent());
 
-		tabbar = (RadioGroup) findViewById(R.id.rd_need_content);
-		tabbar.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-
-			@Override
-			public void onCheckedChanged(RadioGroup group, int checkedId) {
-				// TODO Auto-generated method stub
-				int tab = group.getCheckedRadioButtonId();
-
-				RadioButton rb = (RadioButton) findViewById(tab);
-
-				int index = 0;
-
-				if(rb.getText().equals("回复")){
-
-					index = 0;
-					changeContentFragment(index);
-
-
-				}else if(rb.getText().equals("发布者")){
-
-					index = 1;
-					changeContentFragment(index);
-
-				}
-			}
-		});
-
-	}
-
-	protected void changeContentFragment(int index) {
-		// TODO Auto-generated method stub
-		Fragment newFrag = null;
-		switch(index){
-		case 0:{ 
-//			newFrag = null;
-			break;
-		}
-		case 1:{
-			newFrag = new AuthorContentFragment();
-			break;
-		}
-		default:{
-//			newFrag = null;
-			break;		
-		}
-		}
-
-		if(newFrag==null)
-			return;
-
 		getFragmentManager()
 		.beginTransaction()
-		.replace(R.id.need_content_checked, newFrag)
+		.replace(R.id.need_content_checked, new AuthorContentFragment())
 		.commit();
 
 	}
+
 }

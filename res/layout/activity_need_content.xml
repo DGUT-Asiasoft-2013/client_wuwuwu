@@ -12,12 +12,6 @@
         android:background="@color/login_background"
         android:orientation="horizontal" >
 
-        <ImageButton
-            android:id="@+id/back_need_content"
-            android:layout_width="wrap_content"
-            android:layout_height="50dp"
-            android:background="#ff0099cc"
-            android:src="@drawable/fanhui_02" />
 
         <TextView
             android:id="@+id/textView1"
@@ -28,15 +22,16 @@
             android:text="需求详情"
             android:textColor="@color/white"
             android:textSize="20sp" />
-
-        <Button
+        <ImageButton
             android:id="@+id/btn_reply_need"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
-            android:background="@color/login_background"
-            android:text="回复" 
-            android:textColor="@color/white"/>
+            android:src="@drawable/message"
+            android:background="@android:color/transparent"
+            android:textColor="@color/white" />
     </RelativeLayout>
 
     <LinearLayout
@@ -45,22 +40,22 @@
         android:orientation="horizontal" >
 
         <TextView
-            android:layout_weight="4"
             android:id="@+id/title_need_content"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
+            android:layout_weight="4"
             android:paddingLeft="5dp"
             android:text="标题："
-            android:textStyle="bold|italic"
-            android:textSize="17dp" />
+            android:textSize="17dp"
+            android:textStyle="bold|italic" />
 
         <LinearLayout
-            android:layout_weight="1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
             android:orientation="horizontal" >
 
             <ImageView
@@ -81,10 +76,11 @@
                 android:textStyle="bold|italic" />
         </LinearLayout>
     </LinearLayout>
-    <View 
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
+        android:background="@android:color/darker_gray" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -99,8 +95,8 @@
 
             <com.example.palmcampusmarket_client.fragment.AvatarView
                 android:id="@+id/avatar_need_content"
-                android:layout_width="55dp"
-                android:layout_height="50dp"
+                android:layout_width="60dp"
+                android:layout_height="55dp"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginBottom="2dp"
                 android:layout_marginTop="3dp" />
@@ -108,7 +104,8 @@
             <TextView
                 android:id="@+id/name_need_content"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="wrap_content"
+                android:padding="2dp"
                 android:gravity="center"
                 android:lines="1"
                 android:text="xxxxx"
@@ -116,62 +113,91 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
-        <View 
+        <View
             android:layout_width="1dp"
-            android:layout_height="145dp"
-            android:background="@android:color/darker_gray"/>
-        <TextView
-            android:id="@+id/text_need_content"
+            android:layout_height="match_parent"
+            android:background="@android:color/darker_gray" />
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="145dp"
-            android:lines="8"
-            android:padding="3dp"
-            android:text="123456
-            2
-            3
-            4
-            5
-            6
-            7
-            8" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/text_need_content"
+                android:layout_width="match_parent"
+                android:layout_height="180dp"
+                android:lines="10"
+                android:padding="3dp"
+                android:text="1
+                2
+                3
+                4
+                5
+                6
+                7
+                8
+                9
+                10" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingRight="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/createdate_need_content"
+                    android:text="发布日期：" />
+
+                <TextView
+                    android:id="@+id/createdate_need_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:text="2017-01-09 14:42:44" />
+            </RelativeLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:paddingRight="10dp" >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@+id/enddate_need_content"
+                    android:text="截止日期：" />
+
+                <TextView
+                    android:id="@+id/enddate_need_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
+                    android:text="2017-01-11 14:42:44" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-    <View 
+
+    <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@android:color/darker_gray"/>
-
-    <RadioGroup
-        android:id="@+id/rd_need_content"
-        android:layout_width="match_parent"
-        android:layout_height="35dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal" >
-
-        <RadioButton
-            android:id="@+id/reply_need"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tabbar_check"
-            android:button="@null"
-            android:checked="true"
-            android:gravity="center"
-            android:text="回复"
-            android:textColor="@color/tabbar_checked_text_color"
-            android:textSize="25sp" />
-
-        <RadioButton
-            android:id="@+id/author_need_content"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/tabbar_check"
-            android:button="@null"
-            android:gravity="center"
-            android:text="发布者"
-            android:textColor="@color/tabbar_checked_text_color"
-            android:textSize="25sp" />
-    </RadioGroup>
+        android:background="@android:color/darker_gray" />
 
     <FrameLayout
         android:id="@+id/need_content_checked"
