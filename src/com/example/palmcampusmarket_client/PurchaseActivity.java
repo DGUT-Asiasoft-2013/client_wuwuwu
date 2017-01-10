@@ -9,7 +9,7 @@ import com.example.palmcampusmarket_client.api.entity.User;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
 
 import com.example.palmcampusmarket_client.fragment.ImageView;
-import com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar;
+import com.example.palmcampusmarket_client.purchase.PurchaseFragmentFunctionbar;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import android.app.Activity;

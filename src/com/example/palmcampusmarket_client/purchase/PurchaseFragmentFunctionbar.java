@@ -1,4 +1,4 @@
-package com.example.palmcampusmarket_client.fragment;
+package com.example.palmcampusmarket_client.purchase;
 
 
 

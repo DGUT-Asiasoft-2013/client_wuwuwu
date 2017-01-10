@@ -11,6 +11,7 @@ import com.example.palmcampusmarket_client.fragment.pages.CollectionListFragment
 import com.example.palmcampusmarket_client.fragment.pages.HomeListFragment;
 import com.example.palmcampusmarket_client.fragment.pages.MeFragment;
 import com.example.palmcampusmarket_client.fragment.pages.ShoppingPageFragment;
+import com.example.palmcampusmarket_client.purchase.PurchaseOrderFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -26,7 +27,7 @@ public class HomePageActivity extends Activity {
 
 	HomeListFragment contentHomeList = new HomeListFragment();
 	CollectionsFragment contentCollectionList = new CollectionsFragment();
-	PurchaseOrderActivity contentShoppingPage = new PurchaseOrderActivity();
+	PurchaseOrderFragment contentShoppingPage = new PurchaseOrderFragment();
 	MeFragment contentMe = new MeFragment();
 	MainTabbarFragment tabbar;
 	View newFrame;
