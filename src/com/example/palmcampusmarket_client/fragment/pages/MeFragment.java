@@ -63,26 +63,24 @@ public class MeFragment extends Fragment implements View.OnClickListener{
 		return view;
 	}
 
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent();
-        switch (view.getId()){
-            case R.id.my_page_photo:
-                break;
-            case R.id.my_page_collect:
-            	intent.setClass(getActivity(),CollectionsActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.my_page_wallet:
-                intent.setClass(getActivity(),MyWalletActivity.class);
-                startActivity(intent);
-                break;
-            case R.id.my_page_setting:
-            	intent.setClass(getActivity(),SettingActivity.class);
-    			startActivity(intent);
-                break;
-            case R.id.me:
-                intent.setClass(getActivity(),SettingActivity.class);
+	@Override
+	public void onClick(View view) {
+		Intent intent = new Intent();
+		switch (view.getId()){
+		case R.id.my_page_photo:
+			break;
+		case R.id.my_page_collect:
+			intent.setClass(getActivity(),CollectionsActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.my_page_wallet:
+			intent.setClass(getActivity(),MyWalletActivity.class);
+			startActivity(intent);
+			break;
+		case R.id.my_page_setting:
+			break;
+		case R.id.me:
+			intent.setClass(getActivity(),SettingActivity.class);
 
 			startActivity(intent);
 			break;

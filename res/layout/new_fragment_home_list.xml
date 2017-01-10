@@ -12,15 +12,14 @@
         android:orientation="horizontal" >
 
         <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1" >
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
 
             <!-- margin:边距10dp -->
 
             <Button
                 android:id="@+id/search_commodity_input"
-                android:layout_width="match_parent"
+                android:layout_width="230dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:layout_margin="10dp"
@@ -31,15 +30,6 @@
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:textSize="12sp" />
-
-            <ImageView
-                android:id="@+id/search_iv_delete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:layout_marginRight="20dp"
-                android:src="@drawable/iv_delete_bg"
-                android:visibility="gone" />
         </FrameLayout>
 
         <Button
@@ -51,8 +41,8 @@
             android:layout_marginTop="10dp"
             android:background="@drawable/btn_search_bg"
             android:text="搜索"
-            android:textSize="14sp"
-            android:textColor="@color/color_white" />
+            android:textColor="@color/color_white"
+            android:textSize="14sp" />
 
         <ListView
             android:id="@+id/search_lv_tips"

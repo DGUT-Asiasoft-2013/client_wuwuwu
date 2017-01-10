@@ -8,6 +8,7 @@ public class Address implements Serializable{
 	String address_name;
 	String address_telephone;
 	String address;
+	boolean isDefaultInfo;
 	
 	public Integer getId() {
 		return id;
@@ -33,5 +34,12 @@ public class Address implements Serializable{
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public boolean isDefaultInfo() {
+		return isDefaultInfo;
+	}
+	public void setDefaultInfo(boolean isDefaultInfo) {
+		this.isDefaultInfo = isDefaultInfo;
+	}
+	
 
 }

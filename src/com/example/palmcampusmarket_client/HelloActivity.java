@@ -12,7 +12,7 @@ public class HelloActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		setContentView(R.layout.activity_hello);
-		
+	/*	
 		findViewById(R.id.btn_changuser).setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -20,7 +20,7 @@ public class HelloActivity extends Activity {
 				// TODO Auto-generated method stub
 				goChangeUser();
 			}
-		});
+		});*/
 	}
 	
 	void goChangeUser(){
