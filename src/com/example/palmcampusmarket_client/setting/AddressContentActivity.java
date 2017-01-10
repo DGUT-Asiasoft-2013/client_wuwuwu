@@ -70,12 +70,12 @@ public class AddressContentActivity extends Activity {
 			}
 		});
 
-//		cbSetDefault.setChecked(address.isDefaultInfo());
-//		if(cbSetDefault.isChecked()){
-//			cbSetDefault.setText("默认地址");
-//		}else{
-//			cbSetDefault.setText("设为默认");
-//		}
+		//		cbSetDefault.setChecked(address.isDefaultInfo());
+		//		if(cbSetDefault.isChecked()){
+		//			cbSetDefault.setText("默认地址");
+		//		}else{
+		//			cbSetDefault.setText("设为默认");
+		//		}
 
 		findViewById(R.id.address_delete).setOnClickListener(new View.OnClickListener() {
 
@@ -151,7 +151,7 @@ public class AddressContentActivity extends Activity {
 
 					@Override
 					public void run() {
-						getAddress();
+						AddressContentActivity.this.onSave();;
 
 
 					}
