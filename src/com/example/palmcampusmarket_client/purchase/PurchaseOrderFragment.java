@@ -139,7 +139,7 @@ public class PurchaseOrderFragment extends Fragment{
 					Integer commodity_Id = commodity.getId();
 					MultipartBody.Builder requestBody =new MultipartBody.Builder()
 							.setType(MultipartBody.FORM)
-
+							.addFormDataPart("historyId",String.valueOf(history1.getId()) )
 							.addFormDataPart("buyNumber", String.valueOf(history1.getBuyNumber()))
 							.addFormDataPart("totalPrice", String.valueOf(history1.getTotalPrice()));
 
