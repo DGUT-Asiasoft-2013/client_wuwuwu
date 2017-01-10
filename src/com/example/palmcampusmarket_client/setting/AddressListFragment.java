@@ -18,6 +18,7 @@ import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,6 +26,7 @@ import android.widget.AdapterView;
 import android.widget.Adapter;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -35,6 +37,7 @@ import okhttp3.Response;
 
 public class AddressListFragment extends Fragment {
 	View view;
+	ImageButton imageButton;
 	ListView listView;
 	Button btnAddAddress;
 	List<Address> data;
@@ -58,6 +61,19 @@ public class AddressListFragment extends Fragment {
 				}
 
 
+			});
+
+			imageButton = (ImageButton) view.findViewById(R.id.addresslist_back);
+
+			imageButton.setOnClickListener(new View.OnClickListener() {
+
+				@Override
+				public void onClick(View v) {
+					Intent intent = new Intent();
+					intent.setClass(getActivity(), SettingActivity.class);
+					startActivity(intent);
+
+				}
 			});
 
 			btnAddAddress = (Button) view.findViewById(R.id.add_address);
@@ -92,19 +108,23 @@ public class AddressListFragment extends Fragment {
 			TextView addName = (TextView) view.findViewById(R.id.name_address);
 			TextView addTelephone = (TextView) view.findViewById(R.id.telephone_address);
 			TextView addAddress = (TextView) view.findViewById(R.id.play_address);
+			TextView adddefault = (TextView) view.findViewById(R.id.default_address);
 
-			//			User user = data.get(position);
 
-			Address address = data.get(position);
+			final Address address = data.get(position);
+			Log.v("isDefaultInfo"+address.getAddress_name(), String.valueOf(address.isDefaultInfo())); 
+
+			if(address.isDefaultInfo()){
+				//Log.v("isDefaultInfo"+address.getAddress_name(), String.valueOf(address.isDefaultInfo())); 
+				adddefault.setVisibility(View.VISIBLE);
+				adddefault.setText("默认地址");
+			}else
+				adddefault.setVisibility(View.INVISIBLE);
+
 
 			addName.setText("收货人: "+address.getAddress_name());
 			addTelephone.setText("电话: "+address.getAddress_telephone());
 			addAddress.setText("地址: "+address.getAddress());
-
-
-			//			addName.setText(user.getNickname());
-			//			addTelephone.setText(user.getTelephone());
-			//			addAddress.setText(user.getAddress());
 
 			return view;
 		}
@@ -164,7 +184,8 @@ public class AddressListFragment extends Fragment {
 						public void run() {
 							//	AddressListFragment.this.data=data.getContent();
 							//							Toast.makeText(getActivity(), "数据解析成功", Toast.LENGTH_LONG).show();
-							listAdapter.notifyDataSetInvalidated();
+							//listAdapter.notifyDataSetInvalidated();
+							listAdapter.notifyDataSetChanged();
 
 						}
 					});

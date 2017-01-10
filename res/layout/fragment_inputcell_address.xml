@@ -45,7 +45,7 @@
                 android:orientation="vertical" >
 
                 <fragment
-                    android:id="@+id/address_name"
+                    android:id="@+id/address_input_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -53,7 +53,7 @@
                     tools:layout="@layout/fragment_inputcell_simpletext" />
 
                 <fragment
-                    android:id="@+id/address_telephone"
+                    android:id="@+id/address_input_telephone"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
@@ -61,7 +61,7 @@
                     tools:layout="@layout/fragment_inputcell_simpletext" />
 
                 <fragment
-                    android:id="@+id/address_add"
+                    android:id="@+id/address_input_add"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"

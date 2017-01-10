@@ -5,20 +5,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
-    <ListView 
+    
+
+    <ListView
         android:id="@+id/list_purchase"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="80dp">
-        
+        android:layout_marginBottom="80dp" >
     </ListView>
-    
-    <fragment
-        android:id="@+id/frag_tabber"
+
+    <LinearLayout 
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="bottom"
-        class="com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar"
-        tools:layout="@layout/fragment_purchase_functionbar" />
-
+        android:weightSum="3">
+        <CheckBox 
+            android:id="@+id/allchoise"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="全选"/>
+        
+       <TextView 
+           android:id="@+id/total"
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:layout_weight="1"
+           android:text="合计："
+           android:gravity="center_vertical|right"
+           />
+       
+       <Button
+           android:id="@+id/pay"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_weight="1"
+           android:text="支付"/>
+    </LinearLayout>
 </FrameLayout>

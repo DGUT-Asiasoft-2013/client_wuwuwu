@@ -26,7 +26,7 @@ public class SettingActivity extends Activity {
 	}
 
 	void goAddress(){
-		Intent intent = new Intent(this,AddressContentActivity.class);
+		Intent intent = new Intent(this,AddressListActivity.class);
 		startActivity(intent);
 	}
 }

@@ -74,12 +74,6 @@
                 class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment3"
                 tools:layout="@layout/fragment_inputcell_simpletext3" />
 
-            <fragment
-                android:id="@+id/input_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                class="com.example.palmcampusmarket_client.fragment.inputcell.SimpleTextInputCellFragment3"
-                tools:layout="@layout/fragment_inputcell_simpletext3" />
 
             <fragment
                 android:id="@+id/input_avatar"
