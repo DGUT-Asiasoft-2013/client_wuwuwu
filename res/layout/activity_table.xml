@@ -36,7 +36,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/goo" />
+                    android:src="@drawable/book" />
 
                 <TextView
                     android:id="@+id/textView1"
@@ -58,7 +58,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/bebo" />
+                    android:src="@drawable/bicycle" />
 
                 <TextView
                     android:id="@+id/textView2"
@@ -80,7 +80,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/link" />
+                    android:src="@drawable/electronic" />
 
                 <TextView
                     android:id="@+id/textView3"
@@ -110,7 +110,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/face" />
+                    android:src="@drawable/daily" />
 
                 <TextView
                     android:id="@+id/textView4"
@@ -132,7 +132,7 @@
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:layout_gravity="center"
-                    android:src="@drawable/dirable" />
+                    android:src="@drawable/food" />
 
                 <TextView
                     android:id="@+id/textView5"

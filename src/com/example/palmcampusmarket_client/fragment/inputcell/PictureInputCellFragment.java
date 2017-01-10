@@ -37,7 +37,7 @@ public class PictureInputCellFragment extends BaseInputCellFragment {
 
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		View view = inflater.inflate(R.layout.faragment_input_commodity_picture, container);
+		View view = inflater.inflate(R.layout.fragment_input_commodity_picture, container);
 		imageView  = (ImageView) view.findViewById(R.id.image);
 		labelText = (TextView) view.findViewById(R.id.label);
 		hintText = (TextView) view.findViewById(R.id.hint);

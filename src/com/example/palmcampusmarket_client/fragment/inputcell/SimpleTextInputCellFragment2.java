@@ -31,6 +31,9 @@ public class SimpleTextInputCellFragment2 extends BaseInputCellFragment {
 	public void setHintText(String hintText) {
 		edit.setHint(hintText);
 	}
+	public void setEditText(String edittext){
+		edit.setText(edittext);
+	}
 
 	public void setIsPassword(boolean isPassword) {
 		// TODO Auto-generated method stub

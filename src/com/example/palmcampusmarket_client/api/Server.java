@@ -25,9 +25,7 @@ public class Server {
 	}
 
 
-
-	public static String serverAddress = "http://172.27.15.32:8080/membercenter/";
-
+	public static String serverAddress = "http://172.27.15.29:8080/membercenter/";
 
 	public  static Request.Builder requestBuilderWithWallet(String wallet){
 		return new Request.Builder()
@@ -43,8 +41,6 @@ public class Server {
 		return new Request.Builder()
 				.url(serverAddress+"cs/"+cs);
 	}
-
-
 }
 
 

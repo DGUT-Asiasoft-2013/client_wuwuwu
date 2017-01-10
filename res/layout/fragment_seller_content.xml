@@ -61,6 +61,7 @@
             android:background="@android:color/darker_gray" />
 
         <LinearLayout
+            android:id="@+id/btn_seller_telephone"
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:orientation="horizontal" >
@@ -74,11 +75,20 @@
 
             <TextView
                 android:id="@+id/telephone_seller_content"
-                android:layout_width="match_parent"
+                android:layout_width="150dp"
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:text="12345678910"
                 android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical|right"
+                android:paddingRight="10dp"
+                android:text="点击联系卖家"
+                android:textColor="@android:color/darker_gray"
+                android:textSize="15sp" />
         </LinearLayout>
 
         <View

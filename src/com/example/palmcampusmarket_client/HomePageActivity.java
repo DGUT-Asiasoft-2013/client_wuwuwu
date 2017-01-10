@@ -1,7 +1,7 @@
 package com.example.palmcampusmarket_client;
 
 
-import com.example.palmcampusmarket_client.collect.CollectionsFragment;
+import com.example.palmcampusmarket_client.collect.NeedsFragment;
 import com.example.palmcampusmarket_client.collect.NewFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment;
 import com.example.palmcampusmarket_client.fragment.MainTabbarFragment.OnNewClickedListener;
@@ -26,8 +26,9 @@ public class HomePageActivity extends Activity {
 
 
 	HomeListFragment contentHomeList = new HomeListFragment();
-	CollectionsFragment contentCollectionList = new CollectionsFragment();
 	PurchaseOrderFragment contentShoppingPage = new PurchaseOrderFragment();
+	NeedsFragment needsList = new NeedsFragment();
+
 	MeFragment contentMe = new MeFragment();
 	MainTabbarFragment tabbar;
 	View newFrame;
@@ -117,6 +118,7 @@ public class HomePageActivity extends Activity {
 
 		if(newFrame.getVisibility() == View.VISIBLE){
 			newFrame.setVisibility(View.GONE);
+
 		}else{
 			newFrame.setVisibility(View.VISIBLE);
 		}
@@ -143,7 +145,7 @@ public class HomePageActivity extends Activity {
 
 		switch(index){
 		case 0: newFrag = contentHomeList; break;
-		case 1: newFrag = contentCollectionList; break;
+		case 1: newFrag = needsList; break;
 		case 2: newFrag = contentShoppingPage; break;
 		case 3: newFrag = contentMe; break;
 

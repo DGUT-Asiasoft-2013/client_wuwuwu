@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
 public class PasswordRecoverStep1Fragment extends Fragment {
 	SimpleTextInputCellFragment3 fragTelephone; 
@@ -19,6 +21,14 @@ public class PasswordRecoverStep1Fragment extends Fragment {
 			view = inflater.inflate(R.layout.fragment_password_recover_step1, null);
 
 			fragTelephone = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_telephone);
+			view.findViewById(R.id.password_recover_setp1_back).setOnClickListener(new OnClickListener() {
+				
+				@Override
+				public void onClick(View v) {
+					getActivity().finish();
+					
+				}
+			});
 
 			view.findViewById(R.id.btn_next).setOnClickListener(new View.OnClickListener() {
 
