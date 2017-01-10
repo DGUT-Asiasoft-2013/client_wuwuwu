@@ -33,6 +33,10 @@ public class CommoditySimpleTextInputCellFragment extends Fragment {
 		edit.setHint(hintText);
 	}
 	
+	public void setText(String text) {
+		edit.setText(text);
+	}
+	
 	public void setIsPassword(boolean isPassword) {
 		// TODO Auto-generated method stub
 
