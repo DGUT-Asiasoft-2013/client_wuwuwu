@@ -138,10 +138,16 @@ public class MyNeedsActivity extends Activity {
 			name.setText(needs.getUser().getNickname());
 			title.setText(needs.getTitle());
 			text.setText(needs.getContent());
-			if(getGapCount(needs.getEndDate())<=0){
-				time.setText("已过期");
+			double t = needs.getEndDate().getTime()-System.currentTimeMillis();
+			int day = (int) Math.ceil(t/1000/60/60/24);
+			if(needs.getState()==null || needs.getState() == 0){
+				if(day > 0){
+					time.setText(day+"天");
+				}else if(day <= 0){
+					time.setText("已过期");
+				}
 			}else{
-				time.setText(getGapCount(needs.getEndDate())+"天");	
+				time.setText("已完成");
 			}
 
 

@@ -54,50 +54,47 @@ public class NeedContentActivity extends Activity {
 		getCurrent_user(need);
 		menuFrag = (View)findViewById(R.id.frame_menu_need_outside);
 		menuFrag.setVisibility(View.GONE);
-		if(need.getState()== 0){
-
-			btnMenu = (ImageButton) findViewById(R.id.btn_menu_need);
-
-			btnReply = (ImageButton) findViewById(R.id.btn_reply_need);
-
-
-			btnMenu.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					if(menuFrag.getVisibility() == View.VISIBLE){
-						menuFrag.setVisibility(View.GONE);
-
-					}else{
-						menuFrag.setVisibility(View.VISIBLE);
-					}
-				}
-			});
-
-			menuFrag.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					if(menuFrag.getVisibility() == View.VISIBLE){
-						menuFrag.setVisibility(View.GONE);
-					}				
-				}
-			});
-
-
-			btnReply.setOnClickListener(new OnClickListener() {
-
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-
-				}
-			});
-		}
-
+		btnMenu = (ImageButton) findViewById(R.id.btn_menu_need);
+		btnReply = (ImageButton) findViewById(R.id.btn_reply_need);
 		
+		
+		btnMenu.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(menuFrag.getVisibility() == View.VISIBLE){
+					menuFrag.setVisibility(View.GONE);
+
+				}else{
+					menuFrag.setVisibility(View.VISIBLE);
+				}
+			}
+		});
+
+		menuFrag.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if(menuFrag.getVisibility() == View.VISIBLE){
+					menuFrag.setVisibility(View.GONE);
+				}				
+			}
+		});
+
+
+		btnReply.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+
+			}
+		});
+
+
+
 		title = (TextView) findViewById(R.id.title_need_content);
 		title.setText(need.getTitle());
 
@@ -182,9 +179,13 @@ public class NeedContentActivity extends Activity {
 									time.setText(day+"天");
 								}else if(day <= 0){
 									time.setText("已过期");
+									btnMenu.setVisibility(View.GONE);
+									btnReply.setVisibility(View.GONE);
 								}
 							}else{
 								time.setText("已完成");
+								btnMenu.setVisibility(View.GONE);
+								btnReply.setVisibility(View.GONE);
 							}
 
 							endDate.setText(new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(need.getEndDate()));
@@ -195,7 +196,7 @@ public class NeedContentActivity extends Activity {
 					});
 				} catch (Exception e) {
 					// TODO: handle exception
-					
+
 				}
 			}
 
@@ -204,7 +205,7 @@ public class NeedContentActivity extends Activity {
 				// TODO Auto-generated method stub
 
 				runOnUiThread(new Runnable() {
-					
+
 					@Override
 					public void run() {
 						// TODO Auto-generated method stub
@@ -212,7 +213,7 @@ public class NeedContentActivity extends Activity {
 						Toast.makeText(NeedContentActivity.this,"555", Toast.LENGTH_LONG).show();
 					}
 				});
-				
+
 			}
 		});
 
@@ -267,6 +268,9 @@ public class NeedContentActivity extends Activity {
 				btnMenu.setVisibility(View.GONE);
 				btnReply.setVisibility(View.VISIBLE);
 			}
+		}else{
+			btnMenu.setVisibility(View.GONE);
+			btnReply.setVisibility(View.GONE);
 		}
 	}
 
