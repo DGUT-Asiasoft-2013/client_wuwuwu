@@ -37,7 +37,6 @@ public class RegisterActivity extends Activity {
 	SimpleTextInputCellFragment3 fragInputNickname;
 	SimpleTextInputCellFragment3 fragInputCellPassword;
 	SimpleTextInputCellFragment3 fragInputCellPasswordRepeat;
-	SimpleTextInputCellFragment3 fragInputCellAddress;
 	PictureInputCellFragment fragInputAvatar;
 	ImageButton btn_back;
 	int money = 0;
@@ -55,7 +54,6 @@ public class RegisterActivity extends Activity {
 		fragInputNickname = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_nickname);
 		fragInputCellPassword = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_password);
 		fragInputCellPasswordRepeat = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_password_repeat);
-		fragInputCellAddress = (SimpleTextInputCellFragment3) getFragmentManager().findFragmentById(R.id.input_address);
 		fragInputAvatar = (PictureInputCellFragment) getFragmentManager().findFragmentById(R.id.input_avatar);
 		btn_back = (ImageButton)findViewById(R.id.register_back);
 		btn_back.setOnClickListener(new OnClickListener() {
@@ -102,10 +100,6 @@ public class RegisterActivity extends Activity {
 			fragInputCellPasswordRepeat.setIsPassword(true);
 		}
 
-		fragInputCellAddress.setScr(R.drawable.adress);
-		{
-			fragInputCellAddress.setHintText("请输入收货地址");
-		}
 
 		findViewById(R.id.btn_submit).setOnClickListener(new View.OnClickListener() {
 
@@ -139,7 +133,6 @@ public class RegisterActivity extends Activity {
 		String account = fragInputCellAccount.getText();
 		String nickname = fragInputNickname.getText();
 		String telephone = fragInputTelephone.getText();
-		String address = fragInputCellAddress.getText();
 
 		OkHttpClient client = Server.getSharedClient();
 
@@ -149,7 +142,6 @@ public class RegisterActivity extends Activity {
 				.addFormDataPart("nickname", nickname)
 				.addFormDataPart("telephone", telephone)
 				.addFormDataPart("passwordHash", password)
-				.addFormDataPart("address", address)
 				.addFormDataPart("money", String.valueOf(money));
 
 		if (fragInputAvatar.getPngData() != null) {

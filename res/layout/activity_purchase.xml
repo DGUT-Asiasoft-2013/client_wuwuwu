@@ -149,7 +149,7 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:layout_gravity="bottom"
-        class="com.example.palmcampusmarket_client.fragment.PurchaseFragmentFunctionbar"
+        class="com.example.palmcampusmarket_client.purchase.PurchaseFragmentFunctionbar"
         tools:layout="@layout/fragment_purchase_functionbar" />
 
 </FrameLayout>

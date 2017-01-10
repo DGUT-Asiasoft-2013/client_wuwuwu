@@ -11,6 +11,7 @@ import com.example.palmcampusmarket_client.fragment.pages.CollectionListFragment
 import com.example.palmcampusmarket_client.fragment.pages.HomeListFragment;
 import com.example.palmcampusmarket_client.fragment.pages.MeFragment;
 import com.example.palmcampusmarket_client.fragment.pages.ShoppingPageFragment;
+import com.example.palmcampusmarket_client.purchase.PurchaseOrderFragment;
 
 import android.app.Activity;
 import android.app.Fragment;
@@ -25,8 +26,9 @@ public class HomePageActivity extends Activity {
 
 
 	HomeListFragment contentHomeList = new HomeListFragment();
+	PurchaseOrderFragment contentShoppingPage = new PurchaseOrderFragment();
 	NeedsFragment needsList = new NeedsFragment();
-	PurchaseOrderActivity contentShoppingPage = new PurchaseOrderActivity();
+
 	MeFragment contentMe = new MeFragment();
 	MainTabbarFragment tabbar;
 	View newFrame;
@@ -46,7 +48,6 @@ public class HomePageActivity extends Activity {
 				// TODO Auto-generated method stub
 				if(newFrame.getVisibility() == View.VISIBLE){
 					newFrame.setVisibility(View.GONE);
-					tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
 				}else{
 					newFrame.setVisibility(View.VISIBLE);
 				}
@@ -85,7 +86,6 @@ public class HomePageActivity extends Activity {
 
 		if(newFrame.getVisibility() == View.VISIBLE){
 			newFrame.setVisibility(View.GONE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
 		}else{
 			finish();
 		}
@@ -118,11 +118,9 @@ public class HomePageActivity extends Activity {
 
 		if(newFrame.getVisibility() == View.VISIBLE){
 			newFrame.setVisibility(View.GONE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newup);
-			
+
 		}else{
 			newFrame.setVisibility(View.VISIBLE);
-			tabbar.getActivity().findViewById(R.id.btn_new).setBackgroundResource(R.drawable.newdown);
 		}
 	}
 

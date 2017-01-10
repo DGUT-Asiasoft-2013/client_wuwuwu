@@ -5,7 +5,9 @@ import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.entity.Commodity;
 import com.example.palmcampusmarket_client.fragment.AvatarView;
 
+import android.app.AlertDialog;
 import android.app.Fragment;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -48,9 +50,24 @@ public class SellerContentFragment extends Fragment {
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
+					new AlertDialog.Builder(getActivity()).setTitle("联系发布者").setMessage("是否拨号")
+
+					.setNegativeButton("拨号", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which){
+					dialog.dismiss();
+					
 					Intent intent = new Intent(Intent.ACTION_DIAL,Uri.parse("tel:" + Integer.parseInt(commodity.getUser().getTelephone())));
 					intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 					startActivity(intent);
+					}
+					})
+					.setPositiveButton("取消", new DialogInterface.OnClickListener() {
+					public void onClick(DialogInterface dialog, int which) {
+					dialog.dismiss();
+					}
+					}).show();
+					
+					
 				}
 			});
 
