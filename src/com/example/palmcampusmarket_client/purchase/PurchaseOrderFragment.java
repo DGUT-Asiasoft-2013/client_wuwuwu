@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import com.example.palmcampusmarket_client.NewCommodityActivity;
-import com.example.palmcampusmarket_client.PurchaseOrderActivity;
 import com.example.palmcampusmarket_client.R;
 import com.example.palmcampusmarket_client.api.Server;
 import com.example.palmcampusmarket_client.api.entity.CarData;
@@ -49,7 +48,6 @@ import okhttp3.Response;
 @SuppressLint("ValidFragment")
 public class PurchaseOrderFragment extends Fragment{
 
-	IBtnCallListener btnCallListener;
 	CheckBox allchoise;
 	TextView allPrice;
 	Button pay;
@@ -83,7 +81,7 @@ public class PurchaseOrderFragment extends Fragment{
 
 
 		allchoise.setOnClickListener(new OnClickListener() {
-			
+
 			@Override
 			public void onClick(View v) {
 				adapter.toggleAllCheckState(allchoise.isChecked());
@@ -93,16 +91,15 @@ public class PurchaseOrderFragment extends Fragment{
 
 
 		listView = (ListView) view.findViewById(R.id.list_purchase);
-		// 濡傛灉璐墿杞︿腑鏈夋暟鎹紝閭ｄ箞灏辨樉绀烘暟鎹紝鍚﹀垯鏄剧ず榛樿鐣岄潰
 
 		adapter = new Adapter_ListView_Car(getActivity());
 
 		adapter.setOnCheckedChangedListener(new OnCheckedChangedListener() {
-			
+
 			@Override
 			public void onItemCheckStatusChanged() {
 				int totalPrice = adapter.getTotalPrice();
-				allPrice.setText("总价："+totalPrice);
+				allPrice.setText("总价："+totalPrice+"元");
 				int seleteNumber = adapter.selectNumber();			
 				int listSize = adapter.adapterSize();
 				if(listSize==seleteNumber){
@@ -110,16 +107,14 @@ public class PurchaseOrderFragment extends Fragment{
 				}else{
 					allchoise.setChecked(false);
 				}
-				
-				
-				
+
+
+
 			}
 		});
-		
+
 		listView.setAdapter(adapter);
 		adapter.setAdapterCarList(data);
-
-
 
 
 
@@ -144,26 +139,26 @@ public class PurchaseOrderFragment extends Fragment{
 					Integer commodity_Id = commodity.getId();
 					MultipartBody.Builder requestBody =new MultipartBody.Builder()
 							.setType(MultipartBody.FORM)
-							
+
 							.addFormDataPart("buyNumber", String.valueOf(history1.getBuyNumber()))
 							.addFormDataPart("totalPrice", String.valueOf(history1.getTotalPrice()));
-					
+
 					Request request = Server.requestBuilderWithWallet("save_bill/"+commodity_Id)  
 							.method("post", null)
 							.post(requestBody.build())
 							.build();
-					
-					
+
+
 					client.newCall(request).enqueue(new Callback() {
-						
+
 						@Override
 						public void onResponse(final Call arg0, Response arg1) throws IOException {
 							final String s = arg1.body().string();
 							getActivity().runOnUiThread(new Runnable() {
 								@Override
 								public void run() {
-									
-									
+
+
 									try{
 										new AlertDialog.Builder(getActivity())
 										.setTitle("支付成功")
@@ -171,23 +166,23 @@ public class PurchaseOrderFragment extends Fragment{
 
 											@Override
 											public void onClick(DialogInterface dialog, int which) {
-												
+
 
 											}
 										})
 										.show();
 									}catch(Exception e){
-										
+
 									}
 								}
 							});
-							
+
 						}
-						
+
 						@Override
 						public void onFailure(Call arg0, IOException arg1) {
-							
-							
+
+
 						}
 					});
 				}
@@ -196,48 +191,6 @@ public class PurchaseOrderFragment extends Fragment{
 
 
 	}
-
-
-
-
-//	/** adapter鐨勫洖璋冨嚱鏁帮紝褰撶偣鍑籆heckBox鐨勬椂鍊欎紶閫掔偣鍑讳綅缃拰checkBox鐨勭姸鎬� */
-//	@Override
-//	public void getChoiceData(int position, boolean isChoice) {
-//
-//		if (isChoice) {
-//
-//			totalPrice += Float.valueOf(data.get(position).getTotalPrice());
-//
-//		} else {
-//
-//			totalPrice -= Float.valueOf(data.get(position).getTotalPrice());
-//
-//		}
-//
-//		int num_choice = 0;
-//		for (int i = 0; i < data.size(); i++) {
-//
-//			if (null!=listView.getChildAt(i)&&((CheckBox) (listView.getChildAt(i)).findViewById(R.id.check)).isChecked()) {
-//
-//				num_choice += 1;
-//				is_choice[i]=true;
-//			}
-//		}
-//
-//		if (num_choice == data.size()) {
-//
-//			allchoise.setChecked(true);
-//		} else {
-//
-//			allchoise.setChecked(false);
-//		}
-//
-//		allPrice.setText("总价："+totalPrice + "");
-//
-//		System.out.println("閫夋嫨鐨勪綅缃�--->"+position);
-//
-//	}
-
 
 
 
@@ -303,9 +256,6 @@ public class PurchaseOrderFragment extends Fragment{
 		});
 	}
 
-	public void setTotalPrice(int totalPrice){
-		allPrice.setText("合计："+totalPrice+"元");
-	}
 
 
 }
