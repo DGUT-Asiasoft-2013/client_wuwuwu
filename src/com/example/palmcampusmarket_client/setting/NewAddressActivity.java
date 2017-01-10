@@ -32,9 +32,9 @@ public class NewAddressActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.fragment_inputcell_address);
 
-		fragInputCellName = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_name);
-		fragInputCellTelephone = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_telephone);
-		fragInputCellAddress = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_add);
+		fragInputCellName = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_input_name);
+		fragInputCellTelephone = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_input_telephone);
+		fragInputCellAddress = (CommoditySimpleTextInputCellFragment) getFragmentManager().findFragmentById(R.id.address_input_add);
 
 		findViewById(R.id.btn_determine).setOnClickListener(new View.OnClickListener() {
 
