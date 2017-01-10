@@ -14,9 +14,14 @@ public class Need implements Serializable{
     Date editDate;
 	Integer id;
 	
+	Integer State;
 	
-
-	
+	public Integer getState() {
+		return State;
+	}
+	public void setState(Integer state) {
+		State = state;
+	}
 	public String getTitle() {
 		return title;
 	}

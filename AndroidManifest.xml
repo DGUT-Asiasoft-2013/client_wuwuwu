@@ -49,6 +49,7 @@
         <activity android:name="com.example.palmcampusmarket_client.collect.NewNeedActivity" />
         <activity android:name="com.example.palmcampusmarket_client.collect.CollectionsActivity" />
         <activity android:name="com.example.palmcampusmarket_client.collect.NeedContentActivity" />
+        <activity android:name="com.example.palmcampusmarket_client.collect.EditNeedActivity" />
         <activity
             android:name="com.example.palmcampusmarket_wallet.ImageShower"
             android:theme="@style/ImageScale" />
